@@ -1,0 +1,64 @@
+﻿.form-control.ng-invalid.ng-dirty {
+    border-color: #a94442 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+}
+
+.error-message {
+    color: #b14042;
+    font-size: 16px;
+}
+
+/*#region Dialogs */
+
+.dialog-container {
+    background: #ccc /* fallback for old browsers */;
+    background: rgba(204, 204, 204, .5);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+.dialog-message {
+    -moz-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    height: 5em;
+    left: 50%;
+    margin: -2em auto 0 -10em /* top is half of height and left is half of width*/;
+    padding: 8px 0px 0px 0px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    width: 25em;
+}
+
+.dialog-accentText {
+    font-family: "Segoe UI Light", "Segoe UI", Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 36px;
+}
+
+.dialog-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 90%;
+    position: relative;
+}
+
+.dialog-image-caption {
+    -moz-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    margin: 0 5% 0 5% /* top is half of height and left is half of width*/;
+    padding: 8px 0px 0px 0px;
+    text-align: center;
+    width: 90%;
+}
+
+/*#endregion */

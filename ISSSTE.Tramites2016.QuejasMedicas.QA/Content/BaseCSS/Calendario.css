@@ -1,0 +1,39 @@
+﻿.TablaCalendario { width: 100%; }
+
+.EncabezadoTh {
+    border: none;
+    vertical-align: top;
+    width: 14%;
+    font-weight: normal;
+}
+
+.CampoTd {
+    border: 1px solid #DDDDDD;
+    vertical-align: top;
+    width: 14%;
+}
+
+.InHabil {
+    background-color: #D0021B;
+    border: none;
+    margin-top: 4px;
+}
+
+.Disponible {
+    background-color: #4D92DF;
+    border: none;
+    margin-top: 4px;
+}
+
+.DiaActual {
+    background-color: black;
+    border: none;
+    margin-top: 4px;
+}
+
+.Acontecido {
+    background-color: #DDDDDD;
+    border: none;
+    margin-top: 4px;
+}
+

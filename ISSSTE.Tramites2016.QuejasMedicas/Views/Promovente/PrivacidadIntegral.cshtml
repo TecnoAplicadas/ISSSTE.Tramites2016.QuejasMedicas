@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+	<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">	
+</head>
+<body>
+    @switch (ViewData["TipoTramite"].ToString())
+	{
+		case "1":
+			@Html.Partial("PrivacidadInt1");
+			break;
+		case "2":
+			@Html.Partial("PrivacidadInt2");
+			break;
+		case "3":
+			@Html.Partial("PrivacidadInt3");
+			break;
+
+	}
+	<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+</body>
+</html>

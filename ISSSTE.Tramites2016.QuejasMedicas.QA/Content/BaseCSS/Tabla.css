@@ -1,0 +1,45 @@
+﻿.table > tbody > tr > td { text-align: justify; }
+
+.table > thead > tr > th { text-align: justify; }
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
+
+td { padding: 0; }
+
+.Reporte1 > tbody > tr > td,
+.Reporte1 > thead > tr > th {
+    border: 1px solid black;
+    padding: 2px;
+    width: 200px;
+}
+
+div .EstadoRepublica { width: 200px; }
+
+div .EstadoTramite { width: 300px; }
+
+div .ConceptoUnidad { width: 300px; }
+
+div .EstadoCita { width: 300px; }
+
+div .NombrePaciente, div .NombrePromotor { width: 200px; }
+
+.TablaSuperior {
+    border-collapse: collapse;
+    margin: 0;
+    width: 100%;
+}
+
+.TablaInferior {
+    border-collapse: collapse;
+    width: 95%;
+}
+
+.TablaSuperior caption { margin: 0 auto; }
+
+.TablaFlow {
+    height: 10em;
+    overflow: auto;
+}

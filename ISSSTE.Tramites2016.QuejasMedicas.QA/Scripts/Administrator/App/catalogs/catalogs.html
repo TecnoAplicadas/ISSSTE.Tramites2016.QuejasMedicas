@@ -1,0 +1,282 @@
+﻿<div data-ng-controller="catalogsController as vm" data-ng-init="vm.initCatalogs()">
+
+    <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height: 30px;"></div>
+
+    <div class="col-xs-12">
+        <div class="col-xs-12">
+            <div class="alerts"></div>
+        </div>
+        <div ng-if="false" class="row">
+            <div class="col-md-1">
+                <label>Trámite</label>
+            </div>
+            <div ng-if="false" class="col-md-3">
+                <select ng-disabled="true" class="form-control" data-ng-model="vm.RequestTypeId" data-ng-options="requestType.CatTipoTramiteId as requestType.Concepto for requestType in vm.requestTypes" data-ng-change="vm.searchCatalog()">
+                    <option value="">Todos los Tramites</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar por concepto o descripción" data-ng-model="vm.query"
+                           data-ng-keyup="$event.keyCode == 13 && vm.searchCatalog()" onmouseover="tooltip.show('Ingrese el concepto  o descripción a buscar.')" onmouseout="tooltip.hide();" />
+
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" data-ng-click="vm.searchCatalog()">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height: 10px;"></div>
+
+
+        <div class="col-md-12 margintop-10">
+            <div class="row">
+                <div class="pull-right">
+                    <button ng-if="vm.catalogoId==4" ng-click="vm.editManyCatalogDetailClick(seleccionTUForm)" type="button" class="btn btn-primary btn-sm" onmouseover="tooltip.show('Clic para asignar UADyCS a trámites.')" onmouseout="tooltip.hide();">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Asignar UADyCS a trámite
+                    </button>
+                    <button ng-if="vm.catalogoId!==4" ng-click="vm.newCatalogDetailClick(catalogForm)" type="button" class="btn btn-primary btn-sm" onmouseover="tooltip.show('Clic para agregar un nuevo registro al catalogo seleccionado.')" onmouseout="tooltip.hide();">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Nuevo registro
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <table class="table">
+                        <thead style="width:100%">
+                            <tr>
+                                <th>Catálogo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="item in vm.catalogList">
+                                <td><a style="cursor:pointer" class="BotonLink" id="btn_{{item.CatalogoId}}" ng-click="vm.selectedCatalog(item.CatalogoId,item.Descripcion)">{{item.Descripcion}}</a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 pull-left">
+                    <h4>Catálogo: {{vm.catalogoDescription}}</h4>
+                </div>
+                <div class="col-md-10">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th ng-repeat="thData in vm.headerData" data-ng-show="thData.Propiedades.EsVisible">
+                                            {{thData.Propiedades.NombreVista}}
+                                        </th>
+                                        <th>Accciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow-y: auto; width: 100%">
+                                    <tr data-ng-repeat="catalogElement in vm.catalogElements">
+                                        <td data-ng-repeat="thData in vm.headerData" data-ng-show="thData.Propiedades.EsVisible">
+                                            <div ng-if="thData.Propiedades.TipoElementoString=='color'" style="width:20px;height:20px;background-color: {{catalogElement[thData.NombrePropiedad]}};border-radius:25px;border:1px solid black"></div>
+                                            {{catalogElement[thData.NombrePropiedad]}}
+                                        </td>
+                                        <td width="100px">
+                                            <div class="pull-left bottom-buffer">
+                                                <button ng-disabled="vm.catalogoId==4" ng-if="vm.catalogoId!==4" ng-click="vm.getCatalogDetailClick(catalogElement,catalogForm)" type="button" class="btn btn-primary btn-xs" onmouseover="tooltip.show('Editar Selección')" onmouseout="tooltip.hide();">
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                </button>
+                                                <button ng-disabled="vm.catalogoId!==4 && catalogElement['CatTipoEdoCitaId']<=6" ng-if="catalogElement.EsActivo" ng-click="vm.deleteDetailClick(catalogElement);" type="button" class="btn btn-danger btn-xs" onmouseover="tooltip.show('Desactivar Selección')" onmouseout="tooltip.hide();">
+                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                </button>
+                                                <button ng-if="!catalogElement.EsActivo" ng-click="vm.activateDetailClick(catalogElement)" type="button" class="btn btn-primary btn-xs" onmouseover="tooltip.show('Activar Selección')" onmouseout="tooltip.hide();">
+                                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.panel-default -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="alert alert-info" data-ng-show="">
+                        No se encontraron resultados.
+                    </div>
+
+                    <!--Control de Paginacion-->
+                    <div class="row">
+                        <div class="col-xs-2 pull-left paddingleft-0">
+                            Mostrar:
+                            <select class="form-control"
+                                    data-ng-options="actualPageSize + ' resultados' for actualPageSize in vm.pagination.pageSizes"
+                                    data-ng-model="vm.pagination.selectedPageSize" data-ng-change="vm.changeSearchCategory()"></select>
+                        </div>
+                        <div class="col-xs-2 pull-left paddingleft-0">
+                            Total de registros:
+                            <input style="background-color: lightblue" class="form-control text-center" data-ng-model="vm.pagination.resultCount" disabled />
+                        </div>
+
+                        <div class="col-xs-8 pull-right paddingright-0" data-ng-show="vm.catalogElements.length > 0">
+                            <nav class="text-right">
+                                <ul class="pagination">
+                                    <li data-ng-class="{ disabled: vm.pagination.isFirstPage() }">
+                                        <a data-ng-click="vm.pagination.changeToPreviousPage()">&laquo;</a>
+                                    </li>
+                                    <li data-ng-repeat="actualPage in vm.pagination.pages"
+                                        data-ng-class="{ active: vm.pagination.isPageSelected(actualPage) }">
+                                        <a data-ng-click="vm.pagination.changeSelectedPage(actualPage)">{{actualPage}}</a>
+                                    </li>
+                                    <li data-ng-class="{ disabled: vm.pagination.isLastPage() }">
+                                        <a data-ng-disabled="vm.pagination.isLastPage()"
+                                           data-ng-click="vm.pagination.changeToNextPage()">&raquo;</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--Control de Paginacion-->
+
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT -->
+        <!--MODAL EVENTOS-->
+        <div class="modal fade" id="catalogDetail-modal" tabindex="-1" style="z-index: 1050">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="closeModal close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>Detalle</h3>
+                        <div class="col-xs-12">
+                            <div class="alerts"></div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div style="height: 300px; overflow-y: auto">
+                            <form id="catalogForm" name="catalogForm" data-ng-init="vm.initFormValidation(catalogForm)" novalidate>
+                                <!--CUERPO MODAL-->
+                                <div class="row" data-ng-repeat="itemField in vm.editableFields|filter:{Tipo:'select'}">
+                                    <div ng-if="itemField.NombrePropiedad=='CatTipoEntidadId'" class="form-group col-if-10 col-md-10">
+                                        <label class="control-label">{{itemField.NombreVista}} <span ng-if="itemField.EsRequerido">*:</span> </label>
+                                        <select class="form-control" data-ng-model="itemField[itemField.NombrePropiedad]" data-ng-options="entityType.CatTipoEntidadId as entityType.Concepto for entityType in vm.entityTypes" id="{{itemField.NombrePropiedad}}" name="{{itemField.NombrePropiedad}}" required>
+                                            <option value="">Selecciona una entidad</option>
+                                        </select>
+                                    </div>
+                                    <div ng-if="itemField.NombrePropiedad=='UnidadAtencionId'" class="form-group col-if-10 col-md-10">
+                                        <label class="control-label">{{itemField.NombreVista}} <span ng-if="itemField.EsRequerido">*:</span></label>
+                                        <select class="form-control" data-ng-model="itemField[itemField.NombrePropiedad]" data-ng-options="delegation.DelegacionId as delegation.Descripcion for delegation in vm.delegations" id="{{itemField.NombrePropiedad}}" name="{{itemField.NombrePropiedad}}" required>
+                                            <option value="">Selecciona una UADyCS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row" data-ng-repeat="itemField in vm.editableFields|filter:{Tipo:'text'}">
+                                    <div class="form-group col-if-10 col-md-10">
+                                        <label class="control-label">{{itemField.NombreVista}} <span ng-if="itemField.EsRequerido">*:</span> </label>
+                                        <input ng-disabled="vm.catalogoId==2 && vm.catalogDetail['CatTipoEdoCitaId']<=6" ng-pattern="vm.getRegex(itemField.TipoDato)" maxlength="{{itemField.TamanioMaximo!=0?itemField.TamanioMaximo:100}}" type="{{itemField.Tipo}}" class="form-control" data-ng-model="itemField[itemField.NombrePropiedad]" id="{{itemField.NombrePropiedad}}" name="{{itemField.NombrePropiedad}}" ng-required="itemField.EsRequerido" disable-validation-message="" />
+                                        <span ng-if="itemField.TamanioMaximo!=0" class="totalCaracteres">{{itemField[itemField.NombrePropiedad].length==null?0:itemField[itemField.NombrePropiedad].length}}/{{itemField.TamanioMaximo}} caracteres </span>
+                                        <span class="messages" ng-show="catalogForm.{{itemField.NombrePropiedad}}.$touched ||catalogForm.{{itemField.NombrePropiedad}}.$dirty">
+                                            <span class="help-block error-message" ng-show="catalogForm.{{itemField.NombrePropiedad}}.$error.required">El campo es requerido</span>
+                                            <span class="help-block error-message" ng-show="catalogForm.{{itemField.NombrePropiedad}}.$error.pattern">
+                                                El valor debe ser ({{itemField.TipoDato}}).
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row" data-ng-repeat="itemField in vm.editableFields|filter:{Tipo:'color'}">
+                                    <div class="form-group col-if-4 col-md-3">
+                                        <label class="control-label">{{itemField.NombreVista}}</label>
+                                        <input type="{{itemField.Tipo}}" data-ng-model="itemField[itemField.NombrePropiedad]" class="form-control" id="{{itemField.NombrePropiedad}}" name="{{itemField.NombrePropiedad}}" value="{{itemField.Semaforo}}">
+                                    </div>
+                                    <!--<![if IE]>-->
+                                    <!--<button onclick="var s = Dlg.ChooseColorDlg(coloPiker.value); window.event.srcElement.style.color = s; coloPiker.value = s">&#9608;&#9608;&#9608;&#9608;&#9608;</button>-->
+                                    <!--<object id="Dlg" classid="CLSID:3050F819-98B5-11CF-BB82-00AA00BDCE0B" width="0" height="0"></object>-->
+                                    <!--<![endif]-->
+                                </div>
+                                <div class="row" data-ng-repeat="itemField in vm.editableFields|filter:{Tipo:'checkbox'}">
+                                    <div class="form-group col-if-10 col-md-10">
+                                        <label class="control-label">{{itemField.NombreVista}}</label>
+                                        <input type="{{itemField.Tipo}}" data-ng-model="itemField[itemField.NombrePropiedad]" id="{{itemField.NombrePropiedad}}" name="{{itemField.NombrePropiedad}}">
+                                    </div>
+                                </div>
+                                <!--CUERPO MODAL-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left text-muted">
+                            &nbsp;&nbsp;&nbsp;&nbsp;* Campos obligatorios
+                        </div>
+                        <button type="button" class="closeModal btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button ng-click="vm.saveCatalogDetailClick(vm.catalogtDetail)" ng-disabled="catalogForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--MODAL EVENTOS-->
+        <!--MODAL ASIGNACIONES-->
+        <div class="modal fade" id="seleccionTU-modal" tabindex="-1" style="z-index: 1050">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="closeModal close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>Asignar UADyCS a Trámite</h3>
+                        <div class="col-xs-12">
+                            <div class="alerts"></div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form id="seleccionTUForm" name="seleccionTUForm" novalidate>
+                            <!--CUERPO MODAL-->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="form-group col-if-10 col-md-10">
+                                        <div class="col-md-1">
+                                            <label>Tramite</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-control" data-ng-model="vm.RequestTypeId" data-ng-options="requestType.CatTipoTramiteId as requestType.Concepto for requestType in vm.requestTypes" ng-change="vm.searchAllocationsTUs()" required>
+                                                <option value="">Selecciona un trámite</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <duallist duallist-option="vm.options" leftscope="vm.leftValue" rightscope="vm.rightValue" addscope="vm.addValue" removescope="vm.removeValue"></duallist>
+
+                            </div>
+                            <!--CUERPO MODAL-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="closeModal btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button ng-click="vm.saveAllocationsTUClick()" ng-disabled="seleccionTUForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--MODAL ASIGNACIONES-->
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".closeModal").click(function () {
+            $("#catalogDetail-modal").modal("hide");
+        });
+        BreadGral("Catálogos");
+    });
+
+</script>

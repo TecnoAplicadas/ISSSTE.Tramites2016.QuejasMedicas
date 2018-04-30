@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:ax23="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:ns="http://services.wserv.ecurp.dgti.segob.gob.mx" xmlns:ns1="http://org.apache.axis2/xsd"
+                  targetNamespace="http://services.wserv.ecurp.dgti.segob.gob.mx"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+               targetNamespace="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd">
+      <xs:complexType name="DatosConsultaCurp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cveCurp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="cveEntidadEmisora" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="direccionIp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoTransaccion" type="xs:int" />
+          <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax24="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd" attributeFormDefault="qualified"
+               elementFormDefault="qualified" targetNamespace="http://services.wserv.ecurp.dgti.segob.gob.mx">
+      <xs:import namespace="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd" />
+      <xs:element name="consultarPorCurp">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="datos" nillable="true" type="ax24:DatosConsultaCurp" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultarPorCurpResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getConfirm">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Mssg" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getConfirmRequest">
+    <wsdl:part name="parameters" element="ns:getConfirm" />
+  </wsdl:message>
+  <wsdl:message name="consultarPorCurpRequest">
+    <wsdl:part name="parameters" element="ns:consultarPorCurp" />
+  </wsdl:message>
+  <wsdl:message name="consultarPorCurpResponse">
+    <wsdl:part name="parameters" element="ns:consultarPorCurpResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ConsultaPorCurpServicePortType">
+    <wsdl:operation name="getConfirm">
+      <wsdl:input wsaw:Action="urn:getConfirm" message="ns:getConfirmRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <wsdl:input wsaw:Action="urn:consultarPorCurp" message="ns:consultarPorCurpRequest" />
+      <wsdl:output wsaw:Action="urn:consultarPorCurpResponse" message="ns:consultarPorCurpResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultaPorCurpServiceSoap11Binding" type="ns:ConsultaPorCurpServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getConfirm">
+      <soap:operation soapAction="urn:getConfirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <soap:operation soapAction="urn:consultarPorCurp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsultaPorCurpServiceSoap12Binding" type="ns:ConsultaPorCurpServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getConfirm">
+      <soap12:operation soapAction="urn:getConfirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <soap12:operation soapAction="urn:consultarPorCurp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsultaPorCurpServiceHttpBinding" type="ns:ConsultaPorCurpServicePortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getConfirm">
+      <http:operation location="getConfirm" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <http:operation location="consultarPorCurp" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultaPorCurpService">
+    <wsdl:port name="ConsultaPorCurpServiceHttpSoap11Endpoint" binding="ns:ConsultaPorCurpServiceSoap11Binding">
+      <soap:address
+        location="http://webs.curp.gob.mx:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpsSoap11Endpoint" binding="ns:ConsultaPorCurpServiceSoap11Binding">
+      <soap:address
+        location="https://webs.curp.gob.mx:443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpsSoap12Endpoint" binding="ns:ConsultaPorCurpServiceSoap12Binding">
+      <soap12:address
+        location="https://webs.curp.gob.mx:443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsSoap12Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpSoap12Endpoint" binding="ns:ConsultaPorCurpServiceSoap12Binding">
+      <soap12:address
+        location="http://webs.curp.gob.mx:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap12Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpEndpoint" binding="ns:ConsultaPorCurpServiceHttpBinding">
+      <http:address
+        location="http://webs.curp.gob.mx:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpEndpoint/" />
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpsEndpoint" binding="ns:ConsultaPorCurpServiceHttpBinding">
+      <http:address
+        location="https://webs.curp.gob.mx:443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsEndpoint/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

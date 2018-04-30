@@ -1,0 +1,53 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.GeneralCitaDTO
+
+<div id="ResultadoTabla" class="@Tag.Col(12) " style="height: 400px; overflow-x: auto; width: 1240px">
+    <table id="CompendioTable1" data-select="@Model.RegistrosPorPagina" data-page="@Model.PaginaSolicitada"
+           data-rows="@Model.TotalRegistros" class="table @Tag.Col(12) ">
+        <thead>
+        <tr class="trReporte1">
+            @{ var i = 0; }
+            @foreach (var header in Model.ListaEncabezados)
+            {
+                <th class="Encabezado">
+                    <div class='@Model.ListaLlaves[i++] '> @header </div>
+                </th>
+            }
+        </tr>
+        </thead>
+        <tbody>
+        @{ i = 0; }
+        @foreach (var objeto in Model.ListaRefleccion)
+        {
+            var estiloTr = i % 2 == 0 ? "#e5ecf9" : "white";
+            <tr class='Row' style='background-color: @estiloTr' onclick="jsDetalle($(this))">
+                @foreach (var label in Model.ListaLlaves)
+                {
+                    var estiloTd = "";
+                    if (label.Contains("EstadoTramite"))
+                    {
+                        estiloTd = "background-color:" + objeto["ColorTramite"];
+                    }
+                    else if (label.Contains("EstadoCita"))
+                    {
+                        estiloTd = "background-color:" + objeto["ColorCita"];
+                    }
+                    <td class="@label" style='color: black; font-weight: bold; @estiloTd'>@objeto[label]</td>
+                }
+                @{ i++; }
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<div id="auxiliar" style="display: none"></div>
+<div id="DivResultado"></div>
+@Paginador.SeccionPaginacion("CompendioTable1")
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        jsInitPaginador("CompendioTable1");
+        jsEvaluarElementos();
+    });
+
+</script>

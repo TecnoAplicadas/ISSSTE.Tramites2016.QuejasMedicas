@@ -1,0 +1,70 @@
+﻿#AcercaTramite, #AgendaCita, #VerSolicitud,
+#CancelaCita, #InformacionAdicional { width: 20%; }
+
+/*#breadcrumbNavegacion {
+    margin-left: -35px;
+    margin-top: -25px;
+}*/
+
+#ce-date-calendar {
+    border-bottom: 2px solid #2B6190;
+    cursor: pointer;
+    float: left;
+    left: 0;
+    perspective: 1000px;
+    position: relative;
+    text-align: center;
+    /*&:hover;*/
+}
+
+#ce-date-calendar .ce-date-time {
+    background: transparent;
+    cursor: pointer;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    transform-origin: 50% 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 1;
+}
+
+.ce-date-month {
+    background: #e5e5e5;
+    font-size: 18px;
+    font-weight: 500;
+    height: 22px;
+    padding: -20px;
+    text-transform: uppercase;
+    width: 100px;
+}
+
+.ce-date-day {
+    background: white;
+    font-size: 12px;
+    height: 20px;
+    line-height: 1em;
+    padding-top: 2px;
+}
+
+#ce-date-calendar:hover .ce-date-time {
+    -ms-opacity: 1;
+    /*-webkit-animation-name: swingdown;*/
+    /*animation-name: swingdown;*/
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    background: #e5e5e5;
+    border-bottom: 2px solid #2B6190;
+    font-size: 12px;
+    font-weight: 600;
+    height: 25px;
+    opacity: 1;
+    padding: 5px 0;
+    visibility: visible;
+}
+
+#ce-date-calendar:hover .ce-date-month { border: none; }

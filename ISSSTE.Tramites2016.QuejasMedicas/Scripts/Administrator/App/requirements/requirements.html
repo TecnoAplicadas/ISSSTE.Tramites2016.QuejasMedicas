@@ -1,0 +1,213 @@
+﻿<div data-ng-controller="requirementsController as vm" data-ng-init="vm.initRequirements()">
+    <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height: 30px;"></div>
+
+    <div class="col-xs-12">
+        <div class="col-xs-12">
+            <div class="alerts"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Trámite:</label>
+                    <select class="form-control" data-ng-model="vm.RequestTypeId" data-ng-options="requestType.CatTipoTramiteId as requestType.Concepto for requestType in vm.requestTypes" data-ng-change="vm.searchRequirements()" onmouseover="tooltip.show('Seleccione el tipo de trámite, al no seleccionar se excluye este filtro.')" onmouseout="tooltip.hide();">
+                        <option value="">Selecciona un trámite</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar por documento requerido o presentación" data-ng-model="vm.query"
+                               data-ng-keyup="$event.keyCode == 13 && vm.searchRequirements()" onmouseover="tooltip.show('Busqueda por documento requerido o tipo de presentacion del documento.')" onmouseout="tooltip.hide();" />
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary" data-ng-click="vm.searchRequirements()">
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height: 30px;"></div>
+
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button ng-click="vm.newRequirementsDetailClick(requirementForm)" type="button" class="btn btn-primary btn-sm" onmouseover="tooltip.show('Clic para agregar un nuevo requisito.')" onmouseout="tooltip.hide();">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Nuevo registro
+                </button>
+            </div>
+        </div>
+
+        <div class="col-xs-12 margintop-30">
+
+            <div class="panel panel-default" data-ng-show="vm.requirements.length > 0">
+                <div class="panel-body overflow-table">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Documento requerido</th>
+                                <th>Presentación</th>
+                                <th style="width:150px">Es obligatorio</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody style="overflow-y:auto;">
+                            <tr data-ng-repeat="requirement in vm.requirements">
+                                <td><div class="contenidoTruncado">{{requirement.NombreDocumento}}</div></td>
+                                <td><div class="contenidoTruncado"> {{requirement.Descripcion}}</div></td>
+                                <td>
+                                    <input type="checkbox" ng-disabled="true" ng-model="requirement.EsObligatorio">
+                                </td>
+                                <td>
+                                    <input type="checkbox" ng-disabled="true" ng-model="requirement.EsActivo">
+                                </td>
+                                <td>
+                                    <div class="pull-left">
+                                        <button ng-click="vm.getRequirementsDetailClick(requirement,requirementForm)" type="button" class="btn btn-primary btn-xs" onmouseover="tooltip.show('Editar Selección')" onmouseout="tooltip.hide();">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
+                                        <button ng-if="requirement.EsActivo" ng-click="vm.deleteRequirementsDetailClick(requirement)" type="button" class="btn btn-danger btn-xs" onmouseover="tooltip.show('Desactivar Selección')" onmouseout="tooltip.hide();">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </button>
+                                        <button ng-if="!requirement.EsActivo" ng-click="vm.activateRequirementsDetailClick(requirement)" type="button" class="btn btn-primary btn-xs" onmouseover="tooltip.show('Activar Selección')" onmouseout="tooltip.hide();">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.panel-default -->
+            </div>
+            <!-- /.panel -->
+            <div class="alert alert-info" data-ng-show="vm.requirements == 0">
+                No se encontraron requisitos.
+            </div>
+
+            <!--Control de Paginacion-->
+            <div class="col-xs-12">
+                <div class="col-xs-2 pull-left paddingleft-0">
+                    Mostrar:
+                    <select class="form-control"
+                            data-ng-options="actualPageSize + ' resultados' for actualPageSize in vm.pagination.pageSizes"
+                            data-ng-model="vm.pagination.selectedPageSize" data-ng-change="vm.changeSearchCategory()"></select>
+                </div>
+                <div class="col-xs-2 pull-left paddingleft-0">
+                    Total de registros:
+                    <input style="background-color: lightblue" class="form-control text-center" data-ng-model="vm.pagination.resultCount" disabled />
+                </div>
+
+                <div class="col-xs-8 pull-right paddingright-0" data-ng-show="vm.requirements.length > 0">
+                    <nav class="text-right">
+                        <ul class="pagination">
+                            <li data-ng-class="{ disabled: vm.pagination.isFirstPage() }">
+                                <a data-ng-click="vm.pagination.changeToPreviousPage()">&laquo;</a>
+                            </li>
+                            <li data-ng-repeat="actualPage in vm.pagination.pages"
+                                data-ng-class="{ active: vm.pagination.isPageSelected(actualPage) }">
+                                <a data-ng-click="vm.pagination.changeSelectedPage(actualPage)">{{actualPage}}</a>
+                            </li>
+                            <li data-ng-class="{ disabled: vm.pagination.isLastPage() }">
+                                <a data-ng-disabled="vm.pagination.isLastPage()"
+                                   data-ng-click="vm.pagination.changeToNextPage()">&raquo;</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--Control de Paginacion-->
+
+        </div>
+        <!-- /.col -->
+        <!-- END CONTENT -->
+        <!--MODAL EVENTOS-->
+        <div class="modal fade" id="requirementsDetail-modal" tabindex="-1" style="z-index: 1050">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="closeModal close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <center>
+                            <h3>Detalle del documento</h3>
+                        </center>
+                    </div>
+                    <div class="modal-body">
+
+                        <form id="requirementForm" name="requirementForm" novalidate>
+                            <!--CUERPO MODAL-->
+                            <div class="row">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">Trámite*:</label>
+                                    <select id="tipoTramite" class="form-control" data-ng-model="vm.requirementDetail.CatTipoTramiteId" data-ng-options="requestType.CatTipoTramiteId as requestType.Concepto for requestType in vm.requestTypes" required>
+                                        <option value="">Selecciona un trámite</option>
+                                    </select>
+                                    <span class="messages" ng-show="requirementForm.$submitted || requirementForm.name.$touched">
+                                        <span ng-show="requirementForm.tipoTramite.$error.required">El tipo de trámite es requerido</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">Documento requerido*:</label>
+                                    <textarea maxlength="500" rows="5" style="resize: none" data-ng-model="vm.requirementDetail.NombreDocumento" ng-disabled="" class="form-control" value="" id="nombreDocumento" name="nombreDocumento" type="text" required />
+                                    <span class="messages" ng-show="requirementForm.$submitted || requirementForm.name.$touched">
+                                        <span ng-show="requirementForm.nombreDocumento.$error.required">El nombre del documento es requerido</span>
+                                    </span>
+                                    <span class="totalCaracteres">{{vm.requirementDetail.NombreDocumento.length==null?0:vm.requirementDetail.NombreDocumento.length}}/500 caracteres </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">Presentación*: </label>
+                                    <input maxlength="200" data-ng-model="vm.requirementDetail.Descripcion" class="form-control" value="" id="Descripcion" name="Descripcion" required />
+                                    <span class="messages" ng-show="requirementForm.$submitted || requirementForm.name.$touched">
+                                        <span ng-show="requirementForm.Descripcion.$error.required">El tipo de presentación de documento es requerido</span>
+                                    </span>
+                                    <span class="totalCaracteres">{{vm.requirementDetail.Descripcion.length==null?0:vm.requirementDetail.Descripcion.length}}/200 caracteres</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">Es obligatorio</label>
+                                    <input type="checkbox" data-ng-model="vm.requirementDetail.EsObligatorio">
+                                </div>
+                            </div>
+                        </form>
+                        <!--CUERPO MODAL-->
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left text-muted">
+                            &nbsp;&nbsp;&nbsp;&nbsp;* Campos obligatorios
+                        </div>
+                        <button type="button" class="closeModal btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button ng-click="vm.saveRequirementsDetailClick(vm.requirementDetail)" type="button" class="btn btn-primary" ng-disabled="requirementForm.$invalid">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--MODAL EVENTOS-->
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(".closeModal").click(function () {
+            $("#requirementsDetail-modal").modal("hide");
+        });
+        BreadGral("Configuración de catálogo de requisitos e información general");
+    });
+
+
+</script>

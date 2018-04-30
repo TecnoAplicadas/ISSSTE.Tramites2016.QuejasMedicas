@@ -1,0 +1,114 @@
+﻿.glyphicon-calendar {
+    background-color: white;
+    border: 1px solid /*#2E9AFE*/;
+    /*color: #2E9AFE;*/
+    height: 5px;
+    top: 0;
+}
+
+.TopGrupo { top: -5px; }
+
+#CompendioTable1 > tbody > tr > td { text-align: justify; }
+
+#CompendioTable1 > thead > tr > td { text-align: justify; }
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
+
+td { padding: 0; }
+
+.trReporte1 {
+    background-color: #FFC300;
+    color: black;
+    font-weight: bold;
+}
+
+.label_better {
+    border: 1px solid /*#2E9AFE*/;
+    color: black;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 15px;
+    padding-top: 15px;
+}
+
+.label_Titulo {
+    border: none;
+    /*color: #2E9AFE;*/
+    outline: none;
+    /*padding: 0 15px;*/
+}
+
+.closeMaker { color: indianred; }
+
+.btn-default { border: 1px solid /*#2E9AFE;*/ }
+
+.btn-default:hover,
+.btn-default:active:hover, .btn-default.active:hover, .open > .btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default.focus:active, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus {
+    background-color: white;
+    border: 1px solid #6A0888;
+}
+
+.closeMaker:hover:before, .closeMaker:focus:before, .closeMaker:active:before { color: #6A0888; }
+
+.label_better {
+    border: 1px solid /*#2E9AFE*/;
+    color: black;
+    font-size: 12px;
+    outline: none;
+    padding: 10px 15px;
+    padding-top: 15px;
+}
+
+.label_Titulo {
+    border: none;
+    /*color: #2E9AFE;*/
+    outline: none;
+    /*padding: 0 15px;*/
+}
+
+.closeMaker { color: indianred; }
+
+#ZonaSelectUADyCS { 
+    border: 1px solid /*#2E9AFE*/; }
+
+#ZonaSelectUADyCS:hover { border: 1px solid #6A0888; }
+
+.FiltroColumnas { color: cornflowerblue; }
+
+.FiltroValores { color: black; }
+
+.FiltroCita { color: forestgreen; }
+
+.FiltroUA { color: steelblue; }
+
+.FiltroPaciente { color: saddlebrown; }
+
+.FiltroPromovente { color: darkviolet; }
+
+.bootbox {
+    position: relative;
+    z-index: 9999;
+}
+
+.container1 {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    float: right;
+    height: 50px;
+    margin: 50px auto 0;
+    position: fixed;
+    right: 0;
+    top: 100px;
+    transition: width 2s, height 2s, margin 2s;
+    width: 50px;
+    z-index: 9000;
+}
+
+#ClickExpand {
+    margin-right: -5px;
+    margin-top: 10px;
+}

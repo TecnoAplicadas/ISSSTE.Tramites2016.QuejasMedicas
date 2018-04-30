@@ -1,0 +1,37 @@
+.v-center {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.ngduallist .left-container .left-sub-container {
+    border: 1px solid #e5e5e5;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.ngduallist .right-container .right-sub-container {
+    border: 1px solid #e5e5e5;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.ngduallist .input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.ngduallist .input-group .input-group-addon { width: 10px; }
+
+.ngduallist label {
+    color: #578ebe;
+    display: block;
+    text-transform: uppercase;
+}
+
+.ngduallist .info {
+    display: inline-block;
+    font-size: 11px;
+    margin-bottom: 5px;
+}

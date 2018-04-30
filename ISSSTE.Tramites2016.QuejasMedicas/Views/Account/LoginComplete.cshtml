@@ -1,0 +1,14 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.LoginDTO.LoginModelDTO
+@{
+    ViewBag.Title = "Inicio de sesión exitoso";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<div data-ng-controller="loginController as vm" data-ng-init="vm.login('@Model.UserName', '@Model.ReturnUrl','@Model.ClientId')">
+
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/administrator/scripts-utils")
+    @Scripts.Render("~/bundles/administrator/app/login")
+}

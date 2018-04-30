@@ -1,0 +1,120 @@
+@media (min-width: 880px) and (max-width: 910px) {
+    .container { width: 880px; }
+
+    .col-if-1,
+    .col-if-10,
+    .col-if-11,
+    .col-if-12,
+    .col-if-2,
+    .col-if-3,
+    .col-if-4,
+    .col-if-5,
+    .col-if-6,
+    .col-if-7,
+    .col-if-8,
+    .col-if-9 { float: left }
+
+    .col-if-1 { width: 8.33333% }
+
+    .col-if-2 { width: 16.66667% }
+
+    .col-if-3 { width: 25% }
+
+    .col-if-4 { width: 33.33333% }
+
+    .col-if-5 { width: 41.66667% }
+
+    .col-if-6 { width: 50% }
+
+    .col-if-7 { width: 58.33333% }
+
+    .col-if-8 { width: 66.66667% }
+
+    .col-if-9 { width: 75% }
+
+    .col-if-10 { width: 83.33333% }
+
+    .col-if-11 { width: 91.66667% }
+
+    .col-if-12 { width: 100% }
+
+    .col-if-pull-0 { right: auto }
+
+    .col-if-pull-1 { right: 8.33333% }
+
+    .col-if-pull-2 { right: 16.66667% }
+
+    .col-if-pull-3 { right: 25% }
+
+    .col-if-pull-4 { right: 33.33333% }
+
+    .col-if-pull-5 { right: 41.66667% }
+
+    .col-if-pull-6 { right: 50% }
+
+    .col-if-pull-7 { right: 58.33333% }
+
+    .col-if-pull-8 { right: 66.66667% }
+
+    .col-if-pull-9 { right: 75% }
+
+    .col-if-pull-10 { right: 83.33333% }
+
+    .col-if-pull-11 { right: 91.66667% }
+
+    .col-if-pull-12 { right: 100% }
+
+    .col-if-push-0 { left: auto }
+
+    .col-if-push-1 { left: 8.33333% }
+
+    .col-if-push-2 { left: 16.66667% }
+
+    .col-if-push-3 { left: 25% }
+
+    .col-if-push-4 { left: 33.33333% }
+
+    .col-if-push-5 { left: 41.66667% }
+
+    .col-if-push-6 { left: 50% }
+
+    .col-if-push-7 { left: 58.33333% }
+
+    .col-if-push-8 { left: 66.66667% }
+
+    .col-if-push-9 { left: 75% }
+
+    .col-if-push-10 { left: 83.33333% }
+
+    .col-if-push-11 { left: 91.66667% }
+
+    .col-if-push-12 { left: 100% }
+
+    .col-if-offset-0 { margin-left: 0 }
+
+    .col-if-offset-1 { margin-left: 8.33333% }
+
+    .col-if-offset-2 { margin-left: 16.66667% }
+
+    .col-if-offset-3 { margin-left: 25% }
+
+    .col-if-offset-4 { margin-left: 33.33333% }
+
+    .col-if-offset-5 { margin-left: 41.66667% }
+
+    .col-if-offset-6 { margin-left: 50% }
+
+    .col-if-offset-7 { margin-left: 58.33333% }
+
+    .col-if-offset-8 { margin-left: 66.66667% }
+
+    .col-if-offset-9 { margin-left: 75% }
+
+    .col-if-offset-10 { margin-left: 83.33333% }
+
+    .col-if-offset-11 { margin-left: 91.66667% }
+
+    .col-if-offset-12 { margin-left: 100% }
+
+    .hidden-if { display: none !important; }
+}

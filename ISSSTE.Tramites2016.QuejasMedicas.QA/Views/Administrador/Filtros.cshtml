@@ -1,0 +1,52 @@
+﻿<script type="text/javascript" src="~/Scripts/Reporte/jsPeticion.js"></script>
+
+<div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+        <div class="@Tag.Col(12)">
+            <div id="exTab2">
+                <ul class="nav nav-tabs">
+                    <li id="AA1" class="PANEL active">
+                        <a onclick="jsPanel('A1')">Filtros generales de la cita</a>
+                    </li>
+                    <li id="AA2" class="PANEL">
+                        <a onclick="jsPanel('A2')">Filtros por UADyCS</a>
+                    </li>
+                    <li id="AA3" class="PANEL">
+                        <a onclick="jsPanel('A3')">Filtros del paciente</a>
+                    </li>
+                    <li id="AA4" class="PANEL">
+                        <a onclick="jsPanel('A4')">Filtros del promovente</a>
+                    </li>
+                    <li id="AA5" class="PANEL">
+                        <a onclick="jsPanel('A5')">Columnas dinámicas</a>
+                    </li>
+                </ul>
+                <div class="tab-content ">
+                    <div class="tab-pane active" id="A1">@{ Html.RenderPartial("FiltroGeneral"); }</div>
+                    <div class="tab-pane" id="A2">@{ Html.RenderPartial("FiltroUADyCS"); }</div>
+                    <div class="tab-pane" id="A3">@{ Html.RenderPartial("FiltroPaciente"); }</div>
+                    <div class="tab-pane" id="A4">@{ Html.RenderPartial("FiltroPromovente"); }</div>
+                    <div class="tab-pane" id="A5">@{ Html.RenderPartial("FiltroSeleccion"); }</div>
+                </div>
+            </div>
+
+        </div>
+<div class="@Tag.Col(12) " id="SeccionReporte"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        jsPanel('A1');
+        jsAjaxGenerico("../Administrador/Filtros", null, null);
+        BreadGral("Reportes \\ Citas");
+    });
+
+    function jsPanel(id) {
+        $(".tab-pane").addClass("hidden");
+        $(".tab-pane").removeClass("active");
+        $("#" + id).removeClass("hidden");
+        $("#" + id).addClass("active");
+        $(".PANEL").removeClass("active");
+        $("#A" + id).addClass("active");
+    }
+
+</script>

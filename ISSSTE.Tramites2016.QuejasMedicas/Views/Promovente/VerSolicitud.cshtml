@@ -1,0 +1,155 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.CitaDTO
+
+<div id="ResultVistaEspecial" class="row"></div>
+
+@if (Model.Paciente != null && Model.Promovente != null)
+{
+    <div id="CicloTotal">
+        <div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Datos de tu cita</h2>
+                <hr class="red">
+            </div>
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(4, "Folio", "FolioGeneral", Model.NumeroFolio, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Fecha", "FechaHora", Model.FechaCitaVista, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Hora", "FechaHora", Model.HoraCitaVista, 30, "", false, "", "", " disabled='disabled' ")
+        </div>
+
+        <div id="IdSolicitud" class="hidden">@Model.SolicitudId</div>
+
+        @if (!Model.EsRepresentante)
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Datos del promovente/paciente</h2>
+                    <hr class="red">
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Datos del paciente</h2>
+                    <hr class="red">
+                </div>
+            </div>
+        }
+        @if (Model.EsRepresentante)
+                {
+
+            <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+
+            <div class="row">
+                @Tag.InputDiv(8, "Clave Única de Registro de Población (CURP)", "CURPP", Model.Paciente.CURP, 30, "", false, "", "", " disabled='disabled' ")
+            </div>
+            <div class="row">
+                @Tag.InputDiv(12, "Nombre(s)", "NombreP", Model.Paciente.Nombre, 100, "", false, "", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Primer apellido", "PaternoP", Model.Paciente.Paterno, 100, "", false, "", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Segundo apellido", "MaternoP", Model.Paciente.Materno, 100, "", false, "", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Edad", "EdadP", Model.Paciente.Edad, 30, "", false, "", "", " disabled='disabled' ")
+            </div>
+            <div class="row">
+                @Tag.InputDiv(4, "Sexo", "SexoP", Model.Paciente.Sexo, 30, "", false, "", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Lada", "LadaP", Model.Paciente.Lada, 30, "", false, "", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Teléfono fijo", "TelFijoP", Model.Paciente.TelFijo, 30, "", false, "", "", " disabled='disabled' ")
+            </div>
+            <div class="row">
+             
+                @Tag.InputDiv(4, "Teléfono móvil", "TelMovilP", Model.Paciente.TelMovil, 30, "", false, "", "", " disabled='disabled' ")
+                @Tag.InputDiv(8, "Correo Electrónico", "CorreoP", Model.Paciente.CorreoElectronico, 30, "", false, "", "", " disabled='disabled' ")
+            </div>
+        }
+        @if (Model.EsRepresentante)
+                {
+            <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Datos del promovente</h2>
+                    <hr class="red">
+                </div>
+            </div>
+        }
+        <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+
+        <div class="row">
+            @Tag.InputDiv(8, "Clave Única de Registro de Población (CURP)", "CURPP", Model.Promovente.CURP, 100, "", false, "", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(12, "Nombre(s)", "NombreP", Model.Promovente.Nombre, 100, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Primer apellido", "PaternoP", Model.Promovente.Paterno, 100, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Segundo apellido", "MaternoP", Model.Promovente.Materno, 100, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Edad", "EdadP", Model.Promovente.Edad, 30, "", false, "", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+
+            @Tag.InputDiv(4, "Sexo", "SexoP", Model.Promovente.Sexo, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Lada", "LadaP", Model.Promovente.Lada, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Teléfono fijo", "TelFijoP", Model.Promovente.TelFijo, 30, "", false, "", "", " disabled='disabled' ")
+
+        </div>
+
+        <div class="row">
+           
+            @Tag.InputDiv(4, "Teléfono móvil", "TelMovilP", Model.Promovente.TelMovil, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(8, "Correo Electrónico", "CorreoP", Model.Promovente.CorreoElectronico, 30, "", false, "", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Unidad de Atención al Derechohabiente y Comunicación Social (UADyCS)</h2>
+                <hr class="red">
+            </div>
+        </div>
+        <div class="alert alert-info col-xs-12" id="I_DireccionCita">&nbsp;</div>
+
+        <div class="@Tag.Col(12)" style="height:10px;">&nbsp;</div>
+
+        <div class="row">
+            @Tag.InputDiv(12, "UADyCS", "UnidadAtencion", Model.Unidad_Atencion, 100, "", false, "", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(4, "Código postal", "CodPostal", Model.CodPostal, 100, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Estado", "Estado", Model.Estado, 100, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Municipio o Alcaldia", "Municipio", Model.Municipio, 100, "", false, "", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(12, "Colonia", "Colonia", Model.Colonia, 100, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputTextoArea(12, "Calle", "Calle", Model.Calle, 100, "", false, 2, 1, "", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(8, "Número exterior", "NumExterior", Model.NumeroExterior, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Número interior", "NumInterior", Model.NumeroInterior, 30, "", false, "", "", " disabled='disabled' ")
+            @Tag.InputTextoArea(12, "Unidad médica involucrada", "UnidadMedica", Model.Unidad_Medica, 100, "", false, 2, 1, "", "", " disabled='disabled' ")
+        </div>
+    </div>
+}
+<div class="col-md-12" style="height: 50px;">&nbsp;</div>
+
+<script type="text/javascript">
+
+    var ConFolio = @Html.Raw(Json.Encode(Model.ConFolio));
+
+    $(document).ready(function () {
+        ConFolio = new String(ConFolio);
+        ConFolio = ConFolio.toUpperCase();
+        if (ConFolio == "TRUE") {
+            $("#Div_FolioGeneral").css("display", "inline");
+        } else {
+            $("#Div_FolioGeneral").css("display", "none");
+        }
+
+        $("#I_DireccionCita").html(G_MENSAJES.MENSAJE_DIRECCION_CITA);
+    });
+
+</script>

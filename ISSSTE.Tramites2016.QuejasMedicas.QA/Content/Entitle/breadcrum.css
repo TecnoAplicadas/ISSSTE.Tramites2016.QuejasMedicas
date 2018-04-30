@@ -1,0 +1,101 @@
+.containerporb {
+    margin: 0 auto;
+    padding: 0px 15px;
+    width: 1012px;
+}
+
+.col-min {
+    display: block;
+    float: left;
+    position: relative;
+    width: 5%;
+}
+
+.brWizard { margin-top: 40px; }
+
+.brWizard { padding: 0 0 10px 0; }
+
+.brWizard.fixed {
+    background-color: #FFF;
+    left: 0px;
+    margin-top: 45px;
+    padding-left: 8%;
+    padding-right: 8%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
+.brWizard > .brWizard-step {
+    padding: 0;
+    position: relative;
+}
+
+.brWizard-dot {
+    background: #8DB3DD;
+    border-radius: 50%;
+    color: #FFF;
+    display: block;
+    height: 38px;
+    left: 0%;
+    line-height: 2em;
+    margin-left: 0px;
+    margin-top: -35px;
+    position: absolute;
+    text-align: center;
+    top: 40px;
+    width: 38px;
+}
+
+a, a:hover { text-decoration: none; }
+
+.progress {
+    background-color: #DBDBD6;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 10px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.progress > .progress-bar {
+    background: #8DB3DD;
+    box-shadow: none;
+    width: 0px;
+}
+
+.brWizard-step.complete > .progress > .progress-bar { width: 100%; }
+
+.brWizard-step.active > .progress > .progress-bar { width: 0%; }
+
+.brWizard-step:first-child.active > .progress > .progress-bar { width: 0%; }
+
+.brWizard-step.active .brWizard-dot { background-color: #2276D7; }
+
+.brWizard-step.disabled .brWizard-dot { }
+
+.brWizard-step.complete .brWizard-dot {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.brWizard-dot:hover { color: #f2f0e7; }
+
+.brWizard-step:last-child.active > .progress > .progress-bar { width: 100%; }
+
+.brWizard-step.disabled > .brWizard-dot { background-color: #DBDBD6; }
+
+.brWizard-step.disabled > .brWizard-dot:after { opacity: 0; }
+
+.brWizard-step:first-child > .progress {
+    left: 0%;
+    width: 100%;
+}
+
+.brWizard-step:last-child > .progress { width: 0%; }
+
+.brWizard-step.disabled a.brWizard-dot {
+    /*pointer-events: none;*/
+    cursor: default;
+}

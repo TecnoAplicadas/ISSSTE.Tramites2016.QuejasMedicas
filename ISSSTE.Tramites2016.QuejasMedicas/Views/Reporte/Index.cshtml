@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutAdministrator.cshtml";
+}
+<link rel="stylesheet" href="~/Scripts/Libraries/PaginacionAjax/Paginador.css"/>
+
+<style>
+    
+    .ClickTools { color: yellowgreen; }
+
+    .ClickResume { color: blueviolet; }
+
+    .ClickExcel { color: green; }
+</style>
+
+<div class="row" data-ng-controller="navigationController as nc" data-ng-init="nc.initSearch()">
+    <!-- SECCION MENU -->
+    @{ Html.RenderPartial("Menu"); }
+    <!-- SECCION MENU -->
+</div>
+
+<div class="container1">
+    <i class="fa fa-2x fa fa-bars pull-right expandir" aria-hidden="true" style="display: inline"
+       id="ClickExpand"
+       onmouseover='tooltip.show("Click para revisar el detalle del reporte")'
+       onmouseout="tooltip.hide();" onclick="ClickExpansion()">
+        &nbsp;
+    </i>
+    <i class="fa fa-2x fa fa-search pull-right expandir" aria-hidden="true" style="display: none"
+       id="ClickConsulta"
+       onmouseover='tooltip.show("Click para generar el reporte")'
+       onmouseout="tooltip.hide();" onclick="ConsultarReporte()">
+        &nbsp;
+    </i>
+    <i class="fa fa-2x fa fa-cogs pull-right expandir" aria-hidden="true" style="display: none"
+       id="ClickTools"
+       onmouseover='tooltip.show("Click para mostrar el resultado - Herramienta de desarrolladores")'
+       onmouseout="tooltip.hide();" onclick="jsResultConsultaDesarrollador()">
+        &nbsp;
+    </i>
+    <i class="fa fa-2x fa fa-columns pull-right expandir" aria-hidden="true" style="display: none"
+       id="ClickResume"
+       onmouseover='tooltip.show("Click para mostrar el detalle de la consulta")'
+       onmouseout="tooltip.hide();" onclick="jsResultConsulta()">
+        &nbsp;
+    </i>
+    <i class="fa fa-2x fa fa-file-excel-o  pull-right expandir" aria-hidden="true" style="display: none"
+       id="ClickExcel"
+       onmouseover='tooltip.show("Click para descargar el contenido en Excel")'
+       onmouseout="tooltip.hide();" onclick="jsImpresionCompendio()">
+        &nbsp;
+    </i>
+
+    <div class="container">
+        <center>
+            <h1>Reporte de Estadísticos</h1>
+        </center>
+    </div>
+    <div class="container @Tag.Col(1) ">
+        <div id="SeccionReporte" style="width: 1350px;">
+
+        </div>
+    </div>
+</div>
+<div id="PeticicionJson" style="display: none;"></div>
+<div id="PeticionNormalizada" style="display: none;"></div>
+
+@{ Html.RenderPartial("Filtros"); }
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        jsInitPaginador("CompendioTable1");
+    });
+</script>
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/administrator/scripts-utils")
+    @Scripts.Render("~/bundles/administrator/app")
+}

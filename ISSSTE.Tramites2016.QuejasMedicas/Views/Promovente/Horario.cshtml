@@ -1,0 +1,121 @@
+﻿<script type="text/javascript" src="~/Scripts/BaseJS/jsTooltip.js"></script>
+<div class="col-md-12">
+    <div id="SeccionAgendar">
+        <h2>Información requerida para agendar tu cita</h2>
+        <hr class="red">
+        <div class="alert alert-info bottom-buffer" id="I_AgendaCIta"></div>
+
+        @{ Html.RenderPartial("InfoGeneral"); }
+        <div id="IndexRegionMensaje"></div>
+        <div class="row">
+            <div class="@Tag.Col(12)" id="RegistroCita">
+                <div class="row">
+                    @Tag.InputSelect(8, "Unidad de Atención al Derechohabiente y Comunicación Social (UADyCS)", "TramiteUnidadAtencionId", "", null, true, " onchange='jsChangeTramiteUnidadAtencion()' ")
+                    <div class=" col-md-4 col-sm-4 col-lg-4 col-xs-4 ">
+                        <div class="form-group" id="FG_PalabraClave">
+                            <div class="form-group has-feedback">
+                                <label class="control-label">UADyCS o Unidad médica: <span  class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="top" title="Búsqueda predictiva de una unidad médica."></span></label>
+                                <input maxlength="200" id="PalabraClave"
+                                       value="" class="form-control EnMayus _ns"
+                                       placeholder="Buscar" style="border-color: rgb(221, 221, 221);" type="text">
+                                <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @Tag.InputSelect(8, "Unidad médica involucrada", "UnidadMedicaId", "", null)
+                    @Tag.InputSelect(4, "Mes y año", "MesAnio", "", null)
+                </div>
+            </div>
+        </div>
+        <div class="row" id="SeccionCalendario"></div>
+
+        <div class="row" style="margin-top: 30px;margin-bottom:30px;">
+            <div class="col-md-12">
+                <div class="clearfix">
+                    <div class="pull-left text-muted text-vertical-align-button">
+                        * Campos obligatorios
+                    </div>
+
+                    <div class="pull-right">
+                        @Tag.InputBoton("PasoAnterior", "Anterior", 3, 3, "", "","", "'AgendarCita.Horario.Anterior','view'")
+                        @Tag.InputBoton("RegistrarCita", "Siguiente", 1, 3, "", "", "", "'AgendarCita.Horario.Siguiente','view'")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#I_AgendaCIta").html(G_MENSAJES.MENSAJE_AGENDA_CITA);
+
+        $("#PalabraClave").val("");
+        $("#MesAnio").val(0);
+             
+        BloqueaUnidadMedicaMesAnio();
+
+        // Se carga el catalogo de UADyCS 
+        RecargaUADyCS();
+
+        $("#TramiteUnidadAtencionId").change(function () {
+            //$("#SeccionCalendario").html("");
+            RecargaUnidadMedica();
+            CambioTramite();
+            //BuscarHorario();
+        });
+
+        $("#PalabraClave").bind('input',
+            function () {
+                $('#MesAnio').prop('selectedIndex', 0);
+
+                if ($("#PalabraClave").val().length >= 3) {
+                    RecargaSelect();
+                }
+                else
+                {
+                    $('#TramiteUnidadAtencionId').prop('selectedIndex',0);
+                    $('#UnidadMedicaId').prop('selectedIndex', 0);
+                }
+
+                $("#SeccionCalendario").html("");
+
+                CambioUnidadMedica();
+        });
+
+        $('#UnidadMedicaId').change(function () {
+            CambioUnidadMedica();            
+        });
+
+
+        $('#MesAnio').change(function () {
+            BuscarHorario();
+        });
+
+        $("#Paso1").addClass("completed");
+        $("#Paso2").addClass("completed");
+
+        jsGetHorarioModelo();
+
+        $("#RegistrarCita").attr("disabled", "disabled");
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    //MFP Evaluacion de los campos de registro de cita, se quita el borde rojo (Indicacion de campo no valido) cuando 
+    // Se selecciona un valor de la lista
+    $("#RegistroCita select").each(function () {
+        $(this).change(function () {
+            if (jsEvalElements($(this))) { ValidaModeloGenerico("RegistroCita", false); }
+        });
+
+    });
+    //$gmx(document).ready(function () {
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //});
+
+</script>

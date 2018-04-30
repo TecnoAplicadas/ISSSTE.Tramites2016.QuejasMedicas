@@ -1,0 +1,32 @@
+.dual-list .list-group { margin-top: 8px; }
+
+.list-left li, .list-right li { cursor: pointer; }
+
+.list-arrows { padding-top: 100px; }
+
+.list-arrows button { margin-bottom: 20px; }
+
+.dual-list .glyphicon { top: 0 !important; }
+
+.dual-list {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.dual-list .well {
+    min-height: 550px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.abl-disponible {
+    background-color: #dff0d8 !important;
+    color: #3c763d !important;
+    font-weight: normal !important;
+}
+
+.abl-nodisponible {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+    font-weight: normal !important;
+}

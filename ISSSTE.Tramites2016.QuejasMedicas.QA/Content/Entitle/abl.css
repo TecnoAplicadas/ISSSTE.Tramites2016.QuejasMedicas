@@ -1,0 +1,193 @@
+/*
+.row {
+	min-width: 900px !important;
+}
+
+.container {
+	min-width: 900px !important;
+}
+*/
+
+/*-----------------------*/
+
+
+.abl-valida {
+    color: #b14042;
+    font-size: 16px;
+}
+
+#example_filter {
+    float: left !important;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+#example_filter input { width: 300px !important; }
+
+#example_length {
+    float: right !important;
+    margin-top: 20px;
+}
+
+.paginate_button a { color: #CCCCCC !important; }
+
+.dataTables_paginate { float: right !important; }
+
+.dataTables_info { margin-top: 30px !important; }
+
+#example { font-size: 16px; }
+
+#listItem {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    font: 18px;
+    height: 40px;
+    margin-top: 0;
+    width: 320px;
+}
+
+#listItem optgroup option {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding: 3px 0px 3px 15px;
+}
+
+.abl-del-address { margin-top: -7px; }
+
+.radio label {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.abl-citacancel {
+    margin-bottom: -2px;
+    margin-top: -6px !important;
+}
+
+.abl-alerta { color: #4A90E2; }
+
+.abl-folio {
+    font-size: 16px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.abl-verbt { margin-bottom: 8px; }
+
+.glyphicon { top: 3px !important; }
+
+.abl-texticon { font-family: sans-serif; }
+
+.abl-tdalert { padding-left: 20px !important; }
+
+.abl-menudos { padding: 0 15px 0 15px !important; }
+
+.ab-general-padding { padding: 0 15px 0 15px !important; }
+
+.ab-general-margin {
+    margin-top: 50px !important;
+    position: relative;
+}
+
+.abl-grey { color: #CCCCCC; }
+
+table .abl-th { width: 35% !important; }
+
+table .abl-thf { width: 15% !important; }
+
+table .abl-thestatal { width: 22% !important; }
+
+
+/* margins */
+
+.margintop-0 { margin-top: 0 !important; }
+
+.margintop-10 { margin-top: 10px !important; }
+
+.margintop-20 { margin-top: 20px !important; }
+
+.margintop-20 { margin-top: 25px !important; }
+
+.margintop-30 { margin-top: 30px !important; }
+
+.margintop-40 { margin-top: 40px !important; }
+
+.margintop-45 { margin-top: 45px !important; }
+
+.margintop-50 { margin-top: 50px !important; }
+
+.margintop-60 { margin-top: 60px !important; }
+
+.margintop-65 { margin-top: 65px !important; }
+
+.margintop-70 { margin-top: 70px !important; }
+
+.margintop-80 { margin-top: 80px !important; }
+
+.margintop-90 { margin-top: 90px !important; }
+
+.margintop-100 { margin-top: 100px !important; }
+
+.margintop--10 { margin-top: -10px !important; }
+
+.margintop--20 { margin-top: -20px !important; }
+
+.margintop--30 { margin-top: -30px !important; }
+
+.margintop--40 { margin-top: -40px !important; }
+
+.margintop--45 { margin-top: -45px !important; }
+
+.margintop--50 { margin-top: -50px !important; }
+
+.margintop--60 { margin-top: -60px !important; }
+
+.margintop--70 { margin-top: -70px !important; }
+
+.margintop--80 { margin-top: -80px !important; }
+
+.margintop--90 { margin-top: -90px !important; }
+
+.margintop--100 { margin-top: -100px !important; }
+
+.marginbot-0 { margin-bottom: 0 !important; }
+
+.marginbot-10 { margin-bottom: 10px !important; }
+
+.marginbot-20 { margin-bottom: 20px !important; }
+
+.marginbot-30 { margin-bottom: 30px !important; }
+
+.marginbot-40 { margin-bottom: 40px !important; }
+
+.marginbot-50 { margin-bottom: 50px !important; }
+
+.marginbot-60 { margin-bottom: 60px !important; }
+
+.marginbot-70 { margin-bottom: 70px !important; }
+
+.marginbot-80 { margin-bottom: 80px !important; }
+
+.marginbot-90 { margin-bottom: 90px !important; }
+
+.marginbot-100 { margin-bottom: 100px !important; }
+
+.marginbot--10 { margin-bottom: -10px !important; }
+
+.marginbot--20 { margin-bottom: -20px !important; }
+
+.marginbot--30 { margin-bottom: -30px !important; }
+
+.marginbot--40 { margin-bottom: -40px !important; }
+
+.marginbot--50 { margin-bottom: -50px !important; }
+
+.marginbot--60 { margin-bottom: -60px !important; }
+
+.marginbot--70 { margin-bottom: -70px !important; }
+
+.marginbot--80 { margin-bottom: -80px !important; }
+
+.marginbot--90 { margin-bottom: -90px !important; }
+
+.marginbot--100 { margin-bottom: -100px !important; }

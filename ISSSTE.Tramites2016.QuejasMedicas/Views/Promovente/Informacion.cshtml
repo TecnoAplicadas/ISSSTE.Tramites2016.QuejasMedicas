@@ -1,0 +1,71 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.PromoventeDTO
+
+<div class="@Tag.Col(12)" style="height: 40px;">&nbsp;</div>
+
+<div class="col-md-12">
+    <div id="SeccionInicio">
+
+        <h2>@Model.DuplaValores.Valor</h2>
+        <hr class="red">
+
+        <div class="alert alert-info bottom-buffer" id="I_InformacionTramite"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                @Seccion.MenuDivs(Model, 1)
+            </div>
+        </div>
+
+        @Tag.Height(80)
+
+        <div class="row pull-right">
+            <div class="col-md-12">
+                @Tag.InputBoton("jsCrearFormaPDF", "Descargar formato de la solicitud", 3, 3, "","","", "'Inicio.FormatoSolicitud','download'")
+                @Tag.InputBoton("ImpresionPage1", "Descargar información", 3, 3, "ImpresionPage","","", "'Inicio.InformacionTramite','download'")
+            </div>
+
+        </div>
+
+        @Tag.Height(80)
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    function CuerpoImpresion() {
+        var encabezado = "</br><h2>" + $("#Sistema").html() + "</h2></br>";
+        auxiliar = "";
+        var i = 0;
+        for (; ;) {
+            var panel = $("#tab_" + i).html();
+            //alert(panel)
+
+            if (IndexOf(panel,"Requisitos del trámite") >= 0) {
+                auxiliar += "<h1 style='page-break-before: always;'></h1> <div class='col-md-12' style='height:40px;'>&nbsp;</div>";
+            }
+
+            if (panel == null || panel == undefined) break;
+            panel = "<center><h3 style='text-align:left;'>" + panel + "</h3> <hr class='red'/></center></br>"; // MFP color anterior color:#6683A1;
+            var descripcion = $("#panel_tab_" + i).html();
+            auxiliar = auxiliar + panel + descripcion + "</br></br>";
+            i++;
+        }
+        encabezado = encabezado + auxiliar;
+
+        //alert(encabezado)
+        return encabezado;
+    }
+
+
+    function ImpresionPage() {
+
+        var html = CuerpoImpresion();
+        html = escape(html);
+        jsCrearPDF(null, html, NameFichero, 1);
+    }
+
+    $(document).ready(function () {
+        $("#I_InformacionTramite").html(G_MENSAJES.MENSAJE_INFORMACION_TRAMITE);
+    });
+
+</script>

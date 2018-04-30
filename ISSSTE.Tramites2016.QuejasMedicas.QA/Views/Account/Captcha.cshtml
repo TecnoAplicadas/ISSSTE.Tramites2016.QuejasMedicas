@@ -1,0 +1,32 @@
+﻿@using ISSSTE.Tramites2016.QuejasMedicas.Model.Enums
+
+<div id="reCaptchaContainer" class="col-md-12">
+    @*<label>Captcha*: </label>*@
+    <div class="form-group" id="FG_IdReCaptcha"><label class="control-label">Captcha<span id="S_div_IdReCaptcha" class="CampoRequerido">* </span>: </label>
+    <input maxlength="30" id="IdReCaptcha" value="" class="CampoObligatorio SINHIDDENCHECK form-control _ns" placeholder="Captcha" type="hidden">
+    <div id="gRecaptchaControl" class="g-recaptcha" data-sitekey="@ViewBag.SiteKey"></div>
+    <div class="CampoRequerido CampoAux hidden" id="div_IdReCaptcha">Este campo es obligatorio</div><div class="CampoRequerido CampoAux hidden" id="div_NovalidoIdReCaptcha"></div></div>
+</div>
+
+
+<script type="text/javascript">
+
+    var verifyCallback = function (response) {
+        if (response != null && response != "" > 0) {
+            $("#div_IdReCaptcha").addClass("hidden");
+            $("#S_div_IdReCaptcha").addClass("hidden");
+        }
+    };
+
+    var onloadCallback = function () {
+        grecaptcha.render('gRecaptchaControl', {
+            'sitekey': '@ViewBag.SiteKey',
+            'callback': verifyCallback,
+            'theme': 'light'
+        });
+    };
+</script>
+
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&&render=explicit&hl=es" async defer></script>
+

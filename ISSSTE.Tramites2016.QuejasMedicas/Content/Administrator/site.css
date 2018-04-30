@@ -1,0 +1,245 @@
+﻿
+#colorToolTip {
+    background-color: white;
+    border: 0;
+    color: blue;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    text-align: center;
+    width: auto;
+}
+
+
+.tooltip {
+    -ms-border-radius: 8px;
+    -ms-opacity: 1;
+    background: white;
+    border: 2px black;
+    border-radius: 8px;
+    border-style: groove;
+    color: black;
+    display: block;
+    fill: black;
+    filter: alpha(opacity=1);
+    font: 12px sans-serif;
+    font-weight: bold;
+    height: auto;
+    opacity: 1;
+    padding: 5px;
+    position: absolute;
+    stroke: black;
+    visibility: hidden;
+    width: auto;
+    z-index: 1030;
+}
+
+
+.tituloPanelColores {
+font-size:14px;
+}
+
+.descripcionPanelColores {
+font-size:12px;
+}
+
+.event-list {
+  display: inline-block;
+  background-color: #c3c3c3;
+  width: 12px;
+  height: 12px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+}
+
+
+.totalCaracteres {
+font-size:small;
+}
+
+.celdaTd{
+height: auto;
+width: 200px;
+}
+
+.contenidoTruncado {
+    width:300px;    
+    height:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.contenidoTramiteTruncado {
+    width:130px;    
+    height:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.form-control.ng-invalid.ng-dirty {
+    border-color: #a94442 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075) !important;
+}
+
+.error-message {
+    color: #b14042;
+    font-size: 16px;
+}
+
+/*#region Dialogs */
+
+.dialog-container {
+    background: #ccc /* fallback for old browsers */;
+    background: rgba(204, 204, 204, .5);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+.dialog-message {
+    -moz-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    height: 5em;
+    left: 50%;
+    margin: -2em auto 0 -10em /* top is half of height and left is half of width*/;
+    padding: 8px 0px 0px 0px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    width: 25em;
+}
+
+.dialog-accentText {
+    font-family: "Segoe UI Light", "Segoe UI", Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 36px;
+}
+
+.dialog-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 90%;
+    position: relative;
+}
+
+.dialog-image-caption {
+    -moz-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.6);
+    margin: 0 5% 0 5% /* top is half of height and left is half of width*/;
+    padding: 8px 0px 0px 0px;
+    text-align: center;
+    width: 90%;
+}
+
+.table-striped tbody tr.highlight td {
+    background-color: #578ab6;
+    color: #fff;
+}
+
+/*#endregion */
+
+.overflow-table { overflow-x: auto; }
+
+
+.EXITO {
+    background-color: transparent;
+    border-color: #5cb85c;
+    color: #5cb85c;
+}
+
+.EXITO:hover {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    color: white;
+}
+
+.ERROR {
+    background-color: transparent;
+    border-color: #d9534f;
+    color: #d9534f;
+}
+
+.ERROR:hover {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    color: white;
+}
+
+.PRECAUCION {
+    background-color: transparent;
+    border-color: #f0ad4e;
+    color: #f0ad4e;
+}
+
+.PRECAUCION:hover {
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+    color: white;
+}
+
+.SUGERENCIA {
+    background-color: transparent;
+    border-color: #0275d8;
+    color: #0275d8;
+}
+
+.SUGERENCIA:hover {
+    background-color: #0275d8;
+    border-color: #0275d8;
+    color: white;
+}
+
+.BotonLink { color: blue; }
+
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  max-width: 600px;
+  margin: 10px;
+}
+.modal-sm {
+  max-width: 300px;
+}
+.modal-lg {
+  max-width: 1000px;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    margin: 30px auto;
+  }
+}
+@media (min-width: 320px) {
+  .modal-sm {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (min-width: 620px) {
+  .modal-dialog {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .modal-lg {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+@media (min-width: 920px) {
+  .modal-lg {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

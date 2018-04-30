@@ -1,0 +1,222 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.CitaDTO
+
+<div id="ResultVistaEspecial" class="row"></div>
+
+@if (Model.Paciente != null && Model.Promovente != null)
+{
+    <div class="panel panel-default" id="CicloTotal" style="display: none">
+        <div>
+            <div class="row">
+                <div class="@Tag.Col(12)">
+                    <div class="@Tag.Col(6)">
+                        <img src="../Images/Promovente/issste-logo.jpg" />
+                    </div>
+                    <div class="@Tag.Col(6) pull-right">
+                        <img src="../Images/Promovente/mexico-logo.jpg" class="pull-right" />
+                    </div>
+                </div>
+                <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                <div class="@Tag.Col(12)">
+                    <center>
+                        <h2>Información general sobre tu cita</h2>
+                    </center>
+                </div>
+                <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                <div class="@Tag.Col(12)">
+                    @Tag.InputDiv(6, "Folio", "FolioGeneral", Model.NumeroFolio, 30, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(6, "Fecha y hora de la cita", "FechaHora", Model.FechaConHora, 30, false, "", "", " disabled='disabled' ")
+                </div>
+                <div id="IdSolicitud" class="hidden">@Model.SolicitudId</div>
+                @if (!Model.EsRepresentante)
+                {
+                    <div class="@Tag.Col(12)">
+                        <label>Datos del promovente/paciente:</label>
+                    </div>
+                }
+                else
+                {
+                    <div class="@Tag.Col(12)">
+                        <label>Datos del paciente:</label>
+                    </div>
+                }
+                @if (Model.EsRepresentante)
+                {
+                    <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                    <div class="@Tag.Col(12)">
+
+                        @Tag.InputDiv(4, "Nombre(s)", "NombreP", Model.Paciente.Nombre, 100, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(4, "Primer apellido", "PaternoP", Model.Paciente.Paterno, 100, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(4, "Segundo apellido", "MaternoP", Model.Paciente.Materno, 100, false, "", "", " disabled='disabled' ")
+
+                    </div>
+                    <div class="@Tag.Col(12)">
+                        @Tag.InputDiv(4, "Clave Única de Registro de Población", "CURPP", Model.Paciente.CURP, 30, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(2, "Sexo", "SexoP", Model.Paciente.Sexo, 30, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(2, "Edad", "EdadP", Model.Paciente.Edad, 30, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(2, "Lada", "LadaP", Model.Paciente.Lada, 30, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(2, "Teléfono fijo", "TelFijoP", Model.Paciente.TelFijo, 30, false, "", "", " disabled='disabled' ")
+
+
+                    </div>
+                    <div class="@Tag.Col(12)">
+                        @Tag.InputDiv(4, "Teléfono móvil", "TelMovilP", Model.Paciente.TelMovil, 30, false, "", "", " disabled='disabled' ")
+                        @Tag.InputDiv(4, "Correo Electrónico", "CorreoP", Model.Paciente.CorreoElectronico, 30, false, "", "", " disabled='disabled' ")
+                    </div>
+                }
+                @if (Model.EsRepresentante)
+                {
+                    <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                    <div class="@Tag.Col(12)">
+                        <label>Datos del promovente:</label>
+                    </div>
+                }
+                <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                <div class="@Tag.Col(12)">
+                    @Tag.InputDiv(4, "Nombre(s)", "NombreP", Model.Promovente.Nombre, 100, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(4, "Primer apellido", "PaternoP", Model.Promovente.Paterno, 100, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(4, "Segundo apellido", "MaternoP", Model.Promovente.Materno, 100, false, "", "", " disabled='disabled' ")
+                </div>
+                <div class="@Tag.Col(12)">
+                    @Tag.InputDiv(4, "Clave Única de Registro de Población", "CURPP", Model.Promovente.CURP, 100, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(2, "Sexo", "SexoP", Model.Promovente.Sexo, 30, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(2, "Edad", "EdadP", Model.Promovente.Edad, 30, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(2, "Lada", "LadaP", Model.Promovente.Lada, 30, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(2, "Teléfono fijo", "TelFijoP", Model.Promovente.TelFijo, 30, false, "", "", " disabled='disabled' ")
+                </div>
+                <div class="@Tag.Col(12)">
+                    @Tag.InputDiv(4, "Teléfono móvil", "TelMovilP", Model.Promovente.TelMovil, 30, false, "", "", " disabled='disabled' ")
+                    @Tag.InputDiv(4, "Correo Electrónico", "CorreoP", Model.Promovente.CorreoElectronico, 30, false, "", "", " disabled='disabled' ")
+                </div>
+            </div>
+            <div id="BarraDivision" class="hidden" style="background-color: black; width: 100%;height:1px">&nbsp;</div>
+            <div style="page-break-after: always;">&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>
+                <div class="HeaderImage @Tag.Col(12)">
+                    <div class="@Tag.Col(6)">
+                        <img src="../Images/Promovente/issste-logo.jpg" />
+                    </div>
+                    <div class="@Tag.Col(6) pull-right">
+                        <img src="../Images/Promovente/mexico-logo.jpg" class="pull-right" />
+                    </div>
+                </div>
+
+                <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+                <div class="@Tag.Col(12)">
+                    <label>Unidad de atención ISSSTE:</label>
+                </div>
+                @Seccion.ConsultaCita(Model.Unidad_Atencion)
+                <div class="@Tag.Col(12)" style="height: 30px;">&nbsp;</div>
+                @Seccion.ConsultaCita(Model.DomicilioUnidad)
+                <div class="@Tag.Col(12)" style="height: 30px;">&nbsp;</div>
+
+                <div class="@Tag.Col(12)">
+                    <label>Unidad médica:</label>
+                </div>
+                @Seccion.ConsultaCita(Model.Unidad_Medica)
+                <div class="@Tag.Col(12)" style="height: 30px;">&nbsp;</div>
+
+                <div class="@Tag.Col(12)">
+                    <div class="@Tag.Col(12) alert alert-info">
+                        Te pedimos acudir al lugar de tu cita 15 minutos antes y llevar el formato impreso para poder atender tu trámite.
+                    </div>
+                </div>
+
+                <div class="@Tag.Col(12)" style="height: 30px;">&nbsp;</div>
+
+                @if (Model.Requisitos != null && Model.Requisitos.Count > 0)
+                {
+                    <div class="@Tag.Col(12)">
+                        <center>
+                            <h4>Documentos necesarios</h4>
+                        </center>
+                        <div class="@Tag.Col(12)" style="height: 10px;">&nbsp;</div>
+                        <table class="ficha-documents-table @Tag.Col(12)">
+                            <thead>
+                                <tr>
+                                    <td style="@Tag.Col(4)">
+                                        <strong>Documento requerido</strong>
+                                    </td>
+                                    <td style="@Tag.Col(6)">
+                                        <strong>Presentación</strong>
+                                    </td>
+                                    <td style="@Tag.Col(2)">
+                                        <strong>Es obligatorio</strong>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var requisito in Model.Requisitos)
+                                {
+                                    <tr>
+                                        <td>
+                                            <p style="text-align: justify;">@requisito.NombreDocumento</p>
+                                        </td>
+                                        <td>
+                                            <p style="text-align: justify;">@requisito.Descripcion</p>
+                                        </td>
+                                        <td>
+                                            <p style="text-align: justify;">(@requisito.EsObligatorio?"Si":"No")</p>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    var ConVP = @Html.Raw(Json.Encode(Model.ConVP));
+
+    function VistaPreviaJPG() {
+        $("#FG_FolioGeneral").addClass("hidden");
+        if(G_citaFolio!="") {
+            $("#FolioGeneral").html(G_citaFolio);
+            G_citaFolio = "";
+            $("#FG_FolioGeneral").removeClass("hidden");
+        }
+
+        $("#BarraDivision").removeClass("hidden");
+        aux = $("#CicloTotal").html();
+        aux = aux.replace("<div>", "<div style='width:1000px'>");
+        aux = escape(aux);
+        modelo = { Informacion: aux, Id: 0};
+        jsAjaxGenericoPOST("../Forma/Imagen_VP", modelo, "ResultVistaEspecial", null);
+        $("#BarraDivision").addClass("hidden");
+    }
+
+    function VistaPreviaPDF() {
+        $("#FG_FolioGeneral").removeClass("hidden");
+        $(".HeaderImage").removeClass("hidden");
+        $("#ResultVistaEspecial").html("");
+
+        if(G_citaFolio!=""){
+            $("#FolioGeneral").html(G_citaFolio);
+            G_citaFolio = "";
+        }
+
+        aux = $("#CicloTotal").html();
+        aux = escape(aux);
+        modelo = { Informacion: aux, Id: 1};
+        jsAjaxGenericoPOST("../Forma/Imagen_VP", modelo, "ResultVistaEspecial", null);
+    }
+
+    $(document).ready(function() {
+        ConVP = new String(ConVP);
+        if (ConVP == "true") {
+            VistaPreviaJPG();
+        } else {
+            var es_ie = detectIE();
+            if (es_ie) {
+                VistaPreviaJPG();
+            } else {
+                VistaPreviaPDF();
+            }
+        }
+    });
+
+</script>

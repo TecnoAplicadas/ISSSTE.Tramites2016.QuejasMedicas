@@ -1,0 +1,81 @@
+﻿#_tt1 {
+    -ms-border-radius: 8px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 8px;
+    border-style: groove;
+    color: black;
+    display: block;
+    filter: alpha(opacity=1);
+    font: 12px sans-serif;
+    font-weight: bold;
+    position: absolute;
+}
+
+#_tttop1 {
+    border: 0;
+    color: black;
+    display: block;
+    font: 12px sans-serif;
+    font-weight: bold;
+    height: 5px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+#_ttcont1 {
+    background-color: white;
+    border: 2px solid;
+    border: 0;
+    color: black;
+    display: block;
+    font: 12px sans-serif;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 2px 12px 3px 7px;
+}
+
+#_ttbot1 {
+    border: 0;
+    color: black;
+    display: block;
+    font: 12px sans-serig;
+    font-weight: bold;
+    height: 5px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+#colorToolTip1 {
+    background-color: white;
+    border: 0;
+    color: blue;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    text-align: center;
+    width: auto;
+}
+
+.tooltip1 {
+    -ms-border-radius: 8px;
+    -ms-opacity: 1;
+    background: white;
+    border: 2px black;
+    border-radius: 8px;
+    border-style: groove;
+    color: black;
+    display: block;
+    fill: black;
+    filter: alpha(opacity=1);
+    font: 12px sans-serif;
+    font-weight: bold;
+    height: auto;
+    opacity: 1;
+    padding: 5px;
+    position: absolute;
+    stroke: black;
+    visibility: hidden;
+    width: auto;
+    z-index: 1030;
+}

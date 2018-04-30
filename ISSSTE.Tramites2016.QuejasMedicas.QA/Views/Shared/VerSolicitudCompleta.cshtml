@@ -1,0 +1,218 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.CitaDTO
+
+<style type="text/css">
+
+    .TextoComprobante {
+        font-weight:normal;
+        font-size:14px !important; 
+        color:#555 !important; 
+    }
+</style>
+
+<div id="ResultVistaEspecial" class="row"></div>
+
+@if (Model.Paciente != null && Model.Promovente != null)
+{
+    <div class="container">
+
+        <div class="alert alert-info @Tag.Col(12) " id="VSC">&nbsp;</div>
+
+        <div class="@Tag.Col(12)" style="height: 20px;">&nbsp;</div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Datos de tu cita</h3>
+                <hr class="red">
+            </div>
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(4, "Folio", "FolioGeneral", Model.NumeroFolio, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Fecha", "FechaHora", Model.FechaCitaVista, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Hora", "FechaHora", Model.HoraCitaVista, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        <div id="IdSolicitud" class="hidden">@Model.SolicitudId</div>
+
+        <div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+
+        @if (!Model.EsRepresentante)
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>Datos del promovente/paciente:</h4>
+                    <hr class="red">
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>Datos del paciente</h4>
+                    <hr class="red">
+                </div>
+            </div>
+        }
+        @if (Model.EsRepresentante)
+                {
+
+            <div class="@Tag.Col(12)" style="height:10px;">&nbsp;</div>
+
+            <div class="row">
+                @Tag.InputDiv(8, "Clave Única de Registro de Población (CURP)", "CURPP", Model.Paciente.CURP, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            </div>
+            <div class="row">
+                @Tag.InputDiv(12, "Nombre(s)", "NombreP", Model.Paciente.Nombre, 100, "", false, "TextoComprobante ", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Primer apellido", "PaternoP", Model.Paciente.Paterno, 100, "", false, "TextoComprobante ", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Segundo apellido", "MaternoP", Model.Paciente.Materno, 100, "", false, "TextoComprobante ", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Edad", "EdadP", Model.Paciente.Edad, 30, "", false, "TextoComprobante ", "", " disabled='disabled' ")
+            </div>
+
+            <div class="row">
+                @Tag.InputDiv(4, "Sexo", "SexoP", Model.Paciente.Sexo, 30, "", false, "TextoComprobante ", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Lada", "LadaP", Model.Paciente.Lada, 30, "", false, "TextoComprobante ", "", " disabled='disabled' ")
+                @Tag.InputDiv(4, "Teléfono fijo", "TelFijoP", Model.Paciente.TelFijo, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            </div>
+
+            <div class="row">
+                @Tag.InputDiv(4, "Teléfono móvil", "TelMovilP", Model.Paciente.TelMovil, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+                @Tag.InputDiv(8, "Correo Electrónico", "CorreoP", Model.Paciente.CorreoElectronico, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            </div>
+        }
+        @if (Model.EsRepresentante)
+        {
+            <h1 style="page-break-before: always;"></h1>
+            <div class="@Tag.Col(12)" style="height:20px;"></div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Datos del promovente</h3>
+                    <hr class="red">
+                </div>
+            </div>
+        }
+        <div class="@Tag.Col(12)" style="height:10px;">&nbsp;</div>
+
+        <div class="row">
+            @Tag.InputDiv(8, "Clave Única de Registro de Población (CURP)", "CURPP", Model.Promovente.CURP, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+        <div class="row">
+            @Tag.InputDiv(12, "Nombre(s)", "NombreP", Model.Promovente.Nombre, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Primer apellido", "PaternoP", Model.Promovente.Paterno, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Segundo apellido", "MaternoP", Model.Promovente.Materno, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Edad", "EdadP", Model.Promovente.Edad, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(4, "Sexo", "SexoP", Model.Promovente.Sexo, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Lada", "LadaP", Model.Promovente.Lada, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Teléfono fijo", "TelFijoP", Model.Promovente.TelFijo, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(4, "Teléfono móvil", "TelMovilP", Model.Promovente.TelMovil, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(8, "Correo Electrónico", "CorreoP", Model.Promovente.CorreoElectronico, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        @*<div class="@Tag.Col(12)" style="height:150px;display:block;page-break-before:always;"></div>*@
+        <h1 style="page-break-before: always;"></h1>
+        <div class="@Tag.Col(12)" style="height:20px;"></div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Unidad de Atención al Derechohabiente y Comunicación Social (UADyCS)</h4>
+                <hr class="red">
+            </div>
+        </div>
+
+        <div class="alert alert-info col-xs-12" id="I_DireccionCitaAgendada"></div>
+
+        <div class="@Tag.Col(12)" style="height:10px;"></div>
+
+        <div class="row">
+            @Tag.InputDiv(12, "UADyCS", "UnidadAtencion", Model.Unidad_Atencion, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(4, "Código postal", "CodPostal", Model.CodPostal, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Estado", "Estado", Model.Estado, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Municipio o Alcaldia", "Municipio", Model.Municipio, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+
+            @Tag.InputDiv(12, "Colonia", "Colonia", Model.Colonia, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(12, "Calle", "Calle", Model.Calle, 100, "", false,"TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+        <div class="row">
+            @Tag.InputDiv(8, "Número exterior", "NumExterior", Model.NumeroExterior, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(4, "Número interior", "NumInterior", Model.NumeroInterior, 30, "", false, "TextoComprobante", "", " disabled='disabled' ")
+            @Tag.InputDiv(12, "Unidad médica involucrada", "UnidadMedica", Model.Unidad_Medica, 100, "", false, "TextoComprobante", "", " disabled='disabled' ")
+        </div>
+
+
+        @if (Model.Requisitos != null && Model.Requisitos.Count > 0)
+        {
+            <h1 style="page-break-before: always;"></h1>
+            <div class="@Tag.Col(12)" style="height:20px;"></div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>Documentos requeridos</h4>
+                    <hr class="red">
+                </div>
+            </div>
+
+            <div class="alert alert-info col-xs-12" id="I_SolicitudCompleta"></div>
+
+
+            <div class="@Tag.Col(12)">
+                <div class="@Tag.Col(12)" style="height: 25px;">&nbsp;</div>
+                <table class="table @Tag.Col(12)">
+                    <thead>
+                        <tr>
+                            <td style="@Tag.Col(4)">
+                                <strong>Documento requerido</strong>
+                            </td>
+                            <td style="@Tag.Col(6)">
+                                <strong>Presentación</strong>
+                            </td>
+                            @*<td style="@Tag.Col(2)">
+                                <strong>Es obligatorio</strong>
+                            </td>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var requisito in Model.Requisitos)
+                        {
+                            <tr>
+                                <td>
+                                    <p style="text-align: justify;">@requisito.NombreDocumento</p>
+                                </td>
+                                <td>
+                                    <p style="text-align: justify;">@requisito.Descripcion</p>
+                                </td>
+                                @*<td>
+                                        @{ string valor = requisito.EsObligatorio ? "Si" : "No"; }
+                                        <p style="text-align: justify;">@valor</p>
+                                    </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#VSC").html(G_MENSAJES.SOLICITUD_COMPLETA);
+        $("#I_SolicitudCompleta").html(G_MENSAJES.MENSAJE_RECORDATORIO_REQUISITOS);
+        $("#I_DireccionCitaAgendada").html(G_MENSAJES.MENSAJE_DIRECCION_CITA_AGENDADA);
+    });
+
+</script>

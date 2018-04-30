@@ -1,0 +1,54 @@
+﻿<script type="text/javascript" src="~/Scripts/BaseJS/jsControladorGeneral.js"></script>
+
+@*<div class="container">
+        <div class="doc-alert doc-alert-info">
+            Proporcionar el valor de los campos de consulta del <b>filtro del promovente</b>
+            <button type="button" style="text-decoration: none;"
+                    class="btn btn-default pull-right"
+                    onclick="MostrarFiltros('A4');">
+                <span class="fa fa-eye" aria-hidden="true"></span>&nbsp;&nbsp;Mostrar todos los filtros
+            </button>
+        </div>
+    </div>*@
+
+<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+<div class="alert alert-info @Tag.Col(12)">Proporcionar el valor de los campos de consulta del <b>filtro del promovente</b></div>
+<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+
+<div class="row">
+    @TagReporte.InputTexto(4, "Clave Única de Registro de Población", "CURPPromovente", "", 18, false, "LetraNumero", "", "", "inline")
+    @TagReporte.InputTexto(4, "Nombre(s)", "NombrePromovente", "", 30, false, "LetraMayus", "", "", "inline")
+    @TagReporte.InputTexto(4, "Apellido paterno", "Apellido1Promovente", "", 30, false, "LetraMayus", "", "", "inline")
+    @TagReporte.InputTexto(4, "Apellido materno", "Apellido2Promovente", "", 30, false, "LetraMayus", "", "", "inline")
+    @TagReporte.InputSelect(4, "Sexo", "SexoPromovente", " selectpicker ", false, "", "", "inline")
+    @TagReporte.InputTexto(4, "Correo", "CorreoPromovente", "", 85, false, "", "", "", "inline")
+    @TagReporte.InputTexto(4, "Teléfono", "TelefonoPromovente", "", 20, false, "", "Separar con un guión (-), la lada, el teléfono y la extensión en caso de su captura (LADA-TELÉFONO-EXTENSIÓN)", "", "inline")
+    @TagReporte.InputTexto(4, "Móvil", "CelularPromovente", "", 10, false, "Numero", "", "", "inline")
+    @TagReporte.InputRango(4, "De edad", "A edad", "EdadPromovente", "", 3, false, "Numero", "Proporcionar sólo el valor inferior en caso de requerir una consulta por sólo un parámetro")
+</div>
+<div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+<div class="row col-md-12">
+    <div class="pull-right">
+        <button type="button" style="text-decoration: none;"
+                class="btn btn-default pull-right"
+                onclick="MostrarFiltros('A4');">
+            <span class="fa fa-eye" aria-hidden="true"></span>&nbsp;&nbsp;Mostrar todos los filtros
+        </button>
+    </div>
+</div>
+<div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        jsMouseOverFiltro();
+        jsMouseOutFiltro();
+
+        $("#SexoPromovente").append("<option value='-1'>Selecciona</option>");
+        $("#SexoPromovente").append("<option value='0'>Femenino</option>");
+        $("#SexoPromovente").append("<option value='1'>Masculino</option>");
+        jsEvaluarElementos();
+        jsCloseMakerClick();
+    });
+
+</script>

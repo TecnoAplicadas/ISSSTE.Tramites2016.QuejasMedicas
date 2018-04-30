@@ -1,0 +1,158 @@
+.abl-thnobold th {
+    font-weight: normal !important;
+    padding-top: 10px !important;
+}
+
+
+.abl-cien { width: 100%; }
+
+table { border-collapse: collapse; }
+
+th {
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+td {
+    border: 1px solid #999;
+    height: 6em;
+    padding: 5px;
+    vertical-align: top;
+    width: 7em;
+}
+
+
+/*#one {
+        
+         border: 1px solid #ff0000;
+    }*/
+
+.adisponible {
+    
+    background: rgb(173, 216, 230);
+    background: rgba(173, 216, 230, 0.2);
+    border: 2px solid #4D92DF;
+}
+
+.sindisponibilidad {
+
+    background: rgb(255, 250, 252);
+    background: rgba(255, 250, 252, 0.6);
+    border: 2px solid #D0021B;
+}
+
+.today {
+
+    background: rgb(192, 192, 192);
+    background: rgba(192, 192, 192, 0.3);
+    border: 2px solid #545454;
+}
+
+
+
+.dia { text-align: left; }
+
+.actual {
+    background: rgb(13, 102, 52);
+    background: rgba(13, 105, 52, 0.6);
+    border: 2px solid #0d6634;
+    font-weight: bold;
+}
+
+.disponible {
+    
+    
+    height: 20px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.baja {
+    
+    height: 20px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.nodisponible {
+    height: 20px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.sinservicio {
+    
+    height: 20px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+
+
+.fechapasada {
+    
+    height: 20px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+
+.leyenda { margin-top: 30px !important; }
+
+.leyenda td {
+    border: 1px solid #FFF !important;
+    height: 0;
+    padding: 5px;
+    vertical-align: top;
+    width: 10em;
+}
+
+.leyenda .disponible-ley {
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    background: #4D92DF;
+    border-radius: 40px;
+    display: block;
+    height: 30px;
+    text-align: center;
+    width: 30px;
+}
+
+.leyenda .bajadisponible-ley {
+    background: #fef7e4;
+    height: 20px;
+    width: 100%;
+}
+
+.leyenda .nodisponible-ley {
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    background: #D0021B;
+    border-radius: 40px;
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+
+.leyenda .sinservicio-ley {
+    background: #cccccc;
+    height: 20px;
+    width: 100%;
+}
+
+.leyenda .fechapasada-ley {
+    background: #CECEF6;
+    height: 20px;
+    width: 100%;
+}
+
+.leyenda .diaactual-ley {
+   
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    background: #545454;
+    border-radius: 40px;
+    display: block;
+    height: 30px;
+    width: 30px;
+}

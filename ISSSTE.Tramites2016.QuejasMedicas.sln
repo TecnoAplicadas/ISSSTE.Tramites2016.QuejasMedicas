@@ -1,0 +1,115 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.QuejasMedicas", "ISSSTE.Tramites2016.QuejasMedicas\ISSSTE.Tramites2016.QuejasMedicas.csproj", "{856ABEB5-C358-4B8B-90B0-57B07975DDD9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{31CC840A-6E71-4B64-B8B2-4279F43F6F2E} = {31CC840A-6E71-4B64-B8B2-4279F43F6F2E}
+		{5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2} = {5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2}
+		{70274565-A1E2-4B83-99FB-6EC171F9DDD2} = {70274565-A1E2-4B83-99FB-6EC171F9DDD2}
+		{A21FD585-E6D7-4F56-94B9-D3CDF7F9998C} = {A21FD585-E6D7-4F56-94B9-D3CDF7F9998C}
+		{E8094DAC-05DF-413B-8DE8-40531F6AACFC} = {E8094DAC-05DF-413B-8DE8-40531F6AACFC}
+		{9CB841D4-D55A-4359-BCA5-66B763583E1B} = {9CB841D4-D55A-4359-BCA5-66B763583E1B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.QuejasMedicas.DAL", "ISSSTE.Tramites2016.QuejasMedicas.DAL\ISSSTE.Tramites2016.QuejasMedicas.DAL.csproj", "{E8094DAC-05DF-413B-8DE8-40531F6AACFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{168D8DE9-B71D-4D52-AAA8-0EC4CDF95464}"
+	ProjectSection(SolutionItems) = preProject
+		Configuraciones Iniciales.txt = Configuraciones Iniciales.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.QuejasMedicas.Model", "ISSSTE.Tramites2016.QuejasMedicas.Model\ISSSTE.Tramites2016.QuejasMedicas.Model.csproj", "{A21FD585-E6D7-4F56-94B9-D3CDF7F9998C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.QuejasMedicas.Helpers", "ISSSTE.Tramites2016.QuejasMedicas.Helpers\ISSSTE.Tramites2016.QuejasMedicas.Helpers.csproj", "{9CB841D4-D55A-4359-BCA5-66B763583E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.QuejasMedicas.Service", "ISSSTE.Tramites2016.QuejasMedicas.Service\ISSSTE.Tramites2016.QuejasMedicas.Service.csproj", "{31CC840A-6E71-4B64-B8B2-4279F43F6F2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.Common", "ISSSTE.Tramites2016.Common\ISSSTE.Tramites2016.Common.csproj", "{70274565-A1E2-4B83-99FB-6EC171F9DDD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSSTE.Tramites2016.Common.Security", "ISSSTE.Tramites2016.Common.Security\ISSSTE.Tramites2016.Common.Security.csproj", "{5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ISSSTE.Tramite2016.QuejasMedicas.Instalador", "ISSSTE.Tramite2016.QuejasMedicas.Instalador\ISSSTE.Tramite2016.QuejasMedicas.Instalador.vdproj", "{59154D95-0DAD-44CC-931A-3B50D44098C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{856ABEB5-C358-4B8B-90B0-57B07975DDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856ABEB5-C358-4B8B-90B0-57B07975DDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856ABEB5-C358-4B8B-90B0-57B07975DDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856ABEB5-C358-4B8B-90B0-57B07975DDD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8094DAC-05DF-413B-8DE8-40531F6AACFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8094DAC-05DF-413B-8DE8-40531F6AACFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8094DAC-05DF-413B-8DE8-40531F6AACFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8094DAC-05DF-413B-8DE8-40531F6AACFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21FD585-E6D7-4F56-94B9-D3CDF7F9998C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21FD585-E6D7-4F56-94B9-D3CDF7F9998C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21FD585-E6D7-4F56-94B9-D3CDF7F9998C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21FD585-E6D7-4F56-94B9-D3CDF7F9998C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB841D4-D55A-4359-BCA5-66B763583E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB841D4-D55A-4359-BCA5-66B763583E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB841D4-D55A-4359-BCA5-66B763583E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB841D4-D55A-4359-BCA5-66B763583E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CC840A-6E71-4B64-B8B2-4279F43F6F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CC840A-6E71-4B64-B8B2-4279F43F6F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CC840A-6E71-4B64-B8B2-4279F43F6F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CC840A-6E71-4B64-B8B2-4279F43F6F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70274565-A1E2-4B83-99FB-6EC171F9DDD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70274565-A1E2-4B83-99FB-6EC171F9DDD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70274565-A1E2-4B83-99FB-6EC171F9DDD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70274565-A1E2-4B83-99FB-6EC171F9DDD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAFAC41-F5E9-40E6-B480-A3A1F0BCE7A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59154D95-0DAD-44CC-931A-3B50D44098C1}.Debug|Any CPU.ActiveCfg = Debug
+		{59154D95-0DAD-44CC-931A-3B50D44098C1}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://desktop-fqblgie:8080/tfs/issstetf
+		SccProjectUniqueName0 = ISSSTE.Tramites2016.QuejasMedicas.DAL\\ISSSTE.Tramites2016.QuejasMedicas.DAL.csproj
+		SccProjectName0 = ISSSTE.Tramites2016.QuejasMedicas.DAL
+		SccAuxPath0 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath0 = ISSSTE.Tramites2016.QuejasMedicas.DAL
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = ISSSTE.Tramites2016.QuejasMedicas.Model\\ISSSTE.Tramites2016.QuejasMedicas.Model.csproj
+		SccProjectName1 = ISSSTE.Tramites2016.QuejasMedicas.Model
+		SccAuxPath1 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath1 = ISSSTE.Tramites2016.QuejasMedicas.Model
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = ISSSTE.Tramites2016.Common\\ISSSTE.Tramites2016.Common.csproj
+		SccProjectName2 = ISSSTE.Tramites2016.Common
+		SccAuxPath2 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath2 = ISSSTE.Tramites2016.Common
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = ISSSTE.Tramites2016.Common.Security\\ISSSTE.Tramites2016.Common.Security.csproj
+		SccProjectName3 = ISSSTE.Tramites2016.Common.Security
+		SccAuxPath3 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath3 = ISSSTE.Tramites2016.Common.Security
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = ISSSTE.Tramites2016.QuejasMedicas\\ISSSTE.Tramites2016.QuejasMedicas.csproj
+		SccProjectName4 = ISSSTE.Tramites2016.QuejasMedicas
+		SccAuxPath4 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath4 = ISSSTE.Tramites2016.QuejasMedicas
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = ISSSTE.Tramites2016.QuejasMedicas.Helpers\\ISSSTE.Tramites2016.QuejasMedicas.Helpers.csproj
+		SccProjectName5 = ISSSTE.Tramites2016.QuejasMedicas.Helpers
+		SccAuxPath5 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath5 = ISSSTE.Tramites2016.QuejasMedicas.Helpers
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName6 = ISSSTE.Tramites2016.QuejasMedicas.Service\\ISSSTE.Tramites2016.QuejasMedicas.Service.csproj
+		SccProjectName6 = ISSSTE.Tramites2016.QuejasMedicas.Service
+		SccAuxPath6 = http://desktop-fqblgie:8080/tfs/issstetf
+		SccLocalPath6 = ISSSTE.Tramites2016.QuejasMedicas.Service
+		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

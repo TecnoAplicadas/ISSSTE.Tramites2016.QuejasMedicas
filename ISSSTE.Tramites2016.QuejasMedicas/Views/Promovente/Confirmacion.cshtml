@@ -1,0 +1,51 @@
+﻿<div class="@Tag.Col(12)" style="height: 40px;">&nbsp;</div>
+<div class="col-md-12" id="IndexRegionMensaje"></div>
+
+<div class="col-md-12">
+    <h2>Confirmación de tu cita</h2>
+    <hr class="red">
+
+    <div class="alert alert-info bottom-buffer" id="I_Confirmacion">&nbsp;</div>
+
+    @{ Html.RenderPartial("InfoGeneral"); }
+
+
+    <div  class="row">
+        <div id="VistaEspecial" class="col-xs-12">
+
+        </div>
+        <div class="row" style="height: 40px">&nbsp;</div>
+        <div id="DivCaptcha"></div>
+    </div>
+
+    <div class="row" style="height: 40px">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="bottom-buffer">
+                    @Tag.InputBoton("PasoAnterior1", "Anterior", 3, 3, "", "","", "'AgendarCita.Confirmacion.Anterior','view'")
+                    @Tag.InputBoton("jsCrearFormaPDF", "Descargar formato de la solicitud", 3, 3, "", "","", "'AgendarCita.Confirmacion.FormatoSolicitud', 'download'")
+                    <!--@Tag.InputBoton("jsCrearFormaDOCX", "Requisitos generales", 3, 3, "", "fa fa-file-word-o")-->
+                    @Tag.InputBoton("ImprimirCita", "Descargar comprobante", 3, 3, "", "","", "'AgendarCita.Confirmacion.Comprobante', 'download'")
+                    @Tag.InputBoton("jsGuardado", "Confirmar cita", 1, 3, "", "","", "'AgendarCita.Confirmacion.Guardar', 'download'")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#I_SolicitudCompleta").html(G_MENSAJES.MENSAJE_ASEGURAMIENTO);
+        $("#I_Confirmacion").html(G_MENSAJES.MENSAJE_CONFIRMACION);
+        jsAjaxGenericoPOST("../Promovente/VerSolicitudVista", G_ModeloAgenda, null, jsPrevio);
+
+        $("#Paso1").addClass("completed");
+        $("#Paso2").addClass("completed");
+        $("#Paso3").addClass("completed");
+        $("#ImprimirCita").css("display", "none");
+
+    });
+
+</script>

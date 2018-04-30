@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Para obtener más información acerca de cómo configurar una aplicación ASP.NET, consulte
+  http://go.microsoft.com/fwlink/?LinkId=301880
+  -->
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="authorizeRoles" type="System.Configuration.NameValueFileSectionHandler,System, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+  </configSections>
+  <authorizeRoles>
+    <add key="AllAdminRoles" value="Administrador UADyCS,Operador UADyCS"/>
+  </authorizeRoles>
+  <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ISSSTE.Tramites2016.QuejasMedicas-20170124064738.mdf;Initial Catalog=aspnet-ISSSTE.Tramites2016.QuejasMedicas-20170124064738;Integrated Security=True" providerName="System.Data.SqlClient"/>
+     
+     <!--<add name="ISSSTEEntities" connectionString="metadata=res://*/ModeloISSSTE.csdl|res://*/ModeloISSSTE.ssdl|res://*/ModeloISSSTE.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=US-LATITUDE-X4;initial catalog=UNO;persist security info=True;user id=sa;password=ultra1234;multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+    <add name="IdentityConnection" connectionString="Data Source=US-LATITUDE-X4;Initial Catalog=ISSSTE_V0.1;user id=sa;password=ultra1234;multipleactiveresultsets=True" providerName="System.Data.SqlClient"/>-->
+   <add name="IdentityConnection" connectionString="Data Source=DESKTOP-FQBLGIE;Initial Catalog=ISSSTE;user id=sa;password=dell;multipleactiveresultsets=True" providerName="System.Data.SqlClient" />
+    <add name="ISSSTEEntities" connectionString="metadata=res://*/ModeloISSSTE.csdl|res://*/ModeloISSSTE.ssdl|res://*/ModeloISSSTE.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-FQBLGIE;initial catalog=ISSSTE;persist security info=True;user id=sa;password=dell;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    
+   
+  </connectionStrings>
+  <appSettings>
+
+    <add key="webpages:Version" value="3.0.0.0"/>
+    <add key="webpages:Enabled" value="false"/>
+    <add key="ClientValidationEnabled" value="true"/>
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+    <add key="WithLoggerDebug" value="true"/>
+
+    <!--Configuracion Seguridad -->
+    <add key="ClientId" value="web"/>
+    <add key="ProcedureId" value="9cdf1e0d-d001-438c-9f0b-e4242c60e7b0"/>
+    <add key="Secret" value="49C2FC46-7287-4EFA-AD67-CD037A0E24DB"/>
+    <add key="CookieName" value="ISSSTE.Tramites2016.QmRdRI"/>
+    <add key="TokenTimeoutMinutes" value="30"/>
+
+    <!--Mail Service-->
+    <add key="MailHost" value="smtp.gmail.com"/>
+    <add key="MailPort" value="25"/>
+    <add key="MailUseSSL" value="true"/>
+    <add key="MailUsername" value="mfdzp88@gmail.com"/>
+    <add key="MailPassword" value="isteprueba-mail"/>
+    <add key="MailFromAddress" value="mfdzp88@gmail.com"/>
+    <add key="MailMasterPagePath" value="~/Content/Correo/DefaultMasterpageMail.html"/>
+    <add key="MailMasterPageLogoPath" value="~/Content/Correo/issste-logo.png"/>
+    <add key="MailSendEnable" value="true"/>
+
+    <!-- Configuración del proveedor de seguridad Owin del ISSSTE -->
+    <add key="ISSSTE.Tramites2016.Common.Security.Owin.Constants.Client.TokenUrl" value="http://localhost:8089/token"/>
+    <add key="ISSSTE.Tramites2016.Common.Security.Owin.Constants.Client.LoginUrl" value="http://localhost:8089/login"/>
+    <add key="ISSSTE.Tramites2016.Common.Security.Owin.Constants.Client.LogoutUrl" value="http://localhost:8089/logout"/>
+    <add key="ISSSTE.Tramites2016.Common.Security.Owin.Constants.Server.WSBaseUrl" value="http://localhost:8089/"/>
+    <add key="ISSSTE.Tramites2016.Common.Security.Owin.Constants.Server.TokenValidationUrl" value="http://localhost:8089/api/auth/validate"/>
+    <add key="Microsoft.VisualStudio.Enterprise.AspNetHelper.VsInstrLocation" value="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Performance Tools\vsinstr.exe"/>
+  </appSettings>
+  <!--
+    Para obtener una descripción de los cambios de web.config, vea http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    Los siguientes atributos se pueden establecer en la etiqueta <httpRuntime>.
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+    <authentication mode="None"/>
+    <compilation debug="true" targetFramework="4.5" assemblyPostProcessorType="Microsoft.VisualStudio.Enterprise.Common.AspPerformanceInstrumenter, Microsoft.VisualStudio.Enterprise.AspNetHelper, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>
+    <httpRuntime targetFramework="4.5"/>
+    <customErrors mode="Off"/>
+  </system.web>
+  <system.webServer>
+    <modules>
+      <remove name="FormsAuthentication"/>
+    </modules>
+    <handlers>
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0"/>
+      <remove name="OPTIONSVerbHandler"/>
+      <remove name="TRACEVerbHandler"/>
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0"/>
+    </handlers>
+  </system.webServer>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.1.0" newVersion="3.0.1.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" culture="neutral" publicKeyToken="30ad4fe6b2a6aeed"/>
+        <bindingRedirect oldVersion="0.0.0.0-9.0.0.0" newVersion="9.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Practices.Unity" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.5.0.0" newVersion="3.5.0.0"/>
+      </dependentAssembly>
+
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.VisualStudio.Enterprise.AspNetHelper" publicKeyToken="b03f5f7f11d50a3a" culture="neutral"/>
+        <codeBase version="14.0.0.0" href="file:///C:/Program%20Files%20(x86)/Microsoft%20Visual%20Studio%2014.0/Common7/IDE/PrivateAssemblies/Microsoft.VisualStudio.Enterprise.AspNetHelper.DLL"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="mssqllocaldb"/>
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer"/>
+    </providers>
+  </entityFramework>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:6 /nowarn:1659;1699;1701"/>
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:14 /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+"/>
+    </compilers>
+  </system.codedom>
+</configuration>

@@ -1,0 +1,35 @@
+﻿<ol class="breadcrumb">
+    <li>
+        <a id="navegacionSistema" href="https://www.gob.mx/" style='text-decoration: none;'>
+            <span class="icon icon-home" aria-hidden="true" id="idHome"></span>
+            <!--&nbsp;&nbsp;@TempData["Sistema"]-->
+        </a>
+    </li>
+    <li>
+        <a id="navegacionSeccionInicio" style='text-decoration:none;'>
+            <span></span> Inicio
+        </a>
+    </li>
+    <li>
+        <a id="navegacionSeccion" style='text-decoration:none;'>
+            <span></span>
+        </a>
+    </li>
+</ol>
+
+
+<div class="row bottom-buffer">
+    <h1 class="col-md-8">@TempData["Sistema"]</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12 btn-group text-center" style="width:100%">
+        @Tag.InputBoton("AcercaTramite", "Inicio", 3, 3, "", "icon-infocircle", "", "", "EventMain")
+        @Tag.InputBoton("AgendaCita", "Agendar cita", 3, 3, "", "icon-calendar", "", "", "EventMain")
+        @Tag.InputBoton("VerSolicitud", "Consultar cita", 3, 3, "", "icon-search", "", "", "EventMain")
+        @Tag.InputBoton("CancelaCita", "Cancelar cita", 3, 3, "", "glyphicon glyphicon-remove", "", "", "EventMain")
+       @* @Tag.InputBoton("InformacionAdicional", "Más información", 3, 3, "", "icon-phone", "", "", "EventMain")*@
+    </div>
+</div>
+
+<div class="row" id="SeccionTrabajoGeneral"></div>

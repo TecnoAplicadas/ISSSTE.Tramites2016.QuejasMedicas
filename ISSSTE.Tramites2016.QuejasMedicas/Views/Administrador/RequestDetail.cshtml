@@ -1,0 +1,258 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.AdministracionDTO.RequestResultDTO
+
+
+<div id="DetalleContainer">
+
+<div class="col-xs-12">
+    <div class="alerts"></div>
+</div>
+
+<div id="content" class="col-xs-12">
+<!--TABS-->
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a data-toggle="tab" href="#infogen">Información general</a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#segsol">Seguimiento de la solicitud</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+
+<!--INFORMACION GENERAL-->
+<div id="infogen" class="tab-pane fade in active">
+
+    <div class="col-md-12" style="height: 280px; overflow-y: auto;">
+        @if (Model.Promovente != null)
+        {
+            <!--DATOS DEL PROMOVENTE-->
+            <div class="form-group col-xs-12">
+
+                <center>
+                    <h3>Datos del promovente</h3>
+                </center>
+                <hr class="red">
+            </div>
+
+            <div class="row">
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Nombre(s):</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.Nombre) == false)
+                                                       {
+                                                           @Model.Promovente.Nombre
+                                                       }" id="Nombre" name="Nombre" type="text" disabled="disabled"/>
+                </div>
+
+
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Primer apellido:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.Paterno) == false)
+                                                       {
+                                                           @Model.Promovente.Paterno
+                                                       }" d="PrimerApellido" name="PrimerApellido" type="text" disabled="disabled"/>
+                </div>
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Segundo apellido:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.Materno) == false)
+                                                       {
+                                                           @Model.Promovente.Materno
+                                                       }" id="SegundoApellido" name="SegundoApellido" type="text" disabled="disabled"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">CURP:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.CURP) == false)
+                                                       {
+                                                           @Model.Promovente.CURP
+                                                       }" id="SegundoApellido" name="SegundoApellido" id="CURP" name="Curp" type="text" disabled="disabled"/>
+                </div>
+
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Sexo:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.Sexo) == false)
+                                                       {
+                                                           @Model.Promovente.Sexo
+                                                       }" id="Sexo" name="Sexo" type="text" disabled="disabled"/>
+                </div>
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Edad:</label>
+                    <input class="form-control" value="@Model.Promovente.Edad" id="Edad" name="Edad" type="text" disabled="disabled"/>
+
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <center>
+                    <h3>Datos de contacto</h3>
+                </center>
+                <hr class="black">
+            </div>
+
+            <div class="form-group col-if-12 col-md-3">
+                <label for="telefono">Tel&eacute;fono fijo<span class="required"></span>:</label>
+                <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.TelFijo) == false)
+                                                   {
+                                                       @Model.Promovente.TelFijo
+                                                   }" id="TelefonoFijo" name="TelefonoFijo" type="text" disabled="disabled"/>
+            </div>
+
+            <div class="form-group col-if-12 col-md-3">
+                <label for="telefono">Celular<span class="required"></span>:</label>
+                <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.TelMovil) == false)
+                                                   {
+                                                       @Model.Promovente.TelMovil
+                                                   }" id="Celular" name="Celular" type="text" disabled="disabled"/>
+
+            </div>
+
+            <div class="form-group col-if-12 col-md-3">
+                <label for="correo">Correo electr&oacute;nico<span class="required"></span>:</label>
+                <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Promovente.CorreoElectronico) == false)
+                                                   {
+                                                       @Model.Promovente.CorreoElectronico
+                                                   }" id="Correo" name="Email" type="text" disabled="disabled"/>
+            </div>
+
+            <!--DATOS DEL PROMOVENTE-->
+        }
+
+        @if (Model.Paciente != null && Model.Promovente != null && Model.Promovente.PersonaId != Model.Paciente.PersonaId)
+        {
+            <!--DATOS DEL PACIENTE-->
+
+            <div class="form-group col-xs-12">
+
+                <center>
+                    <h3>Datos del paciente</h3>
+                </center>
+                <hr class="red">
+            </div>
+
+            <div class="row">
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Nombre(s):</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.Nombre) == false)
+                                                       {
+                                                           @Model.Paciente.Nombre
+                                                       }" id="Nombre" name="Nombre" type="text" disabled="disabled"/>
+                </div>
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Primer apellido:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.Paterno) == false)
+                                                       {
+                                                           @Model.Paciente.Paterno
+                                                       }" id="PrimerApellido" name="PrimerApellido" type="text" disabled="disabled"/>
+                </div>
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Segundo apellido:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.Materno) == false)
+                                                       {
+                                                           @Model.Paciente.Materno
+                                                       }" id="SegundoApellido" name="SegundoApellido" type="text" disabled="disabled"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">CURP:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.CURP) == false)
+                                                       {
+                                                           @Model.Paciente.CURP
+                                                       }" id="CURP" name="Curp" type="text" disabled="disabled"/>
+                </div>
+
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Sexo:</label>
+                    <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.Sexo) == false)
+                                                       {
+                                                           @Model.Paciente.Sexo
+                                                       }" id="Sexo" name="Sexo" type="text" disabled="disabled"/>
+                </div>
+                <div class="form-group col-if-12 col-md-3">
+                    <label class="control-label">Edad:</label>
+                    <input class="form-control" value="@Model.Paciente.Edad" id="Edad" name="Edad" type="text" disabled="disabled"/>
+
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <center>
+                    <h3>Datos de contacto</h3>
+                </center>
+                <hr class="black">
+            </div>
+
+            <div class="form-group col-if-12 col-md-3">
+                <label for="telefono">Tel&eacute;fono fijo<span class="required"></span>:</label>
+                <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.TelFijo) == false)
+                                                   {
+                                                       @Model.Paciente.TelFijo
+                                                   }" id="TelefonoFijo" name="TelefonoFijo" type="text" disabled="disabled"/>
+            </div>
+
+            <div class="form-group col-if-12 col-md-3">
+                <label for="telefono">Celular<span class="required"></span>:</label>
+                <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.TelMovil) == false)
+                                                   {
+                                                       @Model.Paciente.TelMovil
+                                                   }" id="Celular" name="Celular" type="text" disabled="disabled"/>
+
+            </div>
+
+            <div class="form-group col-if-12 col-md-3">
+                <label for="correo">Correo electr&oacute;nico<span class="required"></span>:</label>
+                <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Paciente.CorreoElectronico) == false)
+                                                   {
+                                                       @Model.Paciente.CorreoElectronico
+                                                   }" id="Correo" name="Email" type="text" disabled="disabled"/>
+            </div>
+
+            <!--DATOS DEL PACIENTE-->
+        }
+    </div>
+</div>
+<!--INFORMACION GENERAL-->
+<!--SEGUIMIENTO DE LA SOLICITUD-->
+<div id="segsol" class="tab-pane fade">
+    <div>
+        <center>
+            <h3>Datos de la solicitud</h3>
+        </center>
+        <hr class="red">
+    </div>
+    <div class="form-group col-if-6 col-md-3">
+        <label class="control-label">Fecha y hora de la cita:</label>
+        <input class="form-control" value="@if (Model.Cita != null)
+        {
+                                               @Model.Cita.FechaConHora
+                                           }" id="FechaHoraCita" name="FechaHoraCita" type="text" disabled="disabled"/>
+    </div>
+
+    <div class="form-group col-if-6 col-md-3">
+        <label class="control-label">Folio:</label>
+        <input class="form-control" value="@if (string.IsNullOrEmpty(Model.Folio) == false)
+                                           {
+                                               @Model.Folio
+                                           }" id="Name" name="Name" type="text" disabled="disabled"/>
+    </div>
+    <div class="form-group col-if-6 col-md-3">
+        <label class="control-label">Estado:</label>
+        <input class="form-control" value=" @if (Model.Cita != null)
+                                            {
+                                                @Model.Cita.ConceptoEdoCita
+                                            } " id="status" name="status" type="text" disabled="disabled"/>
+    </div>
+</div>
+<!--SEGUIMIENTO DE LA SOLICITUD-->
+</div>
+</div><!--TABS-->
+
+</div>
+
+
+<script>
+    UI.initTabs();
+</script>

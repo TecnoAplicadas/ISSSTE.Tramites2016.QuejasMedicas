@@ -1,0 +1,13 @@
+﻿.et {
+    background-color: azure;
+    color: black;
+    width: 200px;
+}
+
+.panel-footer { height: 50px; }
+
+.btn:hover, .boton:hover .a:hover {
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+}

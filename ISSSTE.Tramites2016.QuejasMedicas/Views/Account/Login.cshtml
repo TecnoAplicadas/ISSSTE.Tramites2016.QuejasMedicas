@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutAdministrator.cshtml";
+    ViewBag.Title = "Trámites digitales";
+}
+
+<div class="container">
+    @if (!Request.GetOwinContext().Authentication.User.Identity.IsAuthenticated)
+    {
+        <div class="row" data-ng-controller="loginController as vm">
+            <div class="col-md-12">
+                <div class="col-md-12 text-center">
+                    <br>
+                    <h2>Sistema de administración de trámites</h2>
+                    <h4>@*@ViewBag.Title*@</h4><br><br>
+                    <button type="button" class="btn btn-primary btn-lg" data-ng-click="vm.continueToLogin('@ViewBag.ReturnUrl')">Continuar</button>
+
+                </div>
+            </div> <!-- /col 12 -->
+        </div>
+        <!-- /row -->
+    }
+    else
+    {
+        <h2></h2>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <strong>Parece que no tienes permiso para ver esto</strong>
+            <br/><br/>
+            <span>Si crees que esto no debería ser así, contacta a tu administrador de sistema.</span>
+        </div>
+
+    }
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/administrator/scripts-utils")
+    @Scripts.Render("~/bundles/administrator/app/login")
+}

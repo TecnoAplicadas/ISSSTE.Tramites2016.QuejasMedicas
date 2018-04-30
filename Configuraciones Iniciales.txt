@@ -1,0 +1,91 @@
+
+Autor: Marcelo fernandez Paxtian
+
+Instalar el api para la inyeccion de dependencias:
+
+(En el proyecto principal)
+Install-Package Unity.WebAPI -version 5.1.0.0  ISSSTE.Tramites2016.QuejasMedicas
+Instalar Unity.Mvc desde nuget (version 3.5)
+se agregaran las siguientes librerias 
+ -Microsoft.Practices.Unity
+ -Microsoft.Practices.Unity.Configuration
+ -Microsoft.Practices.Unity.Mvc
+ -Microsoft.Practices.Unity.RegistrationByConvention
+
+
+1. Configurar el archivo UnityConfig, comentar metodo "RegisterComponents"
+2. Agregar la clase estatica UnityApiConfig -> Contiene la relacion de dependiencias entre interfaz -> clases
+
+
+
+Instalar angular v 1.5.8 desde nuget.
+
+--------------------------------------------------
+MODULO DE SEGURIDAD
+--------------------------------------------------
+
+
+1. Instalar  Kentor OwinCookieSaver Version=1.1.0.0
+(Workaround Middleware for Katana Bug #197)
+
+2. Agregar las siguienetes llaves al web.config
+ClientId
+ProcedureId
+Secret
+CookieName
+
+<!--Configuracion Seguridad -->
+<add key="ClientId" value="web" />
+<add key="ProcedureId" value="5244ECFF-B282-4E71-9BAE-0365D18B7925" />
+<add key="Secret" value="49C2FC46-7287-4EFA-AD67-CD037A0E24DB" />
+<add key="CookieName" value="ISSSTE.Tramites2015.Estancias" />
+<add key="TokenTimeoutMinutes" value="30" />
+
+3.   
+
+<!-- Configuración del proveedor de seguridad Owin del ISSSTE -->
+<add key="ISSSTE.Tramites2015.Common.Security.Owin.Constants.Client.TokenUrl" value="http://192.168.2.81/IsssteSeguridad2015/token" />
+<add key="ISSSTE.Tramites2015.Common.Security.Owin.Constants.Client.LoginUrl" value="http://192.168.2.81/IsssteSeguridad2015/login" />
+<add key="ISSSTE.Tramites2015.Common.Security.Owin.Constants.Client.LogoutUrl" value="http://192.168.2.81/IsssteSeguridad2015/logout" />
+<add key="ISSSTE.Tramites2015.Common.Security.Owin.Constants.Server.WSBaseUrl" value="http://192.168.2.81/IsssteSeguridad2015/" />
+<add key="ISSSTE.Tramites2015.Common.Security.Owin.Constants.Server.TokenValidationUrl" value="http://192.168.2.81/IsssteSeguridad2015/api/auth/validate" />
+
+Nota: el App.config de Common.Security tambien tiene las URL adsolutas para el servicio
+
+4. Se agrega la clase:
+LoginCompleteViewModel
+
+    public class LoginCompleteViewModel
+    {
+        public string ClientId { get; set; }
+
+        public string UserName { get; set; }
+
+        public string ReturnUrl { get; set; }
+    }
+
+----------------------------------------------------------------
+5. El controlador ManageViewModels, no se utiliza
+
+6. Agregar los scripts en el bundles
+
+            bundles.Add(new ScriptBundle("~/bundles/administrator/app/login")
+                .IncludeDirectory("~/Scripts/Administrator/App/resources", "*.js", true)
+               .Include(
+                   "~/Scripts/Administrator/App/app.js",
+                   "~/Scripts/Administrator/App/config.js",
+                   "~/Scripts/Administrator/App/config.exceptionHandler.js"
+               )
+               .IncludeDirectory("~/Scripts/Administrator/App/common", "*.js", true)
+               .IncludeDirectory("~/Scripts/Administrator/App/login", "*.js", true)
+            );
+
+
+7. Agregar en el webconfig del proyecto principal 
+<section name="authorizeRoles" type="System.Configuration.NameValueFileSectionHandler,System, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />  
+
+8. Agregar la libreria   Microsoft.AspNet.WebApi.Owin.5.2.3
+de nuget
+
+
+

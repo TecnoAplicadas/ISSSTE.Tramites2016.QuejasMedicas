@@ -1,0 +1,29 @@
+﻿<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+<div class="alert alert-info @Tag.Col(12)"> Seleccionar la Unidad Médica y los tipos de trámite</div>
+<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+
+<div class="row">
+    @TagReporte.InputSelect(4, "UADyCS", "UnidadAtencionId", "", false, "", "Seleccione la opción [Selecciona] para escoger todas las unidades de atención", "", false) 
+    @TagReporte.InputSelect(8, "Tipo de trámite", "CatTipoTramite", "selectpicker", false, "  multiple data-actions-box='true' ", "Para seleccionar varios elementos, mantener oprimido la tecla Ctrl")           
+</div>
+<div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+<div class="row col-md-12">
+    <div class="pull-right">
+        <button type="button" style="text-decoration: none;"
+                class="btn btn-default pull-right"
+                onclick="MostrarFiltros('A2');">
+            <span class="fa fa-eye" aria-hidden="true"></span>&nbsp;&nbsp;Mostrar todos los filtros
+        </button>
+    </div>
+</div>
+<div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+
+<script type="text/javascript">
+
+    var G_Escogidos = "";
+
+    $(document).ready(function() {
+        RecargaUADyCS();
+    });
+
+</script>

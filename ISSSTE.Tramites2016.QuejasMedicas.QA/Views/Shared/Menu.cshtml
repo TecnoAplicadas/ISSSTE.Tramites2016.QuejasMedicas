@@ -1,0 +1,30 @@
+﻿<script type="text/javascript" src="~/Scripts/BaseJS/jsNotificaciones.js"></script>
+<script type="text/javascript" src="~/Scripts/BaseJS/jsTooltip.js"></script>
+<link rel="stylesheet" href="~/Content/BaseCSS/Tooltip.css"/>
+
+<div id="side-menu" class="side-menu collapse" style="background-color: #428bca; height: 1000px;">
+    <nav id="vertical_nav" class="navbar navbar-default" role="navigation"
+         style="background-color: #428bca;">
+        <button id="collapse_menu" class="collapse_menu"
+                onmouseover="tooltip.show('Click para expandir / contraer el menú')" onmouseout="tooltip.hide();"
+                onclick="tooltip.hide();">
+            <i id="IdCollapse" class="collapse_menu--icon fa fa-fw"></i>
+            <span class="collapse_menu--label"></span>
+        </button>
+        <!-- Menu -->
+        <div class="side-menu-container" style="background-color: #428bca;">
+            @Tag.Height(15)
+            @Tag.Height(30)
+            <div id="demo_menu" style="background-color: #428bca;"></div>
+        </div>
+    </nav>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        ToggleMenu();
+    });
+
+
+</script>

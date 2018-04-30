@@ -1,0 +1,84 @@
+﻿<script type="text/javascript" src="~/Scripts/Reporte/jsPeticion.js"></script>
+<script type="text/javascript" src="~/Scripts/Reporte/jsReporteGrafica.js"></script>
+
+<style>
+    .doc-alert {
+        border-left: 5px solid #1ABC9C;
+        //font-family: 'cardo';
+        font-size: 18px;
+        //font-style: italic;
+        margin: 20px 0;
+        padding-left: 15px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="side-body ">
+
+        <div class="col-xs-12">
+            @*<div class="row col-md-12">
+                    <div class="doc-alert doc-alert-info">
+
+                    </div>
+
+                </div>*@
+            <div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+
+            <div class="row col-md-12 alert alert-info">Seleccionar los filtros de columna correspondientes para el reporte</div>
+
+            <div class="row">
+                <div id="FiltrosReporte2">
+                    <div class="row">
+                        @TagReporte.InputSelect(4, "Tipo de trámite", "CatTipoTramiteId", "", false, "", "Seleccione la opción [Selecciona] para escoger todos los tipos de trámite", "", false)
+                        @TagReporte.InputSelect(4, "UADyCS", "UnidadAtencionId", "", false, "", "Seleccione la opción [Selecciona] para escoger todas las unidades de atención", "", false)
+                        @TagReporte.InputSelect(4, "Estado de la cita", "CatTipoEstadoId", "", false, "", "Seleccione la opción [Selecciona] para escoger todos los estados de la cita", "", false)
+                    </div>
+                    <!--<div class="container">
+                        @TagReporte.InputSelect(12, "Tipo de trámite", "CatTipoTramite", "selectpicker", false, "  multiple data-actions-box='true' ", "Para seleccionar varios elementos, mantener oprimido la tecla Ctrl")
+                        @TagReporte.InputSelect(12, "Estado de la cita", "CatTipoEstado", "selectpicker", false, "  multiple data-actions-box='true' ", "Para seleccionar varios elementos, mantener oprimido la tecla Ctrl")
+                    </div>-->
+                    <div class="row">
+                        @TagReporte.InputRangoFecha(8, "Fecha inicio de la solicitud", "Fecha fin de la solicitud", "FechaRegistro", "", 10, false, "", "Proporcionar sólo un valor en caso de requerir una consulta de una fecha")
+                    </div>
+                    <div class="row">
+                        @TagReporte.InputRangoFecha(8, "Fecha inicio de la cita", "Fecha fin de la cita", "FechaCita", "", 10, false, "", "Proporcionar sólo un valor en caso de requerir una consulta de una fecha")
+                    </div>
+                </div>
+            </div>
+            <div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+            <div class="row col-md-12">
+                <div class="pull-right">
+                    <button type="button" style="text-decoration: none;"
+                            class="btn btn-default pull-right"
+                            onclick="LimpiarFiltros();">
+                        <span class="fa fa-eraser" aria-hidden="true"></span>&nbsp;&nbsp;Limpiar
+                    </button>
+                </div>
+            </div>
+            <div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var modelo = { ConTodos: true };
+        jsAjaxGenerico("../Catalogo/GetBusquedaTipoTramite", modelo, "CatTipoTramiteId");
+        jsAjaxGenerico("../Catalogo/GetBusquedaEstadoCita", modelo, "CatTipoEstadoId");
+        ///jsAjaxGenerico("../Catalogo/GetBusquedaTipoTramite", null, "CatTipoTramite");
+        ///jsAjaxGenerico("../Catalogo/GetBusquedaEstadoCita", null, "CatTipoEstado");
+        jsMouseOverFiltro();
+        jsMouseOutFiltro();
+        jsConfiguracionInicialGeneral();
+        RecargaUADyCS();
+        $("#CatTipoTramite").css("height", "67px");
+        $("#CatTipoEstado").css("height", "130px");
+
+        $(".closeMaker").remove();
+        $(".CampoAux").remove();
+    });
+
+</script>

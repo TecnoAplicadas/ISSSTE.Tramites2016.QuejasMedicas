@@ -1,0 +1,33 @@
+﻿@using ISSSTE.Tramites2016.Common.Security.Owin
+@{
+    ViewBag.Title = "Cierre de sesión";
+    Layout = "~/Views/Shared/LayoutAdministrator.cshtml";
+}
+<div class="container">
+    <h2></h2>
+    <div data-ng-controller="loginController as vm" data-ng-init="vm.logout('@IsssteTramitesConstants.LogoutUrl', '@ViewBag.ReturnUrl', @ViewBag.Soft.ToString().ToLower())">
+        @if (ViewBag.Soft)
+        {
+            <h2></h2>
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <strong>!Tu sesión expiro!</strong>
+                <br/><br/>
+                <span>Te enviaremos a que inicies sesión otra vez y puedas continuar tu trabajo.</span>
+            </div>
+        }
+        else
+        {
+            <h2></h2>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <strong>¡Tu sesión ha cerrado satisfactoriomente! </strong>
+                <br/><br/>
+                <span>Enseguida cerraremos tu sesión global.</span>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/administrator/scripts-utils")
+    @Scripts.Render("~/bundles/administrator/app/login")
+}

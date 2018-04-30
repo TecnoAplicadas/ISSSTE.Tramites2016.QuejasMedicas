@@ -1,0 +1,2004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ISSSTEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatSysConfiguracion">
+          <Key>
+            <PropertyRef Name="CatSysConfiguracionId" />
+          </Key>
+          <Property Name="CatSysConfiguracionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="200" />
+          <Property Name="EsAdministrable" Type="bit" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="TipoDato" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatSysModulo">
+          <Key>
+            <PropertyRef Name="CatSysModuloId" />
+          </Key>
+          <Property Name="CatSysModuloId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatSysModuloPadreId" Type="int" />
+          <Property Name="Concepto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LinkText" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ActionName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Icono" Type="varchar" MaxLength="100" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatSysRol">
+          <Key>
+            <PropertyRef Name="CatSysRolId" />
+          </Key>
+          <Property Name="CatSysRolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="AspNetRolId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="CatTipoDiaSemana">
+          <Key>
+            <PropertyRef Name="CatTipoDiaSemanaId" />
+          </Key>
+          <Property Name="CatTipoDiaSemanaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dia" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatTipoEdoCita">
+          <Key>
+            <PropertyRef Name="CatTipoEdoCitaId" />
+          </Key>
+          <Property Name="CatTipoEdoCitaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Semaforo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CatTipoEntidad">
+          <Key>
+            <PropertyRef Name="CatTipoEntidadId" />
+          </Key>
+          <Property Name="CatTipoEntidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Siglas" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatTipoInvolucrado">
+          <Key>
+            <PropertyRef Name="CatTipoInvolucradoId" />
+          </Key>
+          <Property Name="CatTipoInvolucradoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatTipoSeccion">
+          <Key>
+            <PropertyRef Name="CatTipoSeccionId" />
+          </Key>
+          <Property Name="CatTipoSeccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Imagen" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="CatTipoTramite">
+          <Key>
+            <PropertyRef Name="CatTipoTramiteId" />
+          </Key>
+          <Property Name="CatTipoTramiteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Semaforo" Type="varchar" MaxLength="20" />
+          <Property Name="FormatoUniversal" Type="varchar" MaxLength="150" />
+          <Property Name="Homoclave" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiaEspecial">
+          <Key>
+            <PropertyRef Name="DiaEspecialId" />
+          </Key>
+          <Property Name="DiaEspecialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiaNoLaborable">
+          <Key>
+            <PropertyRef Name="DiaNoLaborableId" />
+          </Key>
+          <Property Name="DiaNoLaborableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="100" />
+          <Property Name="TramiteUnidadAtencionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Domicilio">
+          <Key>
+            <PropertyRef Name="DomicilioId" />
+          </Key>
+          <Property Name="DomicilioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="255" />
+          <Property Name="NumeroExterior" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroInterior" Type="varchar" MaxLength="100" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="CodigoPostal" Type="int" />
+          <Property Name="Colonia" Type="varchar" MaxLength="255" />
+          <Property Name="Municipio" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="HorarioId" />
+          </Key>
+          <Property Name="HorarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="TramiteUnidadAtencionId" Type="int" Nullable="false" />
+          <Property Name="CatTipoDiaSemanaId" Type="int" />
+          <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Capacidad" Type="int" Nullable="false" />
+          <Property Name="EsDiaEspecial" Type="bit" Nullable="false" />
+          <Property Name="DiaEspecialId" Type="int" />
+        </EntityType>
+        <EntityType Name="Involucrado">
+          <Key>
+            <PropertyRef Name="InvolucradoId" />
+          </Key>
+          <Property Name="InvolucradoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="SolicitudId" Type="int" Nullable="false" />
+          <Property Name="CatTipoInvolucradoId" Type="int" Nullable="false" />
+          <Property Name="PersonaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LenguajeCiudadano">
+          <Key>
+            <PropertyRef Name="LenguajeCiudadanoId" />
+          </Key>
+          <Property Name="LenguajeCiudadanoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTecnico" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="200" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EsDeVista" Type="bit" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="EsUsuarioInterno" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" />
+          <Property Name="Paterno" Type="varchar" MaxLength="45" />
+          <Property Name="Materno" Type="varchar" MaxLength="45" />
+          <Property Name="CURP" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="85" />
+          <Property Name="Telefono" Type="varchar" MaxLength="8" />
+          <Property Name="TelefonoMovil" Type="varchar" MaxLength="10" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Lada" Type="varchar" MaxLength="3" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="EsMasculino" Type="bit" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="EsUsuarioBloqueado" Type="bit" />
+          <Property Name="FechaDesbloqueo" Type="date" />
+        </EntityType>
+        <EntityType Name="Requisito">
+          <Key>
+            <PropertyRef Name="RequisitoId" />
+          </Key>
+          <Property Name="RequisitoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatTipoTramiteId" Type="int" Nullable="false" />
+          <Property Name="NombreDocumento" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="EsObligatorio" Type="bit" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seccion">
+          <Key>
+            <PropertyRef Name="SeccionId" />
+          </Key>
+          <Property Name="SeccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EsPrimerNivel" Type="bit" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="CatTipoSeccionId" Type="int" Nullable="false" />
+          <Property Name="Orden" Type="int" />
+          <Property Name="CatTipoTramiteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeccionDetalle">
+          <Key>
+            <PropertyRef Name="SeccionDetalleId" />
+          </Key>
+          <Property Name="SeccionDetalleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeccionId" Type="int" Nullable="false" />
+          <Property Name="Contenido" Type="varchar" MaxLength="2000" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Solicitud">
+          <Key>
+            <PropertyRef Name="SolicitudId" />
+          </Key>
+          <Property Name="SolicitudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="TramiteUnidadAtencionId" Type="int" Nullable="false" />
+          <Property Name="NumeroFolio" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CatTipoEdoCitaId" Type="int" Nullable="false" />
+          <Property Name="HorarioId" Type="int" Nullable="false" />
+          <Property Name="FechaCita" Type="date" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="UnidadMedicaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysAcceso">
+          <Key>
+            <PropertyRef Name="SysAccesoId" />
+          </Key>
+          <Property Name="SysAccesoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatSysRolId" Type="int" />
+          <Property Name="CatSysModuloId" Type="int" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TramiteUnidadAtencion">
+          <Key>
+            <PropertyRef Name="TramiteUnidadAtencionId" />
+          </Key>
+          <Property Name="TramiteUnidadAtencionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="UnidadAtencionId" Type="int" Nullable="false" />
+          <Property Name="CatTipoTramiteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnidadAtencion">
+          <Key>
+            <PropertyRef Name="UnidadAtencionId" />
+          </Key>
+          <Property Name="UnidadAtencionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="DomicilioId" Type="int" />
+          <Property Name="CatTipoEntidadId" Type="int" Nullable="false" />
+          <Property Name="Contador" Type="int" Nullable="false" />
+          <Property Name="Prefijo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mascara" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ReiniciarContador" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnidadMedica">
+          <Key>
+            <PropertyRef Name="UnidadMedicaId" />
+          </Key>
+          <Property Name="UnidadMedicaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnidadAtencionId" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CatSysModulo_CatSysModulo">
+          <End Role="CatSysModulo" Type="Self.CatSysModulo" Multiplicity="0..1" />
+          <End Role="CatSysModulo1" Type="Self.CatSysModulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatSysModulo">
+              <PropertyRef Name="CatSysModuloId" />
+            </Principal>
+            <Dependent Role="CatSysModulo1">
+              <PropertyRef Name="CatSysModuloPadreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatSysRol_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1" />
+          <End Role="CatSysRol" Type="Self.CatSysRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CatSysRol">
+              <PropertyRef Name="AspNetRolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiaNoLaborable_TramiteUnidadAtencion">
+          <End Role="TramiteUnidadAtencion" Type="Self.TramiteUnidadAtencion" Multiplicity="1" />
+          <End Role="DiaNoLaborable" Type="Self.DiaNoLaborable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TramiteUnidadAtencion">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Principal>
+            <Dependent Role="DiaNoLaborable">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_CatTipoHorario">
+          <End Role="CatTipoDiaSemana" Type="Self.CatTipoDiaSemana" Multiplicity="0..1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoDiaSemana">
+              <PropertyRef Name="CatTipoDiaSemanaId" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="CatTipoDiaSemanaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_DiaEspecial">
+          <End Role="DiaEspecial" Type="Self.DiaEspecial" Multiplicity="0..1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiaEspecial">
+              <PropertyRef Name="DiaEspecialId" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="DiaEspecialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Unidad">
+          <End Role="TramiteUnidadAtencion" Type="Self.TramiteUnidadAtencion" Multiplicity="1" />
+          <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TramiteUnidadAtencion">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Involucrado_CatTipoInvolucrado">
+          <End Role="CatTipoInvolucrado" Type="Self.CatTipoInvolucrado" Multiplicity="1" />
+          <End Role="Involucrado" Type="Self.Involucrado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoInvolucrado">
+              <PropertyRef Name="CatTipoInvolucradoId" />
+            </Principal>
+            <Dependent Role="Involucrado">
+              <PropertyRef Name="CatTipoInvolucradoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Involucrado_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Involucrado" Type="Self.Involucrado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Involucrado">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Involucrado_Solicitud">
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="1" />
+          <End Role="Involucrado" Type="Self.Involucrado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Solicitud">
+              <PropertyRef Name="SolicitudId" />
+            </Principal>
+            <Dependent Role="Involucrado">
+              <PropertyRef Name="SolicitudId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisito_CatTipoRequisito">
+          <End Role="CatTipoTramite" Type="Self.CatTipoTramite" Multiplicity="1" />
+          <End Role="Requisito" Type="Self.Requisito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoTramite">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Principal>
+            <Dependent Role="Requisito">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seccion_CatTipoSeccion">
+          <End Role="CatTipoSeccion" Type="Self.CatTipoSeccion" Multiplicity="1" />
+          <End Role="Seccion" Type="Self.Seccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoSeccion">
+              <PropertyRef Name="CatTipoSeccionId" />
+            </Principal>
+            <Dependent Role="Seccion">
+              <PropertyRef Name="CatTipoSeccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seccion_CatTipoTramite">
+          <End Role="CatTipoTramite" Type="Self.CatTipoTramite" Multiplicity="1" />
+          <End Role="Seccion" Type="Self.Seccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoTramite">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Principal>
+            <Dependent Role="Seccion">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeccionDetalle_Seccion">
+          <End Role="Seccion" Type="Self.Seccion" Multiplicity="1" />
+          <End Role="SeccionDetalle" Type="Self.SeccionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seccion">
+              <PropertyRef Name="SeccionId" />
+            </Principal>
+            <Dependent Role="SeccionDetalle">
+              <PropertyRef Name="SeccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_CatTipoEdoCita">
+          <End Role="CatTipoEdoCita" Type="Self.CatTipoEdoCita" Multiplicity="1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoEdoCita">
+              <PropertyRef Name="CatTipoEdoCitaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="CatTipoEdoCitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Horario">
+          <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="HorarioId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="HorarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_TramiteUnidadAtencion">
+          <End Role="TramiteUnidadAtencion" Type="Self.TramiteUnidadAtencion" Multiplicity="1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TramiteUnidadAtencion">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_UnidadMedica">
+          <End Role="UnidadMedica" Type="Self.UnidadMedica" Multiplicity="1" />
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedica">
+              <PropertyRef Name="UnidadMedicaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="UnidadMedicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysAcceso_CatSysModulo">
+          <End Role="CatSysModulo" Type="Self.CatSysModulo" Multiplicity="1" />
+          <End Role="SysAcceso" Type="Self.SysAcceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatSysModulo">
+              <PropertyRef Name="CatSysModuloId" />
+            </Principal>
+            <Dependent Role="SysAcceso">
+              <PropertyRef Name="CatSysModuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysAcceso_CatSysPerfil">
+          <End Role="CatSysRol" Type="Self.CatSysRol" Multiplicity="0..1" />
+          <End Role="SysAcceso" Type="Self.SysAcceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatSysRol">
+              <PropertyRef Name="CatSysRolId" />
+            </Principal>
+            <Dependent Role="SysAcceso">
+              <PropertyRef Name="CatSysRolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TramiteUnidadAtencion_CatTipoTramite">
+          <End Role="CatTipoTramite" Type="Self.CatTipoTramite" Multiplicity="1" />
+          <End Role="TramiteUnidadAtencion" Type="Self.TramiteUnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoTramite">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Principal>
+            <Dependent Role="TramiteUnidadAtencion">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TramiteUnidadAtencion_UnidadAtencion">
+          <End Role="UnidadAtencion" Type="Self.UnidadAtencion" Multiplicity="1" />
+          <End Role="TramiteUnidadAtencion" Type="Self.TramiteUnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadAtencion">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Principal>
+            <Dependent Role="TramiteUnidadAtencion">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnidadAtencion_CatTipoEntidad">
+          <End Role="CatTipoEntidad" Type="Self.CatTipoEntidad" Multiplicity="1" />
+          <End Role="UnidadAtencion" Type="Self.UnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoEntidad">
+              <PropertyRef Name="CatTipoEntidadId" />
+            </Principal>
+            <Dependent Role="UnidadAtencion">
+              <PropertyRef Name="CatTipoEntidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnidadAtencion_Domicilio">
+          <End Role="Domicilio" Type="Self.Domicilio" Multiplicity="0..1" />
+          <End Role="UnidadAtencion" Type="Self.UnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domicilio">
+              <PropertyRef Name="DomicilioId" />
+            </Principal>
+            <Dependent Role="UnidadAtencion">
+              <PropertyRef Name="DomicilioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnidadMedica_UnidadAtencion">
+          <End Role="UnidadAtencion" Type="Self.UnidadAtencion" Multiplicity="1" />
+          <End Role="UnidadMedica" Type="Self.UnidadMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadAtencion">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Principal>
+            <Dependent Role="UnidadMedica">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ISSSTEModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatSysConfiguracion" EntityType="Self.CatSysConfiguracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatSysModulo" EntityType="Self.CatSysModulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatSysRol" EntityType="Self.CatSysRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatTipoDiaSemana" EntityType="Self.CatTipoDiaSemana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatTipoEdoCita" EntityType="Self.CatTipoEdoCita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatTipoEntidad" EntityType="Self.CatTipoEntidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatTipoInvolucrado" EntityType="Self.CatTipoInvolucrado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatTipoSeccion" EntityType="Self.CatTipoSeccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatTipoTramite" EntityType="Self.CatTipoTramite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiaEspecial" EntityType="Self.DiaEspecial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiaNoLaborable" EntityType="Self.DiaNoLaborable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Domicilio" EntityType="Self.Domicilio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Involucrado" EntityType="Self.Involucrado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LenguajeCiudadano" EntityType="Self.LenguajeCiudadano" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requisito" EntityType="Self.Requisito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seccion" EntityType="Self.Seccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeccionDetalle" EntityType="Self.SeccionDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysAcceso" EntityType="Self.SysAcceso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TramiteUnidadAtencion" EntityType="Self.TramiteUnidadAtencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadAtencion" EntityType="Self.UnidadAtencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadMedica" EntityType="Self.UnidadMedica" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CatSysModulo_CatSysModulo" Association="Self.FK_CatSysModulo_CatSysModulo">
+            <End Role="CatSysModulo" EntitySet="CatSysModulo" />
+            <End Role="CatSysModulo1" EntitySet="CatSysModulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatSysRol_AspNetRoles" Association="Self.FK_CatSysRol_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="CatSysRol" EntitySet="CatSysRol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiaNoLaborable_TramiteUnidadAtencion" Association="Self.FK_DiaNoLaborable_TramiteUnidadAtencion">
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+            <End Role="DiaNoLaborable" EntitySet="DiaNoLaborable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_CatTipoHorario" Association="Self.FK_Horario_CatTipoHorario">
+            <End Role="CatTipoDiaSemana" EntitySet="CatTipoDiaSemana" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_DiaEspecial" Association="Self.FK_Horario_DiaEspecial">
+            <End Role="DiaEspecial" EntitySet="DiaEspecial" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Unidad" Association="Self.FK_Horario_Unidad">
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Involucrado_CatTipoInvolucrado" Association="Self.FK_Involucrado_CatTipoInvolucrado">
+            <End Role="CatTipoInvolucrado" EntitySet="CatTipoInvolucrado" />
+            <End Role="Involucrado" EntitySet="Involucrado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Involucrado_Persona" Association="Self.FK_Involucrado_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Involucrado" EntitySet="Involucrado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Involucrado_Solicitud" Association="Self.FK_Involucrado_Solicitud">
+            <End Role="Solicitud" EntitySet="Solicitud" />
+            <End Role="Involucrado" EntitySet="Involucrado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisito_CatTipoRequisito" Association="Self.FK_Requisito_CatTipoRequisito">
+            <End Role="CatTipoTramite" EntitySet="CatTipoTramite" />
+            <End Role="Requisito" EntitySet="Requisito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seccion_CatTipoSeccion" Association="Self.FK_Seccion_CatTipoSeccion">
+            <End Role="CatTipoSeccion" EntitySet="CatTipoSeccion" />
+            <End Role="Seccion" EntitySet="Seccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seccion_CatTipoTramite" Association="Self.FK_Seccion_CatTipoTramite">
+            <End Role="CatTipoTramite" EntitySet="CatTipoTramite" />
+            <End Role="Seccion" EntitySet="Seccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeccionDetalle_Seccion" Association="Self.FK_SeccionDetalle_Seccion">
+            <End Role="Seccion" EntitySet="Seccion" />
+            <End Role="SeccionDetalle" EntitySet="SeccionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_CatTipoEdoCita" Association="Self.FK_Solicitud_CatTipoEdoCita">
+            <End Role="CatTipoEdoCita" EntitySet="CatTipoEdoCita" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Horario" Association="Self.FK_Solicitud_Horario">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_TramiteUnidadAtencion" Association="Self.FK_Solicitud_TramiteUnidadAtencion">
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_UnidadMedica" Association="Self.FK_Solicitud_UnidadMedica">
+            <End Role="UnidadMedica" EntitySet="UnidadMedica" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysAcceso_CatSysModulo" Association="Self.FK_SysAcceso_CatSysModulo">
+            <End Role="CatSysModulo" EntitySet="CatSysModulo" />
+            <End Role="SysAcceso" EntitySet="SysAcceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysAcceso_CatSysPerfil" Association="Self.FK_SysAcceso_CatSysPerfil">
+            <End Role="CatSysRol" EntitySet="CatSysRol" />
+            <End Role="SysAcceso" EntitySet="SysAcceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TramiteUnidadAtencion_CatTipoTramite" Association="Self.FK_TramiteUnidadAtencion_CatTipoTramite">
+            <End Role="CatTipoTramite" EntitySet="CatTipoTramite" />
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TramiteUnidadAtencion_UnidadAtencion" Association="Self.FK_TramiteUnidadAtencion_UnidadAtencion">
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnidadAtencion_CatTipoEntidad" Association="Self.FK_UnidadAtencion_CatTipoEntidad">
+            <End Role="CatTipoEntidad" EntitySet="CatTipoEntidad" />
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnidadAtencion_Domicilio" Association="Self.FK_UnidadAtencion_Domicilio">
+            <End Role="Domicilio" EntitySet="Domicilio" />
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnidadMedica_UnidadAtencion" Association="Self.FK_UnidadMedica_UnidadAtencion">
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+            <End Role="UnidadMedica" EntitySet="UnidadMedica" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ISSSTEModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ISSSTEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="ISSSTEModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="ISSSTEModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="ISSSTEModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="ISSSTEModel.AspNetUsers" />
+          <EntitySet Name="CatSysConfiguracion" EntityType="ISSSTEModel.CatSysConfiguracion" />
+          <EntitySet Name="CatSysModulo" EntityType="ISSSTEModel.CatSysModulo" />
+          <EntitySet Name="CatSysRol" EntityType="ISSSTEModel.CatSysRol" />
+          <EntitySet Name="CatTipoDiaSemana" EntityType="ISSSTEModel.CatTipoDiaSemana" />
+          <EntitySet Name="CatTipoEdoCita" EntityType="ISSSTEModel.CatTipoEdoCita" />
+          <EntitySet Name="CatTipoEntidad" EntityType="ISSSTEModel.CatTipoEntidad" />
+          <EntitySet Name="CatTipoInvolucrado" EntityType="ISSSTEModel.CatTipoInvolucrado" />
+          <EntitySet Name="CatTipoSeccion" EntityType="ISSSTEModel.CatTipoSeccion" />
+          <EntitySet Name="CatTipoTramite" EntityType="ISSSTEModel.CatTipoTramite" />
+          <EntitySet Name="DiaEspecial" EntityType="ISSSTEModel.DiaEspecial" />
+          <EntitySet Name="DiaNoLaborable" EntityType="ISSSTEModel.DiaNoLaborable" />
+          <EntitySet Name="Domicilio" EntityType="ISSSTEModel.Domicilio" />
+          <EntitySet Name="Horario" EntityType="ISSSTEModel.Horario" />
+          <EntitySet Name="Involucrado" EntityType="ISSSTEModel.Involucrado" />
+          <EntitySet Name="LenguajeCiudadano" EntityType="ISSSTEModel.LenguajeCiudadano" />
+          <EntitySet Name="Persona" EntityType="ISSSTEModel.Persona" />
+          <EntitySet Name="Requisito" EntityType="ISSSTEModel.Requisito" />
+          <EntitySet Name="Seccion" EntityType="ISSSTEModel.Seccion" />
+          <EntitySet Name="SeccionDetalle" EntityType="ISSSTEModel.SeccionDetalle" />
+          <EntitySet Name="Solicitud" EntityType="ISSSTEModel.Solicitud" />
+          <EntitySet Name="SysAcceso" EntityType="ISSSTEModel.SysAcceso" />
+          <EntitySet Name="TramiteUnidadAtencion" EntityType="ISSSTEModel.TramiteUnidadAtencion" />
+          <EntitySet Name="UnidadAtencion" EntityType="ISSSTEModel.UnidadAtencion" />
+          <EntitySet Name="UnidadMedica" EntityType="ISSSTEModel.UnidadMedica" />
+          <AssociationSet Name="FK_CatSysRol_AspNetRoles" Association="ISSSTEModel.FK_CatSysRol_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="CatSysRol" EntitySet="CatSysRol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ISSSTEModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ISSSTEModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatSysModulo_CatSysModulo" Association="ISSSTEModel.FK_CatSysModulo_CatSysModulo">
+            <End Role="CatSysModulo" EntitySet="CatSysModulo" />
+            <End Role="CatSysModulo1" EntitySet="CatSysModulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysAcceso_CatSysModulo" Association="ISSSTEModel.FK_SysAcceso_CatSysModulo">
+            <End Role="CatSysModulo" EntitySet="CatSysModulo" />
+            <End Role="SysAcceso" EntitySet="SysAcceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SysAcceso_CatSysPerfil" Association="ISSSTEModel.FK_SysAcceso_CatSysPerfil">
+            <End Role="CatSysRol" EntitySet="CatSysRol" />
+            <End Role="SysAcceso" EntitySet="SysAcceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_CatTipoHorario" Association="ISSSTEModel.FK_Horario_CatTipoHorario">
+            <End Role="CatTipoDiaSemana" EntitySet="CatTipoDiaSemana" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_CatTipoEdoCita" Association="ISSSTEModel.FK_Solicitud_CatTipoEdoCita">
+            <End Role="CatTipoEdoCita" EntitySet="CatTipoEdoCita" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnidadAtencion_CatTipoEntidad" Association="ISSSTEModel.FK_UnidadAtencion_CatTipoEntidad">
+            <End Role="CatTipoEntidad" EntitySet="CatTipoEntidad" />
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Involucrado_CatTipoInvolucrado" Association="ISSSTEModel.FK_Involucrado_CatTipoInvolucrado">
+            <End Role="CatTipoInvolucrado" EntitySet="CatTipoInvolucrado" />
+            <End Role="Involucrado" EntitySet="Involucrado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seccion_CatTipoSeccion" Association="ISSSTEModel.FK_Seccion_CatTipoSeccion">
+            <End Role="CatTipoSeccion" EntitySet="CatTipoSeccion" />
+            <End Role="Seccion" EntitySet="Seccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requisito_CatTipoRequisito" Association="ISSSTEModel.FK_Requisito_CatTipoRequisito">
+            <End Role="CatTipoTramite" EntitySet="CatTipoTramite" />
+            <End Role="Requisito" EntitySet="Requisito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seccion_CatTipoTramite" Association="ISSSTEModel.FK_Seccion_CatTipoTramite">
+            <End Role="CatTipoTramite" EntitySet="CatTipoTramite" />
+            <End Role="Seccion" EntitySet="Seccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TramiteUnidadAtencion_CatTipoTramite" Association="ISSSTEModel.FK_TramiteUnidadAtencion_CatTipoTramite">
+            <End Role="CatTipoTramite" EntitySet="CatTipoTramite" />
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_DiaEspecial" Association="ISSSTEModel.FK_Horario_DiaEspecial">
+            <End Role="DiaEspecial" EntitySet="DiaEspecial" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiaNoLaborable_TramiteUnidadAtencion" Association="ISSSTEModel.FK_DiaNoLaborable_TramiteUnidadAtencion">
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+            <End Role="DiaNoLaborable" EntitySet="DiaNoLaborable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnidadAtencion_Domicilio" Association="ISSSTEModel.FK_UnidadAtencion_Domicilio">
+            <End Role="Domicilio" EntitySet="Domicilio" />
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Unidad" Association="ISSSTEModel.FK_Horario_Unidad">
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+            <End Role="Horario" EntitySet="Horario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_Horario" Association="ISSSTEModel.FK_Solicitud_Horario">
+            <End Role="Horario" EntitySet="Horario" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Involucrado_Persona" Association="ISSSTEModel.FK_Involucrado_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Involucrado" EntitySet="Involucrado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Involucrado_Solicitud" Association="ISSSTEModel.FK_Involucrado_Solicitud">
+            <End Role="Solicitud" EntitySet="Solicitud" />
+            <End Role="Involucrado" EntitySet="Involucrado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeccionDetalle_Seccion" Association="ISSSTEModel.FK_SeccionDetalle_Seccion">
+            <End Role="Seccion" EntitySet="Seccion" />
+            <End Role="SeccionDetalle" EntitySet="SeccionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_TramiteUnidadAtencion" Association="ISSSTEModel.FK_Solicitud_TramiteUnidadAtencion">
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solicitud_UnidadMedica" Association="ISSSTEModel.FK_Solicitud_UnidadMedica">
+            <End Role="UnidadMedica" EntitySet="UnidadMedica" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TramiteUnidadAtencion_UnidadAtencion" Association="ISSSTEModel.FK_TramiteUnidadAtencion_UnidadAtencion">
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+            <End Role="TramiteUnidadAtencion" EntitySet="TramiteUnidadAtencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnidadMedica_UnidadAtencion" Association="ISSSTEModel.FK_UnidadMedica_UnidadAtencion">
+            <End Role="UnidadAtencion" EntitySet="UnidadAtencion" />
+            <End Role="UnidadMedica" EntitySet="UnidadMedica" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="ISSSTEModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CatSysRol" Relationship="ISSSTEModel.FK_CatSysRol_AspNetRoles" FromRole="AspNetRoles" ToRole="CatSysRol" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ISSSTEModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ISSSTEModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ISSSTEModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="ISSSTEModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="ISSSTEModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="ISSSTEModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CatSysConfiguracion">
+          <Key>
+            <PropertyRef Name="CatSysConfiguracionId" />
+          </Key>
+          <Property Name="CatSysConfiguracionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsAdministrable" Type="Boolean" Nullable="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="TipoDato" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CatSysModulo">
+          <Key>
+            <PropertyRef Name="CatSysModuloId" />
+          </Key>
+          <Property Name="CatSysModuloId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatSysModuloPadreId" Type="Int32" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkText" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Icono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatSysModulo1" Relationship="ISSSTEModel.FK_CatSysModulo_CatSysModulo" FromRole="CatSysModulo" ToRole="CatSysModulo1" />
+          <NavigationProperty Name="CatSysModulo2" Relationship="ISSSTEModel.FK_CatSysModulo_CatSysModulo" FromRole="CatSysModulo1" ToRole="CatSysModulo" />
+          <NavigationProperty Name="SysAcceso" Relationship="ISSSTEModel.FK_SysAcceso_CatSysModulo" FromRole="CatSysModulo" ToRole="SysAcceso" />
+        </EntityType>
+        <EntityType Name="CatSysRol">
+          <Key>
+            <PropertyRef Name="CatSysRolId" />
+          </Key>
+          <Property Name="CatSysRolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="AspNetRolId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRoles" Relationship="ISSSTEModel.FK_CatSysRol_AspNetRoles" FromRole="CatSysRol" ToRole="AspNetRoles" />
+          <NavigationProperty Name="SysAcceso" Relationship="ISSSTEModel.FK_SysAcceso_CatSysPerfil" FromRole="CatSysRol" ToRole="SysAcceso" />
+        </EntityType>
+        <EntityType Name="CatTipoDiaSemana">
+          <Key>
+            <PropertyRef Name="CatTipoDiaSemanaId" />
+          </Key>
+          <Property Name="CatTipoDiaSemanaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dia" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Horario" Relationship="ISSSTEModel.FK_Horario_CatTipoHorario" FromRole="CatTipoDiaSemana" ToRole="Horario" />
+        </EntityType>
+        <EntityType Name="CatTipoEdoCita">
+          <Key>
+            <PropertyRef Name="CatTipoEdoCitaId" />
+          </Key>
+          <Property Name="CatTipoEdoCitaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Semaforo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Solicitud" Relationship="ISSSTEModel.FK_Solicitud_CatTipoEdoCita" FromRole="CatTipoEdoCita" ToRole="Solicitud" />
+        </EntityType>
+        <EntityType Name="CatTipoEntidad">
+          <Key>
+            <PropertyRef Name="CatTipoEntidadId" />
+          </Key>
+          <Property Name="CatTipoEntidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Siglas" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UnidadAtencion" Relationship="ISSSTEModel.FK_UnidadAtencion_CatTipoEntidad" FromRole="CatTipoEntidad" ToRole="UnidadAtencion" />
+        </EntityType>
+        <EntityType Name="CatTipoInvolucrado">
+          <Key>
+            <PropertyRef Name="CatTipoInvolucradoId" />
+          </Key>
+          <Property Name="CatTipoInvolucradoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Involucrado" Relationship="ISSSTEModel.FK_Involucrado_CatTipoInvolucrado" FromRole="CatTipoInvolucrado" ToRole="Involucrado" />
+        </EntityType>
+        <EntityType Name="CatTipoSeccion">
+          <Key>
+            <PropertyRef Name="CatTipoSeccionId" />
+          </Key>
+          <Property Name="CatTipoSeccionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Seccion" Relationship="ISSSTEModel.FK_Seccion_CatTipoSeccion" FromRole="CatTipoSeccion" ToRole="Seccion" />
+        </EntityType>
+        <EntityType Name="CatTipoTramite">
+          <Key>
+            <PropertyRef Name="CatTipoTramiteId" />
+          </Key>
+          <Property Name="CatTipoTramiteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Semaforo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FormatoUniversal" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Homoclave" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Requisito" Relationship="ISSSTEModel.FK_Requisito_CatTipoRequisito" FromRole="CatTipoTramite" ToRole="Requisito" />
+          <NavigationProperty Name="Seccion" Relationship="ISSSTEModel.FK_Seccion_CatTipoTramite" FromRole="CatTipoTramite" ToRole="Seccion" />
+          <NavigationProperty Name="TramiteUnidadAtencion" Relationship="ISSSTEModel.FK_TramiteUnidadAtencion_CatTipoTramite" FromRole="CatTipoTramite" ToRole="TramiteUnidadAtencion" />
+        </EntityType>
+        <EntityType Name="DiaEspecial">
+          <Key>
+            <PropertyRef Name="DiaEspecialId" />
+          </Key>
+          <Property Name="DiaEspecialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Horario" Relationship="ISSSTEModel.FK_Horario_DiaEspecial" FromRole="DiaEspecial" ToRole="Horario" />
+        </EntityType>
+        <EntityType Name="DiaNoLaborable">
+          <Key>
+            <PropertyRef Name="DiaNoLaborableId" />
+          </Key>
+          <Property Name="DiaNoLaborableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Concepto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TramiteUnidadAtencionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TramiteUnidadAtencion" Relationship="ISSSTEModel.FK_DiaNoLaborable_TramiteUnidadAtencion" FromRole="DiaNoLaborable" ToRole="TramiteUnidadAtencion" />
+        </EntityType>
+        <EntityType Name="Domicilio">
+          <Key>
+            <PropertyRef Name="DomicilioId" />
+          </Key>
+          <Property Name="DomicilioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Calle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroExterior" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroInterior" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="CodigoPostal" Type="Int32" />
+          <Property Name="Colonia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Municipio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UnidadAtencion" Relationship="ISSSTEModel.FK_UnidadAtencion_Domicilio" FromRole="Domicilio" ToRole="UnidadAtencion" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="HorarioId" />
+          </Key>
+          <Property Name="HorarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="TramiteUnidadAtencionId" Type="Int32" Nullable="false" />
+          <Property Name="CatTipoDiaSemanaId" Type="Int32" />
+          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Capacidad" Type="Int32" Nullable="false" />
+          <Property Name="EsDiaEspecial" Type="Boolean" Nullable="false" />
+          <Property Name="DiaEspecialId" Type="Int32" />
+          <NavigationProperty Name="CatTipoDiaSemana" Relationship="ISSSTEModel.FK_Horario_CatTipoHorario" FromRole="Horario" ToRole="CatTipoDiaSemana" />
+          <NavigationProperty Name="DiaEspecial" Relationship="ISSSTEModel.FK_Horario_DiaEspecial" FromRole="Horario" ToRole="DiaEspecial" />
+          <NavigationProperty Name="TramiteUnidadAtencion" Relationship="ISSSTEModel.FK_Horario_Unidad" FromRole="Horario" ToRole="TramiteUnidadAtencion" />
+          <NavigationProperty Name="Solicitud" Relationship="ISSSTEModel.FK_Solicitud_Horario" FromRole="Horario" ToRole="Solicitud" />
+        </EntityType>
+        <EntityType Name="Involucrado">
+          <Key>
+            <PropertyRef Name="InvolucradoId" />
+          </Key>
+          <Property Name="InvolucradoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+          <Property Name="CatTipoInvolucradoId" Type="Int32" Nullable="false" />
+          <Property Name="PersonaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CatTipoInvolucrado" Relationship="ISSSTEModel.FK_Involucrado_CatTipoInvolucrado" FromRole="Involucrado" ToRole="CatTipoInvolucrado" />
+          <NavigationProperty Name="Persona" Relationship="ISSSTEModel.FK_Involucrado_Persona" FromRole="Involucrado" ToRole="Persona" />
+          <NavigationProperty Name="Solicitud" Relationship="ISSSTEModel.FK_Involucrado_Solicitud" FromRole="Involucrado" ToRole="Solicitud" />
+        </EntityType>
+        <EntityType Name="LenguajeCiudadano">
+          <Key>
+            <PropertyRef Name="LenguajeCiudadanoId" />
+          </Key>
+          <Property Name="LenguajeCiudadanoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTecnico" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EsDeVista" Type="Boolean" Nullable="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="EsUsuarioInterno" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Paterno" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Materno" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CURP" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="85" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoMovil" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Lada" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EsMasculino" Type="Boolean" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="EsUsuarioBloqueado" Type="Boolean" />
+          <Property Name="FechaDesbloqueo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Involucrado" Relationship="ISSSTEModel.FK_Involucrado_Persona" FromRole="Persona" ToRole="Involucrado" />
+        </EntityType>
+        <EntityType Name="Requisito">
+          <Key>
+            <PropertyRef Name="RequisitoId" />
+          </Key>
+          <Property Name="RequisitoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatTipoTramiteId" Type="Int32" Nullable="false" />
+          <Property Name="NombreDocumento" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EsObligatorio" Type="Boolean" Nullable="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CatTipoTramite" Relationship="ISSSTEModel.FK_Requisito_CatTipoRequisito" FromRole="Requisito" ToRole="CatTipoTramite" />
+        </EntityType>
+        <EntityType Name="Seccion">
+          <Key>
+            <PropertyRef Name="SeccionId" />
+          </Key>
+          <Property Name="SeccionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EsPrimerNivel" Type="Boolean" Nullable="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="CatTipoSeccionId" Type="Int32" Nullable="false" />
+          <Property Name="Orden" Type="Int32" />
+          <Property Name="CatTipoTramiteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CatTipoSeccion" Relationship="ISSSTEModel.FK_Seccion_CatTipoSeccion" FromRole="Seccion" ToRole="CatTipoSeccion" />
+          <NavigationProperty Name="CatTipoTramite" Relationship="ISSSTEModel.FK_Seccion_CatTipoTramite" FromRole="Seccion" ToRole="CatTipoTramite" />
+          <NavigationProperty Name="SeccionDetalle" Relationship="ISSSTEModel.FK_SeccionDetalle_Seccion" FromRole="Seccion" ToRole="SeccionDetalle" />
+        </EntityType>
+        <EntityType Name="SeccionDetalle">
+          <Key>
+            <PropertyRef Name="SeccionDetalleId" />
+          </Key>
+          <Property Name="SeccionDetalleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeccionId" Type="Int32" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Seccion" Relationship="ISSSTEModel.FK_SeccionDetalle_Seccion" FromRole="SeccionDetalle" ToRole="Seccion" />
+        </EntityType>
+        <EntityType Name="Solicitud">
+          <Key>
+            <PropertyRef Name="SolicitudId" />
+          </Key>
+          <Property Name="SolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="TramiteUnidadAtencionId" Type="Int32" Nullable="false" />
+          <Property Name="NumeroFolio" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CatTipoEdoCitaId" Type="Int32" Nullable="false" />
+          <Property Name="HorarioId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UnidadMedicaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CatTipoEdoCita" Relationship="ISSSTEModel.FK_Solicitud_CatTipoEdoCita" FromRole="Solicitud" ToRole="CatTipoEdoCita" />
+          <NavigationProperty Name="Horario" Relationship="ISSSTEModel.FK_Solicitud_Horario" FromRole="Solicitud" ToRole="Horario" />
+          <NavigationProperty Name="Involucrado" Relationship="ISSSTEModel.FK_Involucrado_Solicitud" FromRole="Solicitud" ToRole="Involucrado" />
+          <NavigationProperty Name="TramiteUnidadAtencion" Relationship="ISSSTEModel.FK_Solicitud_TramiteUnidadAtencion" FromRole="Solicitud" ToRole="TramiteUnidadAtencion" />
+          <NavigationProperty Name="UnidadMedica" Relationship="ISSSTEModel.FK_Solicitud_UnidadMedica" FromRole="Solicitud" ToRole="UnidadMedica" />
+        </EntityType>
+        <EntityType Name="SysAcceso">
+          <Key>
+            <PropertyRef Name="SysAccesoId" />
+          </Key>
+          <Property Name="SysAccesoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatSysRolId" Type="Int32" />
+          <Property Name="CatSysModuloId" Type="Int32" Nullable="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatSysModulo" Relationship="ISSSTEModel.FK_SysAcceso_CatSysModulo" FromRole="SysAcceso" ToRole="CatSysModulo" />
+          <NavigationProperty Name="CatSysRol" Relationship="ISSSTEModel.FK_SysAcceso_CatSysPerfil" FromRole="SysAcceso" ToRole="CatSysRol" />
+        </EntityType>
+        <EntityType Name="TramiteUnidadAtencion">
+          <Key>
+            <PropertyRef Name="TramiteUnidadAtencionId" />
+          </Key>
+          <Property Name="TramiteUnidadAtencionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="UnidadAtencionId" Type="Int32" Nullable="false" />
+          <Property Name="CatTipoTramiteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CatTipoTramite" Relationship="ISSSTEModel.FK_TramiteUnidadAtencion_CatTipoTramite" FromRole="TramiteUnidadAtencion" ToRole="CatTipoTramite" />
+          <NavigationProperty Name="DiaNoLaborable" Relationship="ISSSTEModel.FK_DiaNoLaborable_TramiteUnidadAtencion" FromRole="TramiteUnidadAtencion" ToRole="DiaNoLaborable" />
+          <NavigationProperty Name="Horario" Relationship="ISSSTEModel.FK_Horario_Unidad" FromRole="TramiteUnidadAtencion" ToRole="Horario" />
+          <NavigationProperty Name="Solicitud" Relationship="ISSSTEModel.FK_Solicitud_TramiteUnidadAtencion" FromRole="TramiteUnidadAtencion" ToRole="Solicitud" />
+          <NavigationProperty Name="UnidadAtencion" Relationship="ISSSTEModel.FK_TramiteUnidadAtencion_UnidadAtencion" FromRole="TramiteUnidadAtencion" ToRole="UnidadAtencion" />
+        </EntityType>
+        <EntityType Name="UnidadAtencion">
+          <Key>
+            <PropertyRef Name="UnidadAtencionId" />
+          </Key>
+          <Property Name="UnidadAtencionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="DomicilioId" Type="Int32" />
+          <Property Name="CatTipoEntidadId" Type="Int32" Nullable="false" />
+          <Property Name="Contador" Type="Int32" Nullable="false" />
+          <Property Name="Prefijo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mascara" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReiniciarContador" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatTipoEntidad" Relationship="ISSSTEModel.FK_UnidadAtencion_CatTipoEntidad" FromRole="UnidadAtencion" ToRole="CatTipoEntidad" />
+          <NavigationProperty Name="Domicilio" Relationship="ISSSTEModel.FK_UnidadAtencion_Domicilio" FromRole="UnidadAtencion" ToRole="Domicilio" />
+          <NavigationProperty Name="TramiteUnidadAtencion" Relationship="ISSSTEModel.FK_TramiteUnidadAtencion_UnidadAtencion" FromRole="UnidadAtencion" ToRole="TramiteUnidadAtencion" />
+          <NavigationProperty Name="UnidadMedica" Relationship="ISSSTEModel.FK_UnidadMedica_UnidadAtencion" FromRole="UnidadAtencion" ToRole="UnidadMedica" />
+        </EntityType>
+        <EntityType Name="UnidadMedica">
+          <Key>
+            <PropertyRef Name="UnidadMedicaId" />
+          </Key>
+          <Property Name="UnidadMedicaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnidadAtencionId" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Solicitud" Relationship="ISSSTEModel.FK_Solicitud_UnidadMedica" FromRole="UnidadMedica" ToRole="Solicitud" />
+          <NavigationProperty Name="UnidadAtencion" Relationship="ISSSTEModel.FK_UnidadMedica_UnidadAtencion" FromRole="UnidadMedica" ToRole="UnidadAtencion" />
+        </EntityType>
+        <Association Name="FK_CatSysRol_AspNetRoles">
+          <End Type="ISSSTEModel.AspNetRoles" Role="AspNetRoles" Multiplicity="0..1" />
+          <End Type="ISSSTEModel.CatSysRol" Role="CatSysRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CatSysRol">
+              <PropertyRef Name="AspNetRolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="ISSSTEModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ISSSTEModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="ISSSTEModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ISSSTEModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatSysModulo_CatSysModulo">
+          <End Type="ISSSTEModel.CatSysModulo" Role="CatSysModulo" Multiplicity="0..1" />
+          <End Type="ISSSTEModel.CatSysModulo" Role="CatSysModulo1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatSysModulo">
+              <PropertyRef Name="CatSysModuloId" />
+            </Principal>
+            <Dependent Role="CatSysModulo1">
+              <PropertyRef Name="CatSysModuloPadreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysAcceso_CatSysModulo">
+          <End Type="ISSSTEModel.CatSysModulo" Role="CatSysModulo" Multiplicity="1" />
+          <End Type="ISSSTEModel.SysAcceso" Role="SysAcceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatSysModulo">
+              <PropertyRef Name="CatSysModuloId" />
+            </Principal>
+            <Dependent Role="SysAcceso">
+              <PropertyRef Name="CatSysModuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SysAcceso_CatSysPerfil">
+          <End Type="ISSSTEModel.CatSysRol" Role="CatSysRol" Multiplicity="0..1" />
+          <End Type="ISSSTEModel.SysAcceso" Role="SysAcceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatSysRol">
+              <PropertyRef Name="CatSysRolId" />
+            </Principal>
+            <Dependent Role="SysAcceso">
+              <PropertyRef Name="CatSysRolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_CatTipoHorario">
+          <End Type="ISSSTEModel.CatTipoDiaSemana" Role="CatTipoDiaSemana" Multiplicity="0..1" />
+          <End Type="ISSSTEModel.Horario" Role="Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoDiaSemana">
+              <PropertyRef Name="CatTipoDiaSemanaId" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="CatTipoDiaSemanaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_CatTipoEdoCita">
+          <End Type="ISSSTEModel.CatTipoEdoCita" Role="CatTipoEdoCita" Multiplicity="1" />
+          <End Type="ISSSTEModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoEdoCita">
+              <PropertyRef Name="CatTipoEdoCitaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="CatTipoEdoCitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnidadAtencion_CatTipoEntidad">
+          <End Type="ISSSTEModel.CatTipoEntidad" Role="CatTipoEntidad" Multiplicity="1" />
+          <End Type="ISSSTEModel.UnidadAtencion" Role="UnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoEntidad">
+              <PropertyRef Name="CatTipoEntidadId" />
+            </Principal>
+            <Dependent Role="UnidadAtencion">
+              <PropertyRef Name="CatTipoEntidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Involucrado_CatTipoInvolucrado">
+          <End Type="ISSSTEModel.CatTipoInvolucrado" Role="CatTipoInvolucrado" Multiplicity="1" />
+          <End Type="ISSSTEModel.Involucrado" Role="Involucrado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoInvolucrado">
+              <PropertyRef Name="CatTipoInvolucradoId" />
+            </Principal>
+            <Dependent Role="Involucrado">
+              <PropertyRef Name="CatTipoInvolucradoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seccion_CatTipoSeccion">
+          <End Type="ISSSTEModel.CatTipoSeccion" Role="CatTipoSeccion" Multiplicity="1" />
+          <End Type="ISSSTEModel.Seccion" Role="Seccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoSeccion">
+              <PropertyRef Name="CatTipoSeccionId" />
+            </Principal>
+            <Dependent Role="Seccion">
+              <PropertyRef Name="CatTipoSeccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requisito_CatTipoRequisito">
+          <End Type="ISSSTEModel.CatTipoTramite" Role="CatTipoTramite" Multiplicity="1" />
+          <End Type="ISSSTEModel.Requisito" Role="Requisito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoTramite">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Principal>
+            <Dependent Role="Requisito">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seccion_CatTipoTramite">
+          <End Type="ISSSTEModel.CatTipoTramite" Role="CatTipoTramite" Multiplicity="1" />
+          <End Type="ISSSTEModel.Seccion" Role="Seccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoTramite">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Principal>
+            <Dependent Role="Seccion">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TramiteUnidadAtencion_CatTipoTramite">
+          <End Type="ISSSTEModel.CatTipoTramite" Role="CatTipoTramite" Multiplicity="1" />
+          <End Type="ISSSTEModel.TramiteUnidadAtencion" Role="TramiteUnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTipoTramite">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Principal>
+            <Dependent Role="TramiteUnidadAtencion">
+              <PropertyRef Name="CatTipoTramiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_DiaEspecial">
+          <End Type="ISSSTEModel.DiaEspecial" Role="DiaEspecial" Multiplicity="0..1" />
+          <End Type="ISSSTEModel.Horario" Role="Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiaEspecial">
+              <PropertyRef Name="DiaEspecialId" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="DiaEspecialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiaNoLaborable_TramiteUnidadAtencion">
+          <End Type="ISSSTEModel.TramiteUnidadAtencion" Role="TramiteUnidadAtencion" Multiplicity="1" />
+          <End Type="ISSSTEModel.DiaNoLaborable" Role="DiaNoLaborable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TramiteUnidadAtencion">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Principal>
+            <Dependent Role="DiaNoLaborable">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnidadAtencion_Domicilio">
+          <End Type="ISSSTEModel.Domicilio" Role="Domicilio" Multiplicity="0..1" />
+          <End Type="ISSSTEModel.UnidadAtencion" Role="UnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domicilio">
+              <PropertyRef Name="DomicilioId" />
+            </Principal>
+            <Dependent Role="UnidadAtencion">
+              <PropertyRef Name="DomicilioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Unidad">
+          <End Type="ISSSTEModel.TramiteUnidadAtencion" Role="TramiteUnidadAtencion" Multiplicity="1" />
+          <End Type="ISSSTEModel.Horario" Role="Horario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TramiteUnidadAtencion">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Principal>
+            <Dependent Role="Horario">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_Horario">
+          <End Type="ISSSTEModel.Horario" Role="Horario" Multiplicity="1" />
+          <End Type="ISSSTEModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="HorarioId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="HorarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Involucrado_Persona">
+          <End Type="ISSSTEModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="ISSSTEModel.Involucrado" Role="Involucrado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Involucrado">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Involucrado_Solicitud">
+          <End Type="ISSSTEModel.Solicitud" Role="Solicitud" Multiplicity="1" />
+          <End Type="ISSSTEModel.Involucrado" Role="Involucrado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Solicitud">
+              <PropertyRef Name="SolicitudId" />
+            </Principal>
+            <Dependent Role="Involucrado">
+              <PropertyRef Name="SolicitudId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeccionDetalle_Seccion">
+          <End Type="ISSSTEModel.Seccion" Role="Seccion" Multiplicity="1" />
+          <End Type="ISSSTEModel.SeccionDetalle" Role="SeccionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seccion">
+              <PropertyRef Name="SeccionId" />
+            </Principal>
+            <Dependent Role="SeccionDetalle">
+              <PropertyRef Name="SeccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_TramiteUnidadAtencion">
+          <End Type="ISSSTEModel.TramiteUnidadAtencion" Role="TramiteUnidadAtencion" Multiplicity="1" />
+          <End Type="ISSSTEModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TramiteUnidadAtencion">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="TramiteUnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solicitud_UnidadMedica">
+          <End Type="ISSSTEModel.UnidadMedica" Role="UnidadMedica" Multiplicity="1" />
+          <End Type="ISSSTEModel.Solicitud" Role="Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedica">
+              <PropertyRef Name="UnidadMedicaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="UnidadMedicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TramiteUnidadAtencion_UnidadAtencion">
+          <End Type="ISSSTEModel.UnidadAtencion" Role="UnidadAtencion" Multiplicity="1" />
+          <End Type="ISSSTEModel.TramiteUnidadAtencion" Role="TramiteUnidadAtencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadAtencion">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Principal>
+            <Dependent Role="TramiteUnidadAtencion">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnidadMedica_UnidadAtencion">
+          <End Type="ISSSTEModel.UnidadAtencion" Role="UnidadAtencion" Multiplicity="1" />
+          <End Type="ISSSTEModel.UnidadMedica" Role="UnidadMedica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadAtencion">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Principal>
+            <Dependent Role="UnidadMedica">
+              <PropertyRef Name="UnidadAtencionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="ISSSTEModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="ISSSTEModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ISSSTEModelStoreContainer" CdmEntityContainer="ISSSTEEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ISSSTEModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ISSSTEModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ISSSTEModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ISSSTEModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatSysConfiguracion">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatSysConfiguracion">
+              <MappingFragment StoreEntitySet="CatSysConfiguracion">
+                <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="EsAdministrable" ColumnName="EsAdministrable" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatSysConfiguracionId" ColumnName="CatSysConfiguracionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatSysModulo">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatSysModulo">
+              <MappingFragment StoreEntitySet="CatSysModulo">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Icono" ColumnName="Icono" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="LinkText" ColumnName="LinkText" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatSysModuloPadreId" ColumnName="CatSysModuloPadreId" />
+                <ScalarProperty Name="CatSysModuloId" ColumnName="CatSysModuloId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatSysRol">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatSysRol">
+              <MappingFragment StoreEntitySet="CatSysRol">
+                <ScalarProperty Name="AspNetRolId" ColumnName="AspNetRolId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatSysRolId" ColumnName="CatSysRolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatTipoDiaSemana">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatTipoDiaSemana">
+              <MappingFragment StoreEntitySet="CatTipoDiaSemana">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="CatTipoDiaSemanaId" ColumnName="CatTipoDiaSemanaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatTipoEdoCita">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatTipoEdoCita">
+              <MappingFragment StoreEntitySet="CatTipoEdoCita">
+                <ScalarProperty Name="Semaforo" ColumnName="Semaforo" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatTipoEdoCitaId" ColumnName="CatTipoEdoCitaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatTipoEntidad">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatTipoEntidad">
+              <MappingFragment StoreEntitySet="CatTipoEntidad">
+                <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatTipoEntidadId" ColumnName="CatTipoEntidadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatTipoInvolucrado">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatTipoInvolucrado">
+              <MappingFragment StoreEntitySet="CatTipoInvolucrado">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatTipoInvolucradoId" ColumnName="CatTipoInvolucradoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatTipoSeccion">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatTipoSeccion">
+              <MappingFragment StoreEntitySet="CatTipoSeccion">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatTipoSeccionId" ColumnName="CatTipoSeccionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatTipoTramite">
+            <EntityTypeMapping TypeName="ISSSTEModel.CatTipoTramite">
+              <MappingFragment StoreEntitySet="CatTipoTramite">
+                <ScalarProperty Name="Homoclave" ColumnName="Homoclave" />
+                <ScalarProperty Name="FormatoUniversal" ColumnName="FormatoUniversal" />
+                <ScalarProperty Name="Semaforo" ColumnName="Semaforo" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CatTipoTramiteId" ColumnName="CatTipoTramiteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiaEspecial">
+            <EntityTypeMapping TypeName="ISSSTEModel.DiaEspecial">
+              <MappingFragment StoreEntitySet="DiaEspecial">
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="DiaEspecialId" ColumnName="DiaEspecialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiaNoLaborable">
+            <EntityTypeMapping TypeName="ISSSTEModel.DiaNoLaborable">
+              <MappingFragment StoreEntitySet="DiaNoLaborable">
+                <ScalarProperty Name="TramiteUnidadAtencionId" ColumnName="TramiteUnidadAtencionId" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="DiaNoLaborableId" ColumnName="DiaNoLaborableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domicilio">
+            <EntityTypeMapping TypeName="ISSSTEModel.Domicilio">
+              <MappingFragment StoreEntitySet="Domicilio">
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+                <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="DomicilioId" ColumnName="DomicilioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horario">
+            <EntityTypeMapping TypeName="ISSSTEModel.Horario">
+              <MappingFragment StoreEntitySet="Horario">
+                <ScalarProperty Name="DiaEspecialId" ColumnName="DiaEspecialId" />
+                <ScalarProperty Name="EsDiaEspecial" ColumnName="EsDiaEspecial" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="CatTipoDiaSemanaId" ColumnName="CatTipoDiaSemanaId" />
+                <ScalarProperty Name="TramiteUnidadAtencionId" ColumnName="TramiteUnidadAtencionId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Involucrado">
+            <EntityTypeMapping TypeName="ISSSTEModel.Involucrado">
+              <MappingFragment StoreEntitySet="Involucrado">
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="CatTipoInvolucradoId" ColumnName="CatTipoInvolucradoId" />
+                <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="InvolucradoId" ColumnName="InvolucradoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LenguajeCiudadano">
+            <EntityTypeMapping TypeName="ISSSTEModel.LenguajeCiudadano">
+              <MappingFragment StoreEntitySet="LenguajeCiudadano">
+                <ScalarProperty Name="EsUsuarioInterno" ColumnName="EsUsuarioInterno" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="EsDeVista" ColumnName="EsDeVista" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="IdTecnico" ColumnName="IdTecnico" />
+                <ScalarProperty Name="LenguajeCiudadanoId" ColumnName="LenguajeCiudadanoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="ISSSTEModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="FechaDesbloqueo" ColumnName="FechaDesbloqueo" />
+                <ScalarProperty Name="EsUsuarioBloqueado" ColumnName="EsUsuarioBloqueado" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="EsMasculino" ColumnName="EsMasculino" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Lada" ColumnName="Lada" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="TelefonoMovil" ColumnName="TelefonoMovil" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="Materno" ColumnName="Materno" />
+                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requisito">
+            <EntityTypeMapping TypeName="ISSSTEModel.Requisito">
+              <MappingFragment StoreEntitySet="Requisito">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="EsObligatorio" ColumnName="EsObligatorio" />
+                <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+                <ScalarProperty Name="CatTipoTramiteId" ColumnName="CatTipoTramiteId" />
+                <ScalarProperty Name="RequisitoId" ColumnName="RequisitoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seccion">
+            <EntityTypeMapping TypeName="ISSSTEModel.Seccion">
+              <MappingFragment StoreEntitySet="Seccion">
+                <ScalarProperty Name="CatTipoTramiteId" ColumnName="CatTipoTramiteId" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="CatTipoSeccionId" ColumnName="CatTipoSeccionId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="EsPrimerNivel" ColumnName="EsPrimerNivel" />
+                <ScalarProperty Name="SeccionId" ColumnName="SeccionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeccionDetalle">
+            <EntityTypeMapping TypeName="ISSSTEModel.SeccionDetalle">
+              <MappingFragment StoreEntitySet="SeccionDetalle">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="SeccionId" ColumnName="SeccionId" />
+                <ScalarProperty Name="SeccionDetalleId" ColumnName="SeccionDetalleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solicitud">
+            <EntityTypeMapping TypeName="ISSSTEModel.Solicitud">
+              <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="UnidadMedicaId" ColumnName="UnidadMedicaId" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaCita" ColumnName="FechaCita" />
+                <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+                <ScalarProperty Name="CatTipoEdoCitaId" ColumnName="CatTipoEdoCitaId" />
+                <ScalarProperty Name="NumeroFolio" ColumnName="NumeroFolio" />
+                <ScalarProperty Name="TramiteUnidadAtencionId" ColumnName="TramiteUnidadAtencionId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysAcceso">
+            <EntityTypeMapping TypeName="ISSSTEModel.SysAcceso">
+              <MappingFragment StoreEntitySet="SysAcceso">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="CatSysModuloId" ColumnName="CatSysModuloId" />
+                <ScalarProperty Name="CatSysRolId" ColumnName="CatSysRolId" />
+                <ScalarProperty Name="SysAccesoId" ColumnName="SysAccesoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TramiteUnidadAtencion">
+            <EntityTypeMapping TypeName="ISSSTEModel.TramiteUnidadAtencion">
+              <MappingFragment StoreEntitySet="TramiteUnidadAtencion">
+                <ScalarProperty Name="CatTipoTramiteId" ColumnName="CatTipoTramiteId" />
+                <ScalarProperty Name="UnidadAtencionId" ColumnName="UnidadAtencionId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="TramiteUnidadAtencionId" ColumnName="TramiteUnidadAtencionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadAtencion">
+            <EntityTypeMapping TypeName="ISSSTEModel.UnidadAtencion">
+              <MappingFragment StoreEntitySet="UnidadAtencion">
+                <ScalarProperty Name="ReiniciarContador" ColumnName="ReiniciarContador" />
+                <ScalarProperty Name="Mascara" ColumnName="Mascara" />
+                <ScalarProperty Name="Prefijo" ColumnName="Prefijo" />
+                <ScalarProperty Name="Contador" ColumnName="Contador" />
+                <ScalarProperty Name="CatTipoEntidadId" ColumnName="CatTipoEntidadId" />
+                <ScalarProperty Name="DomicilioId" ColumnName="DomicilioId" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="UnidadAtencionId" ColumnName="UnidadAtencionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadMedica">
+            <EntityTypeMapping TypeName="ISSSTEModel.UnidadMedica">
+              <MappingFragment StoreEntitySet="UnidadMedica">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="UnidadAtencionId" ColumnName="UnidadAtencionId" />
+                <ScalarProperty Name="UnidadMedicaId" ColumnName="UnidadMedicaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ISSSTEModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

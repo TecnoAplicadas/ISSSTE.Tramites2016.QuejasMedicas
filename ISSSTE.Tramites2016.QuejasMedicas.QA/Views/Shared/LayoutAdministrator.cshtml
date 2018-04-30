@@ -1,0 +1,220 @@
+﻿@using ISSSTE.Tramites2016.Common.Security.Helpers
+@{
+    ViewBag.Title = "Trámites digítales";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="@Url.Content("./Images/Administrator/favicon.ico")" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="~/Content/FontAwesome_4.0.5/css/font-awesome.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Tooltip.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Scripts/Libraries/PaginacionAjax/Paginador.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Reporte.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Tabla.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Header.css"/>
+    <link rel="stylesheet" href="~/Scripts/Libraries/PaginacionAjax/Paginador.css" />
+
+    <style>
+        .ClickTools {
+            color: yellowgreen;
+        }
+
+        .ClickResume {
+            color: blueviolet;
+        }
+
+        .ClickExcel {
+            color: green;
+        }
+    </style>
+
+    @Styles.Render("~/bundles/administrator/css")
+    @Scripts.Render("~/bundles/JQuery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/easy-tree")
+    @Scripts.Render("~/bundles/bootbox")
+    @Scripts.Render("~/bundles/bootstrap-calendar")
+
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsNotificaciones.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsTooltip.js"></script>
+    <script type="text/javascript" src="~/Scripts/Libraries/PaginacionAjax/jsPaginador.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsControladorGeneral.js"></script>   
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsPromovente.js"></script>
+    <script type="text/javascript" src="~/Scripts/Reporte/jsReporte.js"></script>
+    <script type="text/javascript" src="~/Scripts/Reporte/jsGenerales.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsFecha.js"></script>
+    <script type="text/javascript" src="~/Scripts/Administrator/Comunes/generales.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsControladorAngular.js"></script>
+
+</head>
+<body data-ng-app="ISSSTE.Tramites2016.QmRdRI.Administrator.App" data-ng-controller="navigationController as nc" oncontextmenu="return false" onselectstart="return false" ondragstart="">
+<header>
+    <!--/ START LOGO -->
+    <div class="container-fluid abl-logoheader">
+        <div class="row">
+            <img class="logo" src="@Url.Content("~/Images/Administrator/issste-logo.jpg")">
+            <div id="ContenedorCalendario" class="pull-right @Tag.Col(2)" style="background: white; height: 50px;">
+                <div id="ce-little-calendar">
+                    <div class="row">
+                        <div id="ce-date-calendar">
+                            <div class="ce-date-month mes">
+                                <span></span>
+                            </div>
+                            <div class="ce-date-day dia">
+                                <span></span>
+                            </div>
+                            <div class="ce-date-time">
+                                <span id="reloj"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ END LOGO -->
+    <!--/ START NAV -->
+    <div class="navbar navbar-default abl-navbar" role="navigation">
+        <div class="container-fluid" style="max-height: 10px !important;">
+            <div>
+                @if (Request.GetOwinContext().Authentication.User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-left" style="color: white; font-size: 18px; padding-top: 10px;">
+                        <li style="display: inline">
+                            <span class="fa fa-home"></span>
+                        </li>
+                        <li style="display: inline" id="TitleGral"></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-user" >
+                        @if (Request.GetOwinContext().Authentication.User.IsInRole("Operador UADyCS"))
+                        {
+                            <li  data-ng-init="nc.searchNotifications()">
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                                    Alertas <span class="badge">{{ nc.Notifications.Total}}</span><b class="caret"></b>
+                                </a>
+                                <ul ng-if="nc.Notifications.Total>0" class="dropdown-menu multi-level">
+                                    <li>
+                                        <a style="cursor: pointer" ng-click="nc.showNotificationsModal()">Próximas citas <span class="badge">{{ nc.Notifications.NumeroCitasPendientes}}</span> </a>
+                                    </li>
+                                    @*<li><a href="Administrador-ConsultaCitas.html">Citas por vencer <span class="badge">{{ nc.Notifications.NumeroCitasPorVencer}}</span></a></li>*@
+                                </ul>
+                                <ul ng-if="nc.Notifications.Total==0" class="dropdown-menu multi-level">
+                                    <li> Sin notificaciones</li>
+                                </ul>
+
+                            </li>
+                        }
+                        <li>
+                            @{
+                                var user = Request.GetOwinContext().GetAuthenticatedUser();
+                                var displayName = string.IsNullOrEmpty(user.Name) ? user.UserName : user.Name;
+                            }
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user abl-usuarios" aria-hidden="true"></span>
+                                @displayName <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>
+                                    <a href="@Url.Action("Logout", "Account", new {returnUrl = Url.Action("Index", "Administrador", null, Request.Url.Scheme)}, null)">Cerrar sesión</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+            </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+
+
+    </div><!--/.navbar -->
+    <!--/ END NAV -->
+
+</header>
+<main>
+    <div>
+        <input type="hidden" id="baseUrl" value="@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))"/>
+        @*<div ng-view>*@
+            @RenderBody()
+       @*</div>*@
+    </div>
+
+    <!--MODAL NOTIFICACIONES-->
+    <div class="modal fade" id="notificaciones-modal" tabindex="-1" style="z-index: 1050">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="closeModal close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Próximas citas</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="notificacionesForm" name="seleccionTUForm" novalidate>
+                        <!--CUERPO MODAL-->
+                        <div style="height: 300px; overflow-x: auto">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Folio </th>
+                                    <th>Día </th>
+                                    <th>Hora </th>
+                                    <th>Trámite</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr data-ng-repeat="citaPendiente in nc.Notifications.ListaCitasPendientes">
+                                    <td>{{citaPendiente.NumeroFolio}}</td>
+                                    <td>{{citaPendiente.FechaCita}}</td>
+                                    <td>{{citaPendiente.HoraCita}}</td>
+                                    <td>{{citaPendiente.CatTipoTramiteConcepto}}</td>
+                                    <td>
+                                        <div class="pull-right">
+                                            <a ng-click="nc.hideNotificationsModal()" ng-href="#{{nc.getRequestDetailUrl(citaPendiente.SolicitudId)}}">
+                                                <button type="button" class="btn btn-primary btn-sm">
+                                                    Ver Detalle
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--CUERPO MODAL-->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="closeModal btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MODAL NOTIFICACIONES-->
+
+</main>
+
+@Scripts.Render("~/bundles/ramda")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/Respond")
+@Scripts.Render("~/bundles/PaginacionAngular")
+
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/angular-auto-validate")
+@Scripts.Render("~/bundles/angular-upload")
+@Scripts.Render("~/bundles/bootstrap-datetimepicker")
+@RenderSection("scripts", false)
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".closeModal").click(function() {
+            $("#notificaciones-modal").modal("hide");
+        });
+    });
+</script>
+
+</body>
+</html>

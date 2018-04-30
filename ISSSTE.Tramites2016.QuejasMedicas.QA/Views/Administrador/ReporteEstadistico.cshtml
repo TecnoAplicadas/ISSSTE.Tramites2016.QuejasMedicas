@@ -1,0 +1,63 @@
+﻿<script type="text/javascript" src="~/Scripts/Reporte/jsPeticion.js"></script>
+<script type="text/javascript" src="~/Scripts/Libraries/D3/d3.v3.js"></script>
+<script type="text/javascript" src="~/Scripts/Reporte/jsReporteGrafica.js"></script>
+<!--Consulta de citas-->
+<div data-ng-controller="reportsController as vm" data-ng-init="vm.initSearch()">
+    <div class="container1" style="height: 50px;">
+        <i class="fa fa-2x fa fa-bars pull-right expandir" aria-hidden="true" style="display: inline"
+           id="ClickExpand"
+           onmouseover='tooltip.show("Click para revisar el reporte")'
+           onmouseout="tooltip.hide();" onclick="ClickExpansion2()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-search pull-right expandir" aria-hidden="true" style="display: none; top: 30px;"
+           id="ClickConsulta"
+           onmouseover='tooltip.show("Click para generar el reporte")'
+           onmouseout="tooltip.hide();" onclick="jsFiltros2()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-file-excel-o  pull-right expandir" aria-hidden="true" style="color: green; display: none;"
+           id="ClickDescargaJPG"
+           onmouseover='tooltip.show("Click para descargar el contenido en Excel")'
+           onmouseout="tooltip.hide();" onclick="jsImpresionCompendio2()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-file-image-o  pull-right expandir" aria-hidden="true" style="color: darkblue; display: none;"
+           id="ClickDescarga"
+           onmouseover='tooltip.show("Click para descargar el contenido en Imagen")'
+           onmouseout="tooltip.hide();" onclick="jsImpresionCompendio3()">
+            &nbsp;
+        </i>
+
+        <div id="container" class="container">
+        </div>
+    </div>
+    <div id="PeticicionJson" style="display: none;"></div>
+    <div id="PeticionNormalizada" style="display: none;"></div>
+
+    @{ Html.RenderPartial("FiltrosReporte2"); }
+</div>
+
+<script type="text/javascript">
+
+    BreadGral("Reportes \\ Gráfico");
+
+    function jsImpresionCompendio2() {
+        var valor = $("#container").text().trim();
+        if (valor === "") {
+            jsResultado("Favor de generar el reporte previamente", "PRECAUCION");
+            return;
+        }
+        jsCrearImageJPG("container", null, "ReporteUADyCS", true);
+    }
+
+    function jsImpresionCompendio3() {
+        var valor = $("#container").text().trim();
+        if (valor === "") {
+            jsResultado("Favor de generar el reporte previamente", "PRECAUCION");
+            return;
+        }
+        jsCrearImageJPG("container", null, "ReporteUADyCS", false);
+    }
+
+</script>

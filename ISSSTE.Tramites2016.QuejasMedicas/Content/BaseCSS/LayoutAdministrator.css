@@ -1,0 +1,115 @@
+﻿* { line-height: .5; }
+
+ul, li { list-style-type: none; }
+
+.sesion { font-family: verdana, arial; }
+
+.mifecha {
+    border: 2px solid #428bca;
+    float: right;
+    font-family: verdana, arial;
+    overflow: hidden;
+    padding: 1px;
+    text-align: center;
+    width: 110px;
+}
+
+.mifecha .ano {
+    color: #ffe3c1;
+    display: none;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 3px;
+    padding: 3px 0 5px 0;
+}
+
+.mifecha .dia {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    padding: 6px 0 5px 0;
+}
+
+.mifecha .mes {
+    color: #DF013A;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+#reloj {
+    font-size: 12px;
+    font-style: italic;
+    height: 15px;
+    margin-bottom: 3px;
+    padding-top: 3px;
+}
+
+#Bienvenida {
+    float: right;
+    overflow: hidden;
+}
+
+#Espacio {
+    float: right;
+    overflow: hidden;
+    width: 10px;
+}
+
+#UsuarioInfo {
+    float: right;
+    overflow: hidden;
+}
+
+#FullName {
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+#FullPerfil {
+    color: cornflowerblue;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 1px;
+}
+
+#FullOutSesion {
+    color: maroon;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: bold;
+    position: relative;
+    text-decoration: underline;
+    top: 0;
+}
+
+#MenuSecundario {
+    background-color: maroon;
+    color: black;
+    width: 40.8px;
+}
+
+#MenuPrincipal {
+    background-color: #428bca;
+    color: red;
+    position: absolute;
+    top: 150px;
+    width: 460.8px;
+    z-index: 9990;
+}
+
+#IndicadorSpan {
+    left: 25px;
+    position: absolute;
+    top: 7px;
+}
+
+#MenuPrincipalBoton {
+    left: 430px;
+    position: absolute;
+}
+
+.fa-reorder { color: red; }

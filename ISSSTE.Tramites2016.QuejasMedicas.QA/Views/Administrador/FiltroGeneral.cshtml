@@ -1,0 +1,37 @@
+﻿<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+<div class="alert alert-info @Tag.Col(12)">Selecciona los criterios de búsqueda necesarios para la generación del reporte.</div>
+<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+
+<div class="row">   
+    @TagReporte.InputRangoFecha(8, "Fecha inicio de la solicitud", "Fecha fin de la solicitud", "FechaRegistro", "", 10, false, "", "Proporcionar sólo un valor en caso de requerir una consulta por fecha")
+    @TagReporte.InputRango(4, "Hora inicio solicitud", "Hora fin solicitud","HoraSolicitud", "", 5, false, "", "Proporcionar sólo un valor en caso de requerir una consulta por sólo un parámetro")
+    @TagReporte.InputRangoFecha(8, "Fecha inicio de la cita", "Fecha fin de la cita", "FechaCita", "", 10, false, "", "Proporcionar sólo un valor en caso de requerir una consulta por fecha")   
+    @TagReporte.InputRango(4, "Hora inicio cita", "Hora fin cita" ,"HoraCita", "", 5, false, "", "Proporcionar sólo un valor inferior en caso de requerir una consulta por sólo un parámetro")
+    @TagReporte.InputSelect(8, "Estado de la cita", "CatTipoEstado", "selectpicker", false, " multiple ", "Mantener la tecla control oprimida para seleccionar varias opciones")    
+</div>
+<div class="@Tag.Col(12)" style="height:40px;">&nbsp;</div>
+<div class="row col-md-12">
+    <div class="pull-right">
+        <button type="button" style="text-decoration: none;"
+                class="btn btn-default pull-right"
+                onclick="MostrarFiltros('A1');">
+            <span class="fa fa-eye" aria-hidden="true"></span>&nbsp;&nbsp;Mostrar todos los filtros
+        </button>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        jsAjaxGenerico("../Catalogo/GetBusquedaTipoTramite", null, "CatTipoTramite");
+        jsAjaxGenerico("../Catalogo/GetBusquedaEstadoCita", null, "CatTipoEstado");
+        jsMouseOverFiltro();
+        jsMouseOutFiltro();
+        jsConfiguracionInicialGeneral();
+        jsCloseMakerClick();
+        $("#CatTipoEstado").css("height", "130px");
+    });
+
+</script>

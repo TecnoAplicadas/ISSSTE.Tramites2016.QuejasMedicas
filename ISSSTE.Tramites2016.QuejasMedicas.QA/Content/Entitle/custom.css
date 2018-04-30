@@ -1,0 +1,312 @@
+/* reset del padding en el HR que separa el titulo de la pagina con el resto de elementos */
+
+hr.red { margin: 5px 0 30px; }
+
+.box_upload {
+    background: white;
+    border: 1px solid #eeeeee;
+    border-radius: 3px 3px 0 0;
+    margin: 4px;
+    moz-border-radius: 3px 3px 0 0;
+    padding: 4px;
+    position: relative;
+    webkit-border-radius: 3px 3px 0 0;
+}
+
+.verticalAlign {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.show-grid [class^=col-] {
+    border: 1px solid #ddd;
+    border: 1px solid rgba(115, 115, 115, 0.2);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.filePicker {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.statusChange {
+    background: #DDDDDD;
+    height: 38px;
+    position: relative;
+}
+
+.statusApproved {
+    background: #4A90E2;
+    height: 38px;
+    position: relative;
+}
+
+.statusRejected {
+    background: #D0021B;
+    height: 39px;
+    position: relative;
+}
+
+.topBuffer { padding: 20px 0 150px; }
+
+.mRight { padding-right: 5px; }
+
+.dotInfo {
+    border-radius: 30px;
+    cursor: pointer;
+    float: left;
+    height: 35px;
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 6px 7px;
+    position: relative;
+    text-align: center;
+    width: 35px;
+    z-index: 100;
+}
+
+.paddTop { padding-top: 160px; }
+
+.name {
+    height: 40px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.aprove {
+    background-color: #4990E2;
+    color: #FFF;
+}
+
+.rejected {
+    background-color: #D0021B;
+    color: #FFF;
+}
+
+.process {
+    background-color: #818181;
+    color: #FFF;
+}
+
+.browserfile {
+    cursor: pointer;
+    height: 100%;
+    left: 0px;
+    margin-left: 15px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 99;
+}
+
+.dotInfo + .file-input-wrapper > .browserfile { margin-left: 80px; }
+
+/*margins*/
+
+.marg-T1px { margin-top: 1px; }
+
+.marg-T3px { margin-top: 3px; }
+
+.marg-T5px { margin-top: 5px; }
+
+.marg-T10px { margin-top: 10px; }
+
+.marg-T15px { margin-top: 15px; }
+
+.marg-B1px { margin-bottom: 1px; }
+
+.marg-B3px { margin-bottom: 3px; }
+
+.marg-B5px { margin-bottom: 5px; }
+
+.marg-B10px { margin-bottom: 10px; }
+
+.marg-B15px { margin-bottom: 15px; }
+
+.marg-B20px { margin-bottom: 20px; }
+
+@media (min-width: 720px) and (max-width: 910px) {
+    .container { width: 890px; }
+
+    .col-if-1,
+    .col-if-10,
+    .col-if-11,
+    .col-if-12,
+    .col-if-2,
+    .col-if-3,
+    .col-if-4,
+    .col-if-5,
+    .col-if-6,
+    .col-if-7,
+    .col-if-8,
+    .col-if-9 { float: left }
+
+    .col-if-1 { width: 8.33333% }
+
+    .col-if-2 { width: 16.66667% }
+
+    .col-if-3 { width: 25% }
+
+    .col-if-4 { width: 33.33333% }
+
+    .col-if-5 { width: 41.66667% }
+
+    .col-if-6 { width: 50% }
+
+    .col-if-7 { width: 58.33333% }
+
+    .col-if-8 { width: 66.66667% }
+
+    .col-if-9 { width: 75% }
+
+    .col-if-10 { width: 83.33333% }
+
+    .col-if-11 { width: 91.66667% }
+
+    .col-if-12 { width: 100% }
+
+    .col-if-pull-0 { right: auto }
+
+    .col-if-pull-1 { right: 8.33333% }
+
+    .col-if-pull-2 { right: 16.66667% }
+
+    .col-if-pull-3 { right: 25% }
+
+    .col-if-pull-4 { right: 33.33333% }
+
+    .col-if-pull-5 { right: 41.66667% }
+
+    .col-if-pull-6 { right: 50% }
+
+    .col-if-pull-7 { right: 58.33333% }
+
+    .col-if-pull-8 { right: 66.66667% }
+
+    .col-if-pull-9 { right: 75% }
+
+    .col-if-pull-10 { right: 83.33333% }
+
+    .col-if-pull-11 { right: 91.66667% }
+
+    .col-if-pull-12 { right: 100% }
+
+    .col-if-push-0 { left: auto }
+
+    .col-if-push-1 { left: 8.33333% }
+
+    .col-if-push-2 { left: 16.66667% }
+
+    .col-if-push-3 { left: 25% }
+
+    .col-if-push-4 { left: 33.33333% }
+
+    .col-if-push-5 { left: 41.66667% }
+
+    .col-if-push-6 { left: 50% }
+
+    .col-if-push-7 { left: 58.33333% }
+
+    .col-if-push-8 { left: 66.66667% }
+
+    .col-if-push-9 { left: 75% }
+
+    .col-if-push-10 { left: 83.33333% }
+
+    .col-if-push-11 { left: 91.66667% }
+
+    .col-if-push-12 { left: 100% }
+
+    .col-if-offset-0 { margin-left: 0 }
+
+    .col-if-offset-1 { margin-left: 8.33333% }
+
+    .col-if-offset-2 { margin-left: 16.66667% }
+
+    .col-if-offset-3 { margin-left: 25% }
+
+    .col-if-offset-4 { margin-left: 33.33333% }
+
+    .col-if-offset-5 { margin-left: 41.66667% }
+
+    .col-if-offset-6 { margin-left: 50% }
+
+    .col-if-offset-7 { margin-left: 58.33333% }
+
+    .col-if-offset-8 { margin-left: 66.66667% }
+
+    .col-if-offset-9 { margin-left: 75% }
+
+    .col-if-offset-10 { margin-left: 83.33333% }
+
+    .col-if-offset-11 { margin-left: 91.66667% }
+
+    .col-if-offset-12 { margin-left: 100% }
+}
+
+.verticalCenter {
+    align-content: center;
+    display: table-cell;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+}
+
+.statusApprovedColor { color: #3c763d; }
+
+.imgTuriste {
+    height: 90px;
+    width: 100%;
+}
+
+.bigPack {
+    height: 180px;
+    width: 100%;
+}
+
+.docs-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.docs-nav li { border-top: 1px solid #eeeeee; }
+
+.docs-nav a {
+    color: #263131;
+    display: block;
+    padding: 18px 30px;
+    position: relative;
+    text-decoration: none;
+}
+
+.docs-nav a:hover {
+    background: #f6f6f6;
+    text-decoration: none;
+}
+
+.docs-nav a.active { background: #eeeeee; }
+
+.docs-nav a.active:before { display: block; }
+
+.docs-nav-logo {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.docs-nav-logo a {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.navbar-inverse .navbar-nav > li > a.disabled {
+    color: darkgray;
+    pointer-events: none;
+}

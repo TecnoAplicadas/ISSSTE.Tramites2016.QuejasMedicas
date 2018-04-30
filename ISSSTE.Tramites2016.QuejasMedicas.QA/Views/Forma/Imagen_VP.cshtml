@@ -1,0 +1,27 @@
+﻿<div class="col-md-2">&nbsp;</div>
+<div class="col-md-8">    
+    <object id="EnIE" width="85%" data="@ViewBag.ImageData" height="800">
+    </object>
+    <iframe id="EnFirefox" src="@ViewBag.ImageData" width="85%" height="800">
+        <p>Si puede leer este mensaje es que su navegador no soporta correctamente el elemento <code>iframe</code></p>
+    </iframe>
+
+</div>
+
+<script type="text/javascript">
+    
+    /// var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    /// var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    /// var es_opera = navigator.userAgent.toLowerCase().indexOf('opera');
+    /// var es_ie = navigator.userAgent.indexOf("MSIE") > -1;
+
+    $(document).ready(function () {
+        var es_ie = detectIE();
+        if (es_ie) {
+            $("#EnFirefox").css("display", "none");
+        } else {
+            $("#EnIE").css("display", "none");
+        }
+    });
+
+</script>

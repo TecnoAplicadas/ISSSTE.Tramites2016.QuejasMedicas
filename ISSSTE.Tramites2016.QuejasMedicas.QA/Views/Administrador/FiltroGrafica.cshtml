@@ -1,0 +1,29 @@
+﻿@model List<ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.EstadoCitaCortoDTO>
+<script type="text/javascript" src="~/Scripts/Reporte/jsGrafica.js"></script>
+
+<div id="SeccionReporte" class="container">
+    <div class="container">
+        <center>
+            <h3>Reporte de citas por Unidad de Atención al Derechohabiente y Comunicación Social (UADyCS)</h3>
+        </center>
+    </div>
+    <div class="container">
+        <center>
+            <table style="font-size: 10px; height: 20px;">
+                <tbody>
+                <tr id="RowIndicadores"></tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+    <div style="height: 380px; overflow-x: hidden; overflow-y: auto; width: 1350px;" class="container">
+        <div class="container" id="divBarras" style="height: 2000px; width: 100%;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    G_Objetos = @Html.Raw(Json.Encode(Model));
+    jsReporte2();
+
+</script>

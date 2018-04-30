@@ -1,0 +1,111 @@
+﻿<link rel="stylesheet" href="~/Scripts/Libraries/CrossList/CrossList.css"/>
+<script type="text/javascript" src="~/Scripts/Libraries/CrossList/jsCrossList.js">
+
+
+
+</script>
+
+@*<div class="container">
+    <div class="doc-alert doc-alert-info">
+        Seleccionar las columnas del lado izquierdo <b>"Columnas totales"</b>
+        que se mostraran en el reporte <b>"Columnas del reporte"</b>
+    </div>
+</div>*@
+
+<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+<div class="alert alert-info @Tag.Col(12)"> Seleccionar las columnas del lado izquierdo <b>"Columnas totales"</b>
+        que se mostraran en el reporte <b>"Columnas del reporte"</b></div>
+<div class="@Tag.Col(12)" style="height:20px;">&nbsp;</div>
+
+<div class="container">
+    <div class="row">
+        <div class="dual-list list-left col-md-5">
+            <div class="well text-right Bloque">
+                <div class="row">
+                    <div class="col-md-10">
+                        <center>
+                            <h4>Columnas totales</h4>
+                        </center>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span onmouseover="tooltip.show('B&uacute;squeda predictiva')" onmouseout="tooltip.hide();"
+                                  class="input-group-addon glyphicon glyphicon-search SearchIcon">
+                            </span>
+                            <input type="text" onmouseover="tooltip.show('B&uacute;squeda predictiva')" onmouseout="tooltip.hide();"
+                                   name="SearchDualList" class="form-control" placeholder="B&uacute;squeda"/>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="btn-group">
+                            <a class="btn btn-default selector SearchIcon">
+                                <i onmouseover="tooltip.show(($(this).hasClass('glyphicon-unchecked') ? 'Seleccionar todos' : 'Desmarcar todos'))" onmouseout="tooltip.hide();" class="glyphicon glyphicon-unchecked"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group ListaA" style="height: 270px; overflow-y: auto;"></ul>
+            </div>
+        </div>
+        <div class="list-arrows col-md-1 text-center">
+
+            <button style="font-size: 12px; width: 80px;" class="btn btn-default SearchIcon btn-sm move-left">
+                <span class="glyphicon glyphicon-chevron-left"></span>Quitar
+            </button>
+            <button style="font-size: 12px; width: 80px;" class="btn SearchIcon btn-default btn-sm move-right">
+                Agregar<span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+        <div class="dual-list list-right col-md-5">
+            <div class="well Bloque">
+                <div class="row">
+                    <center>
+                        <h4>Columnas del reporte</h4>
+                    </center>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="btn-group">
+                            <a class="btn btn-default selector SearchIcon">
+                                <i class="glyphicon glyphicon-unchecked"
+                                   onmouseover="tooltip.show(($(this).hasClass('glyphicon-unchecked') ? 'Seleccionar todos' : 'Desmarcar todos'))" onmouseout="tooltip.hide();">
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <input type="text" onmouseover="tooltip.show('B&uacute;squeda predictiva')" onmouseout="tooltip.hide();"
+                                   name="SearchDualList" class="form-control" placeholder="B&uacute;squeda"/>
+                            <span onmouseover="tooltip.show('B&uacute;squeda predictiva')" onmouseout="tooltip.hide();"
+                                  class="input-group-addon glyphicon glyphicon-search SearchIcon">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group ListaB" style="height: 270px; overflow-y: auto;"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        RecorrerEncabezados();
+        $(".CampoAux").remove();
+    });
+
+    function RecorrerEncabezados() {
+        for (var k in G_Objetos) {
+            if (G_Objetos.hasOwnProperty(k)) {
+                $(".ListaB").append("<li class='ListaSeleccion list-group-item " +
+                    k +
+                    "' style='width:100%'>" +
+                    G_Objetos[k] +
+                    "</li>");
+            }
+        }
+    }
+
+</script>

@@ -1,0 +1,32 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.LoginDTO.LoginModelDTO
+@{
+    ViewBag.Title = "Inicio de sesión exitoso";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="">
+<div data-ng-app="ISSSTE.Tramites2016.QmRdRI.Administrator.App">
+    <input type="hidden" id="baseUrl" value="@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))"/>
+    @RenderBody()
+</div>
+
+@Scripts.Render("~/bundles/JQuery")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/Respond")
+@Scripts.Render("~/bundles/PaginacionAngular")
+@Scripts.Render("~/bundles/administrator/scripts-utils")
+
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/angular-auto-validate")
+@Scripts.Render("~/bundles/angular-upload")
+@Scripts.Render("~/bundles/bootstrap-datetimepicker")
+@RenderSection("scripts", false)
+</body>
+</html>

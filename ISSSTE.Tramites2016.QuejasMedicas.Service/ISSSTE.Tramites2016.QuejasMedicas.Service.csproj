@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31CC840A-6E71-4B64-B8B2-4279F43F6F2E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISSSTE.Tramites2016.QuejasMedicas.Domain</RootNamespace>
+    <AssemblyName>ISSSTE.Tramites2016.QuejasMedicas.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <DocumentationFile>bin\Debug\ISSSTE.Tramites2016.QuejasMedicas.Domain.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdministracionService\CatTipoEntidadService.cs" />
+    <Compile Include="CuentaService\CapchaService.cs" />
+    <Compile Include="DomainService\CalendarDomainService.cs" />
+    <Compile Include="DomainService\CatalogosService.cs" />
+    <Compile Include="DomainService\CommonDomainService.cs" />
+    <Compile Include="CuentaService\ConfiguracionService.cs" />
+    <Compile Include="CuentaService\PromoventeService.cs" />
+    <Compile Include="CuentaService\UsuarioService.cs" />
+    <Compile Include="DomainService\ConfiguracionesService.cs" />
+    <Compile Include="IDomainService\IConfiguracionesService.cs" />
+    <Compile Include="InformacionService\LenguajeCiudadanoService.cs" />
+    <Compile Include="InformacionService\CatalogoService.cs" />
+    <Compile Include="InformacionService\GenericoService.cs" />
+    <Compile Include="InformacionService\CitaService.cs" />
+    <Compile Include="IDomainService\ICalendarDomainService.cs" />
+    <Compile Include="IDomainService\ICommonDomainService.cs" />
+    <Compile Include="IDomainService\IRequestDomainService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainService\RequestDomainService.cs" />
+    <Compile Include="ReporteService\ReporteService.cs" />
+    <Compile Include="Utils\WebUtilService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISSSTE.Tramites2016.QuejasMedicas.DAL\ISSSTE.Tramites2016.QuejasMedicas.DAL.csproj">
+      <Project>{e8094dac-05df-413b-8de8-40531f6aacfc}</Project>
+      <Name>ISSSTE.Tramites2016.QuejasMedicas.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISSSTE.Tramites2016.QuejasMedicas.Model\ISSSTE.Tramites2016.QuejasMedicas.Model.csproj">
+      <Project>{a21fd585-e6d7-4f56-94b9-d3cdf7f9998c}</Project>
+      <Name>ISSSTE.Tramites2016.QuejasMedicas.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

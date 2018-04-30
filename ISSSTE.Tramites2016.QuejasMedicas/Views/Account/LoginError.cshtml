@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Error al iniciar sesión";
+    Layout = "~/Views/Shared/LayoutAdministrator.cshtml";
+}
+<div class="container">
+    <h2></h2>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <strong>¡Ups, algo salio mal! </strong>
+        <br/><br/>
+        <span>Tuvimos un problema para poder inciar sesión correctamente, cerraremos tu sesión y despues volveras a la pagina de inicio.</span><br/>
+        <span>Si este problema persiste comunicate con tu administrador del sistema.</span>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/administrator/app/login")
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.setTimeout(function() {
+                    window.location.replace(
+                        '@Url.Action("Logout", "Account", new {returnUrl = Url.Action("Index", "Administrador", null, Request.Url.Scheme)}, null)');
+                },
+                4000);
+        })
+    </script>
+}

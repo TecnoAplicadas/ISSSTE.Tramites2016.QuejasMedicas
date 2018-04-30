@@ -1,0 +1,237 @@
+﻿@model List<ISSSTE.Tramites2016.QuejasMedicas.Model.UtilDTO.DuplaValoresDTO>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width"/>
+    <title>Inicio</title>
+
+    <link rel="icon" href="@Url.Content("../Images/Administrator/favicon.ico")" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="~/Content/FontAwesome_4.0.5/css/font-awesome.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Promovente.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Tooltip.css"/>
+    <link rel="stylesheet" href="~/Content/BaseCSS/Header.css"/>
+    <link rel="stylesheet" href="https://framework-gb.cdn.gob.mx/assets/styles/main.css">
+
+    <script type="text/javascript" src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+    <script type="text/javascript" src="~/Scripts/Libraries/JQuery/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="~/Scripts/Libraries/Bootstrap/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="https://framework-gb.cdn.gob.mx/data/encuesta_v1.0/qa/encuestas.js"> </script><!--Encuesta de satisfaccion-->
+
+
+
+    <script type="text/javascript" src="~/Scripts/Libraries/Bootboxjs/bootbox.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsNotificaciones.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsPromovente.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsControladorGeneral.js"></script>
+    <script type="text/javascript" src="~/Scripts/BaseJS/jsAgenda.js"></script>
+
+    <style>
+        div { text-decoration: none; }
+    </style>
+</head>
+
+<body onload="javascript:window.history.forward(1);" oncontextmenu="return false" onselectstart="return false" ondragstart="">
+
+<!-- Begin Digital Analytix Tag 1.1302.13 -->
+<script type="text/javascript">
+
+    var normalizar = (function() {
+        var dbCaracteres = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+            dbConversion = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+            mapping = {};
+
+        for (var i = 0, j = dbCaracteres.length; i < j; i++)
+            mapping[dbCaracteres.charAt(i)] = dbConversion.charAt(i);
+
+        return function(str) {
+            var ret = [];
+            for (var i = 0, j = str.length; i < j; i++) {
+                var c = str.charAt(i);
+                if (mapping.hasOwnProperty(str.charAt(i)))
+                    ret.push(mapping[c]);
+                else
+                    ret.push(c);
+            }
+            return ret.join('');
+        };
+    })();
+
+    function udm_(e) {
+        var t = "comScore=",
+            n = document,
+            r = n.cookie,
+            i = "",
+            s = "indexOf",
+            o = "substring",
+            u = "length",
+            a = 2048,
+            f,
+            l = "&ns_",
+            c = "&",
+            h,
+            p,
+            d,
+            v,
+            m = window,
+            g = m.encodeURIComponent || escape;
+        if (r[s](t) + 1)
+            for (d = 0, p = r.split(";"), v = p[u]; d < v; d++)
+                h = p[d][s](t), h + 1 && (i = c + unescape(p[d][o](h + t[u])));
+        var nsP;
+        e += l +
+            "_t=" +
+            +(new Date) +
+            l +
+            "c=" +
+            (n.characterSet || n.defaultCharset || "") +
+            "&c8=" +
+            g(n.title) +
+            i +
+            "&c7=" +
+            g(n.URL) +
+            "&c9=" +
+            g(n.referrer), e[u] > a &&
+            e[s](c) > 0 &&
+            (f = e[o](0, a - 8).lastIndexOf(c), e = (e[o](0, f) + l + "cut=" + g(e[o](f + 1)))[o](0, a)), n.images
+            ? (h = new Image, m.ns_p || (nsP = h), h.src = e)
+            : n.write("<", "p", "><", 'img src="', e, '" height="1" width="1" alt="*"', "><", "/p", ">");
+    };
+
+    function uid_call(a, b) {
+        try {
+            var uiC2 = 17183199; // your corporate c2 client value
+            var uiNsSite = 'gobmx'; // your sites identifier
+            window.b_ui_event = window.c_ui_event != null ? window.c_ui_event : "", window.c_ui_event = a;
+            var uiPixelUrl = 'https://sb.scorecardresearch.com/p?c1=2&c2=' +
+                uiC2 +
+                '&ns_site=' +
+                uiNsSite +
+                '&name=' +
+                a +
+                '&ns_type=hidden&type=hidden&ns_ui_type=' +
+                b;
+            b = "comScore=";
+            var c = document,
+                d = c.cookie,
+                e = "",
+                f = "indexOf",
+                g = "substring",
+                h = "length",
+                i = 2048,
+                j,
+                k = "&ns_",
+                l = "&",
+                m,
+                n,
+                o,
+                p,
+                q = window,
+                r = q.encodeURIComponent || escape;
+            if (d[f](b) + 1)
+                for (o = 0, n = d.split(";"), p = n[h]; o < p; o++)
+                    m = n[o][f](b), m + 1 && (e = l + unescape(n[o][g](m + b[h])));
+            var nsP;
+            uiPixelUrl += k +
+                "_t=" +
+                +(new Date) +
+                k +
+                "c=" +
+                (c.characterSet || c.defaultCharset || "") +
+                "&c8=" +
+                r(c.title) +
+                e +
+                "&c7=" +
+                r(c.URL) +
+                "&c9=" +
+                r(c.referrer) +
+                "&b_ui_event=" +
+                b_ui_event +
+                "&c_ui_event=" +
+                c_ui_event, uiPixelUrl[h] > i &&
+                uiPixelUrl[f](l) > 0 &&
+                (j = uiPixelUrl[g](0, i - 8).lastIndexOf(l), uiPixelUrl =
+                    (uiPixelUrl[g](0, j) + k + "cut=" + r(uiPixelUrl[g](j + 1)))[g](0, i)), c.images
+                ? (m = new Image, q.ns_p || (nsP = m), m.src = uiPixelUrl)
+                : c.write("<p><img src='", uiPixelUrl, "' height='1' width='1' alt='*'></p>");
+
+        } catch (ex) {
+        }
+    }
+
+    function jsRemoverEspacios(text) {
+
+        if (text == null) return text;
+
+        return text.replace(/\s*$/, "").replace(/ /g, '_');
+    }
+
+    function registraSeccion(seccion) {
+        try {
+
+            var sistema = normalizar($("#Sistema").html());
+            var nombreSeccion = 'ISSSTE.' + sistema + '.' + seccion;
+            nombreSeccion = jsRemoverEspacios(nombreSeccion);
+            udm_('https://sb.scorecardresearch.com/b?c1=2&c2=17183199&ns_site=gobmx&name=' + nombreSeccion);
+        } catch (ex) {
+        }
+    }
+</script>
+<noscript>
+    <p>
+        <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=17183199&amp;ns_site=gobmx&amp;name=seccionName" height="1" width="1" alt="*">
+    </p>
+</noscript>
+<!-- End Digital Analytix Tag 1.1302.13 -->
+
+
+<div id="Sistema" style="display: none">@TempData["Sistema"]</div>
+<div id="IdCatTipoSistema" style="display: none">@Session["CatTipoTramiteId"]</div>
+
+<main class="page">
+        <div class="container" id="mainContainer">
+            @{ Html.RenderPartial("Header"); }
+        </div>
+</main>
+
+<script type="text/javascript">
+
+    /*$gmx(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });*/
+
+    var Mensajes = @Html.Raw(Json.Encode(Model));
+    $(document).ready(function() {
+        CargarMensajes(Mensajes);
+        AcercaTramite();
+        $('body').bind('copy paste',function(e) {
+            e.preventDefault(); return false;
+        });
+        $('*').bind('copy paste',function(e) {
+            e.preventDefault(); return false;
+        });
+    });
+
+    
+    $gmx(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
+
+
+
+<!-- Begin DAx cs.js import -->
+<script type="text/javascript" src="https://sb.scorecardresearch.com/c2/17183199/ct.js"></script>
+<!-- End DAx cs.js import -->
+
+
+</body>
+</html>

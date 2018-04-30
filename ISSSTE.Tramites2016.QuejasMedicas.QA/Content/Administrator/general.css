@@ -1,0 +1,218 @@
+
+
+.over {
+    float: right;
+    height: 70px;
+    overflow: hidden;
+    top: 0;
+    width: 100px;
+}
+
+.over span.version { display: none; }
+
+.over:hover span.version {
+    display: inherit;
+    font-size: 14px;
+    font-variant: small-caps;
+}
+
+
+.row, .container, .container-fluid { /*min-width: 900px !important;*/ }
+
+.login { max-width: 450px; }
+
+.fa { padding-right: 5px; }
+
+.abl-minheight { min-height: 255px; }
+
+body, .form-control, .btn { font-size: 16px; }
+
+.dotInfo {
+    border-radius: 30px;
+    cursor: pointer;
+    float: left;
+    height: 35px;
+    margin-right: 10px;
+    padding: 8px 8px;
+    position: relative;
+    text-align: center;
+    width: 35px;
+    z-index: 100;
+}
+
+.paddTop { padding-top: 160px; }
+
+.name {
+    height: 40px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.aprove {
+    background-color: #4990E2;
+    color: #FFF;
+}
+
+.rejected {
+    background-color: #D0021B;
+    color: #FFF;
+}
+
+.process {
+    background-color: #818181;
+    color: #FFF;
+}
+
+.browserfile {
+    cursor: pointer;
+    height: 100%;
+    left: 0px;
+    margin-left: 15px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 99;
+}
+
+.dotInfo + .file-input-wrapper > .browserfile { margin-left: 80px; }
+
+.pagination a {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+/*===================================================================================*/
+
+/*	SPECIAL MARGIN
+/*===================================================================================*/
+
+.paddingleft-0 { padding-left: 0 !important; }
+
+.paddingright-0 { padding-right: 0 !important; }
+
+.margintop-0 { margin-top: 0 !important; }
+
+.margintop-5 { margin-top: 5px !important; }
+
+.margintop-10 { margin-top: 10px !important; }
+
+.margintop-20 { margin-top: 20px !important; }
+
+.margintop-25 { margin-top: 25px !important; }
+
+.margintop-30 { margin-top: 30px !important; }
+
+.margintop-40 { margin-top: 40px !important; }
+
+.margintop-45 { margin-top: 45px !important; }
+
+.margintop-50 { margin-top: 50px !important; }
+
+.margintop-60 { margin-top: 60px !important; }
+
+.margintop-70 { margin-top: 70px !important; }
+
+.margintop-80 { margin-top: 80px !important; }
+
+.margintop-90 { margin-top: 90px !important; }
+
+.margintop-100 { margin-top: 100px !important; }
+
+.margintop--5 { margin-top: -5px !important; }
+
+.margintop--10 { margin-top: -10px !important; }
+
+.margintop--20 { margin-top: -20px !important; }
+
+.margintop--30 { margin-top: -30px !important; }
+
+.margintop--40 { margin-top: -40px !important; }
+
+.margintop--45 { margin-top: -45px !important; }
+
+.margintop--50 { margin-top: -50px !important; }
+
+.margintop--60 { margin-top: -60px !important; }
+
+.margintop--70 { margin-top: -70px !important; }
+
+.margintop--80 { margin-top: -80px !important; }
+
+.margintop--90 { margin-top: -90px !important; }
+
+.margintop--100 { margin-top: -100px !important; }
+
+.marginbot-0 { margin-bottom: 0 !important; }
+
+.marginbot-10 { margin-bottom: 10px !important; }
+
+.marginbot-20 { margin-bottom: 20px !important; }
+
+.marginbot-30 { margin-bottom: 30px !important; }
+
+.marginbot-40 { margin-bottom: 40px !important; }
+
+.marginbot-50 { margin-bottom: 50px !important; }
+
+.marginbot-60 { margin-bottom: 60px !important; }
+
+.marginbot-70 { margin-bottom: 70px !important; }
+
+.marginbot-80 { margin-bottom: 80px !important; }
+
+.marginbot-90 { margin-bottom: 90px !important; }
+
+.marginbot-100 { margin-bottom: 100px !important; }
+
+.marginbot--10 { margin-bottom: -10px !important; }
+
+.marginbot--20 { margin-bottom: -20px !important; }
+
+.marginbot--30 { margin-bottom: -30px !important; }
+
+.marginbot--40 { margin-bottom: -40px !important; }
+
+.marginbot--50 { margin-bottom: -50px !important; }
+
+.marginbot--60 { margin-bottom: -60px !important; }
+
+.marginbot--70 { margin-bottom: -70px !important; }
+
+.marginbot--80 { margin-bottom: -80px !important; }
+
+.marginbot--90 { margin-bottom: -90px !important; }
+
+.marginbot--100 { margin-bottom: -100px !important; }
+
+.marginleft-0 { margin-left: 0 !important; }
+
+.marginleft-5 { margin-left: 5px !important; }
+
+.marginleft-10 { margin-left: 10px !important; }
+
+.marginleft-20 { margin-left: 20px !important; }
+
+.marginleft-25 { margin-left: 25px !important; }
+
+.marginleft-30 { margin-left: 30px !important; }
+
+.marginleft-40 { margin-left: 40px !important; }
+
+.marginleft-45 { margin-left: 45px !important; }
+
+.marginleft-50 { margin-left: 50px !important; }
+
+.marginleft-60 { margin-left: 60px !important; }
+
+.marginleft-70 { margin-left: 70px !important; }
+
+.marginleft-80 { margin-left: 80px !important; }
+
+.marginleft-90 { margin-left: 90px !important; }
+
+.marginleft-100 { margin-left: 100px !important; }

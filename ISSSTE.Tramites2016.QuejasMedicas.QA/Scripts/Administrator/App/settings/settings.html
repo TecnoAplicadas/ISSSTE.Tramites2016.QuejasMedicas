@@ -1,0 +1,188 @@
+﻿<div data-ng-controller="settingsController as vm" data-ng-init="vm.initSettings()">
+
+    <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height: 30px;"></div>
+
+    <div class="col-xs-12">
+        <div class="col-xs-12">
+            <div class="alerts"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Categoría:</label>
+                    <select class="form-control" data-ng-model="vm.categorySelectedId" data-ng-options="category.id as category.name for category in vm.categorys" data-ng-change="vm.changeCategory()"></select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar por concepto o descripción" data-ng-model="vm.query"
+                               data-ng-keyup="$event.keyCode == 13 && vm.changeSearchCategory()" onmouseover="tooltip.show('Ingrese el concepto  o descripción a buscar.')" onmouseout="tooltip.hide();" />
+
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary" data-ng-click="vm.changeSearchCategory()">
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height: 10px;"></div>
+
+        <div class="col-xs-12 margintop-30">
+            <div class="panel panel-default" data-ng-show="vm.settings.length > 0">
+                <div class="panel-body">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span ng-if="vm.categorySelectedId==1">Configuración</span>
+                                    <span ng-if="vm.categorySelectedId==2">Sección</span>
+                                </th>
+                                <th>
+                                    <span ng-if="vm.categorySelectedId==1">Valor</span>
+                                    <span ng-if="vm.categorySelectedId==2">Mensaje</span>
+                                </th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="setting in vm.settings">
+                                <td ng-if="vm.categorySelectedId!=1">{{setting.Concepto}}</td>
+                                <td ng-if="vm.categorySelectedId==1">{{setting.Descripcion}}</td>
+                                <td>{{setting.Valor}}</td>
+                                <td>
+                                    <div class="pull-left">
+                                        <!--<a >-->
+                                        <button ng-click="vm.getSettingsDetailClick(setting,requirementForm)" type="button" class="btn btn-primary btn-xs" onmouseover="tooltip.show('Editar Selección')" onmouseout="tooltip.hide();">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
+                                        <!--</a>-->
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.panel-default -->
+            </div>
+            <!-- /.panel -->
+            <div class="alert alert-info" data-ng-show="vm.settings == 0">
+                No se encontraron solicitudes.
+            </div>
+
+            <div class="col-xs-12">
+                <div class="col-xs-2 pull-left paddingleft-0">
+                    Mostrar:
+                    <select class="form-control"
+                            data-ng-options="actualPageSize + ' resultados' for actualPageSize in vm.pagination.pageSizes"
+                            data-ng-model="vm.pagination.selectedPageSize" data-ng-change="vm.changeSearchCategory()"></select>
+                </div>
+                <div class="col-xs-2 pull-left paddingleft-0">
+                    Total de registros:
+                    <input style="background-color: lightblue" class="form-control text-center" data-ng-model="vm.pagination.resultCount" disabled />
+                </div>
+
+                <div class="col-xs-8 pull-right paddingright-0" data-ng-show="vm.settings.length > 0">
+                    <nav class="text-right">
+                        <ul class="pagination">
+                            <li data-ng-class="{ disabled: vm.pagination.isFirstPage() }">
+                                <a data-ng-click="vm.pagination.changeToPreviousPage()">&laquo;</a>
+                            </li>
+                            <li data-ng-repeat="actualPage in vm.pagination.pages"
+                                data-ng-class="{ active: vm.pagination.isPageSelected(actualPage) }">
+                                <a data-ng-click="vm.pagination.changeSelectedPage(actualPage)">{{actualPage}}</a>
+                            </li>
+                            <li data-ng-class="{ disabled: vm.pagination.isLastPage() }">
+                                <a data-ng-disabled="vm.pagination.isLastPage()"
+                                   data-ng-click="vm.pagination.changeToNextPage()">&raquo;</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col -->
+        <!-- END CONTENT -->
+        <!--MODAL EVENTOS-->
+        <div class="modal fade" id="settingDetail-modal" tabindex="-1" style="z-index: 1050">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="closeModal close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <center>
+                            <h3>Detalle</h3>
+                        </center>
+                    </div>
+                    <div class="modal-body">
+                        <form id="requirementForm" name="requirementForm" novalidate ng-init="vm.initFormValidation(requirementForm)">
+                            <!--CUERPO MODAL-->
+                            <div class="row" ng-if="vm.categorySelectedId!=1">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">
+                                        <span ng-if="vm.categorySelectedId==1">Configuración:</span>
+                                        <span ng-if="vm.categorySelectedId==2">Sección:</span>
+                                    </label>
+                                    <input maxlength="200" data-ng-model="vm.settingDetail.Concepto" ng-disabled="vm.categorySelectedId!=2" class="form-control" value="" id="Configuracion" name="Configuracion" type="text" required />
+                                    <span class="totalCaracteres">{{vm.settingDetail.Concepto.length==null?0:vm.settingDetail.Concepto.length}}/200 caracteres <span ng-if="vm.settingDetail.Concepto.length==200">* Ha alcanzado el maximo de caracteres diponibles (200)</span></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">
+                                        Descripción
+                                    </label>
+                                    <textarea maxlength="500" rows="3" style="resize: none" data-ng-model="vm.settingDetail.Descripcion" class="form-control" ng-disabled="true" value="" id="Descripcion" name="Descripcion" type="text" />
+                                    <span class="totalCaracteres">{{vm.settingDetail.Descripcion.length==null?0:vm.settingDetail.Descripcion.length}}/500 caracteres</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-if-10 col-md-10">
+                                    <label class="control-label">
+                                        <span ng-if="vm.categorySelectedId==1">Valor:</span>
+                                        <span ng-if="vm.categorySelectedId==2">Mensaje:</span>
+                                    </label>
+                                    <textarea ng-pattern="vm.getRegex(vm.settingDetail.TipoDato)" maxlength="300" rows="3" style="resize: none" data-ng-model="vm.settingDetail.Valor" class="form-control" id="valorId" name="valorId" required disable-validation-message="" />
+                                    <span class="messages" ng-show="requirementForm.valorId.$touched ||requirementForm.valorId.$dirty">
+                                        <span class="help-block error-message" ng-show="requirementForm.valorId.$error.required">El campo es requerido</span>
+                                        <span class="help-block error-message" ng-show="requirementForm.valorId.$error.pattern">
+                                            El valor debe ser ({{vm.settingDetail.TipoDato}}).
+                                        </span>
+                                    </span>
+                                    <span class="totalCaracteres">{{vm.settingDetail.Valor.length==null?0:vm.settingDetail.Valor.length}}/300 caracteres</span>
+                                </div>
+                            </div>
+                            <!--CUERPO MODAL-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="closeModal btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button ng-click="vm.saveSettingDetailClick(vm.settingDetail)" ng-disabled="requirementForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--MODAL EVENTOS-->
+
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(".closeModal").click(function () {
+            $("#settingDetail-modal").modal("hide");
+        });
+        BreadGral("Configuraciones de la aplicación");
+    });
+
+
+</script>

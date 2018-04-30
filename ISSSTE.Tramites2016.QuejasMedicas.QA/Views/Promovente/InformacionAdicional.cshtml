@@ -1,0 +1,85 @@
+﻿@model ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.PromoventeDTO
+
+<div class="col-md-12">
+    <div id="SeccionAdicional">
+
+        <h2>@Model.DuplaValores.Valor</h2>
+        <hr class="red">
+        <div class="alert alert-info bottom-buffer">@Model.DuplaValores.Informacion</div>
+
+
+        @Tag.Height(30)
+
+        <div class="panel-group ficha-collapse" id="accordion">
+            @foreach (var seccion in Model.SeccionSecundaria)
+            {
+                var currentIndex = Model.SeccionSecundaria.IndexOf(seccion);
+                var estilo = currentIndex == 0 ? "background-color:#4D92DF;color:white;" : "";
+                <div class="panel panel-default">
+                    <div class="panel-heading SpecialPanel"
+                         style="@estilo" id="PD_Panel_@currentIndex">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@currentIndex" aria-expanded="true" aria-controls="collapse_@currentIndex">
+                                @MvcHtmlString.Create(seccion.Titulo)
+                            </a>
+                        </h4>
+                        <button type="button" id="Panel_@currentIndex" style="background-color:#F6F6F6" class="PD_Buton collpase-button collapsed" onclick="CambioPanelPD('Panel_@currentIndex');" data-parent="#accordion" data-toggle="collapse" href="#collapse_@currentIndex"></button>
+                    </div>
+                    <div id="collapse_@currentIndex" class="panel-collapse collapse @if (currentIndex == 0){<text>in</text>}">
+                        <div class="panel-body">
+                            @MvcHtmlString.Create(seccion.Detalle)
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @Tag.Height(40)
+        <div class="row pull-right">
+            <div class="col-md-12">
+                @Tag.InputBoton("ImpresionPage2", "Descargar información", 3, 3, "ImpresionPage2", "fa fa-file-pdf-o")
+            </div>
+        </div>
+        @Tag.Height(80)
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function CambioPanelPD(id) {
+        $(".SpecialPanel").css("background-color", "#F6F6F6");
+        $(".SpecialPanel").css("color", "black");
+
+        $("#PD_" + id).css("background-color", "#4D92DF");
+        $("#PD_" + id).css("color", "white");
+        $("#" + id).css("background-color", "#F6F6F6");
+    }
+
+    function CuerpoImpresion1() {
+        var encabezado = "</br><center><h2 style='color:#4A632F;'>" + $("#Sistema").html() + "</h2></center></br>";
+        auxiliar = "";
+        var i = 0;
+        for (; ;) {
+            var panel = $("#PD_Panel_" + i).text();
+            panel = new String(panel);
+            panel = panel.trim();
+            if (panel == null || panel == undefined || panel == "") break;
+            panel = "<center><h3 style='color:#7D9084'>" + panel + "</h3></center></br>";
+            var descripcion = $("#collapse_" + i).html();
+            auxiliar = auxiliar + panel + descripcion + "</br></br>";
+            i++;
+        }
+        encabezado = encabezado + auxiliar;
+        return encabezado;
+    }
+
+
+    function ImpresionPage2() {
+
+        var html = CuerpoImpresion1();
+        html = escape(html);
+        jsCrearPDF(null, html, NameFichero, 1);
+    }
+
+    $(document).ready(function () { });
+
+</script>

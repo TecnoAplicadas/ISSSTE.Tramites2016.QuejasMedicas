@@ -1,0 +1,56 @@
+﻿<div data-ng-controller="reportsController as vm" data-ng-init="vm.initSearch()">
+    <div class="container1">
+        <i class="fa fa-2x fa fa-bars pull-right expandir" aria-hidden="true" style="display: inline"
+           id="ClickExpand"
+           onmouseover='tooltip.show("Click para revisar el detalle del reporte")'
+           onmouseout="tooltip.hide();" onclick="ClickExpansion()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-search pull-right expandir" aria-hidden="true" style="display: none"
+           id="ClickConsulta"
+           onmouseover='tooltip.show("Click para generar el reporte")'
+           onmouseout="tooltip.hide();" onclick="ConsultarReporte()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-cogs pull-right expandir" aria-hidden="true" style="display:none;visibility:hidden"
+           id="ClickTools"
+           onmouseover='tooltip.show("Click para mostrar el resultado - Herramienta de desarrolladores")'
+           onmouseout="tooltip.hide();" onclick="jsResultConsultaDesarrollador()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-columns pull-right expandir" aria-hidden="true" style="display:none;visibility:hidden"
+           id="ClickResume"
+           onmouseover='tooltip.show("Click para mostrar el detalle de la consulta")'
+           onmouseout="tooltip.hide();" onclick="jsResultConsulta()">
+            &nbsp;
+        </i>
+        <i class="fa fa-2x fa fa-file-excel-o  pull-right expandir" aria-hidden="true" style="display: none"
+           id="ClickExcel"
+           onmouseover='tooltip.show("Click para descargar el contenido en Excel")'
+           onmouseout="tooltip.hide();" onclick="jsImpresionCompendio()">
+            &nbsp;
+        </i>
+
+        <div class="container">
+            <center>
+                <h1>Reporte Dinámico</h1>
+            </center>
+        </div>
+        <div class="container @Tag.Col(1) ">
+            <div id="SeccionReporte" style="width: 1350px;">
+            </div>
+        </div>
+    </div>
+    <div id="PeticicionJson" style="display: none;"></div>
+    <div id="PeticionNormalizada" style="display: none;"></div>
+    @{ Html.RenderPartial("Filtros"); }
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        jsInitPaginador("CompendioTable1");
+    });
+</script>

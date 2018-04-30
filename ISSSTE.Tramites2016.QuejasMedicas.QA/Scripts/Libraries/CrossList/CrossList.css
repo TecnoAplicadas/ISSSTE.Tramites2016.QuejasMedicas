@@ -1,0 +1,32 @@
+﻿.dual-list .list-group { margin-top: 8px; }
+
+.list-left li, .list-right li { cursor: pointer; }
+
+.list-arrows { padding-top: 100px; }
+
+.list-arrows button { margin-bottom: 20px; }
+
+/*.Bloque { background-color: beige; }*/
+.Bloque {background-color: rgba(220, 229, 230, 0.26);}
+
+.SearchIcon, .SearchBusquedaIcon {
+    background-color: Highlight;
+    color: white;
+}
+
+.SearchIcon:hover, .SearchBusquedaIcon:hover {
+    background-color: blueviolet;
+    color: white;
+}
+
+.SearchIcon:active, .SearchBusquedaIcon:active {
+    background-color: #024959;
+    color: white;
+}
+
+.doc-alert {
+    border-left: 5px solid #1ABC9C;
+    font-size: 18px;
+    margin: 20px 0;
+    padding-left: 15px;
+}

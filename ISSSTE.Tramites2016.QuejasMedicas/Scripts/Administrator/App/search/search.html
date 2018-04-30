@@ -1,0 +1,223 @@
+﻿<div data-ng-controller="searchController as vm" data-ng-init="vm.initSearch()">
+    <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height:30px;"></div>
+
+    <div class="col-xs-12">
+
+        <div class="col-xs-12">
+            <div class="alerts"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Fecha Inicio:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-calendar"> </span>
+                        <input type="text" placeholder="dd/MM/yyyy" data-ng-model="vm.startDate" id="fechaInicio" name="fechaInicio" class="form-control" onmouseover="tooltip.show('Ingrese la fecha inicio de la cita.')" onmouseout="tooltip.hide();">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Fecha Fin:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-calendar"> </span>
+                        <input type="text" placeholder="dd/MM/yyyy" data-ng-model="vm.endDate" id="fechaFin" name="fechaFin" class="form-control" onmouseover="tooltip.show('Ingrese la fecha fin de la cita.')" onmouseout="tooltip.hide();">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <label class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <div style="display:inline-block;float:none" class="dropdown pull-left" id="status-dropdow" onmouseover="tooltip.show('Seleccione el estado de la cita, al no seleccionar se excluye este filtro.')" onmouseout="tooltip.hide();">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                            Mostrar Todos los estatus
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>
+                                <a data-ng-click="vm.selectStatus(null)">Todos los estatus</a>
+                            </li>
+                            <li data-ng-repeat="actualEstatus in vm.statusList">
+                                <a data-ng-click="vm.selectStatus(actualEstatus)">{{actualEstatus.Concepto}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Trámite:</label>
+                    <select class="form-control" data-ng-model="vm.RequestTypeId" data-ng-options="requestType.CatTipoTramiteId as requestType.Concepto for requestType in vm.requestTypes" onmouseover="tooltip.show('Seleccione el tipo de trámite, al no seleccionar se excluye este filtro.')" onmouseout="tooltip.hide();">
+                        <option value="">Selecciona un trámite</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>UADyCS:</label>
+                    <select class="form-control" data-ng-model="vm.delegationId" data-ng-options="delegation.DelegacionId as delegation.Descripcion for delegation in vm.delegations" ng-disabled="vm.delegations.length==1"  onmouseover="tooltip.show('Seleccione una UADyCS, al no seleccionar se excluye este filtro.')" onmouseout="tooltip.hide();">
+                        <option value="">Selecciona una UADyCS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Folio o nombre:</label>
+                    <!--<div class="input-group">-->
+                        <input type="text" class="form-control" placeholder="Buscar por folio o nombre" data-ng-model="vm.query"
+                               data-ng-keyup="$event.keyCode == 13 && vm.searchRequests()" onmouseover="tooltip.show('Ingrese el folio o el nombre del promovente/paciente.')" onmouseout="tooltip.hide();" />
+                        <!--<div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary" data-ng-click="vm.searchRequests()">
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+        <!--Control de consulta-->
+        <div class="row col-md-12">
+            <div class="pull-right">
+                <button type="button" style="text-decoration:none;"
+                        class="btn btn-default"
+                        ng-click="vm.clearAllFilters()"
+                        onmouseover="tooltip.show('Clic para limpiar los filtros de busqueda.')" onmouseout="tooltip.hide();">
+                    <span class="fa fa-eraser" aria-hidden="true"></span>&nbsp;&nbsp;Limpiar
+                </button>
+                
+                 <button type="button" style="text-decoration:none;"
+                        class="btn btn-primary"
+                        ng-click="vm.searchRequests()"
+                        onmouseover="tooltip.show('Clic para buscar solicitudes.')" onmouseout="tooltip.hide();">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;&nbsp;Consultar
+                </button>
+            </div>
+        </div>
+        <!--Control de consulta-->
+
+        <div class="row col-md-12">
+            <hr>
+        </div>
+
+        <div class="@ISSSTE.Tramites2016.QuejasMedicas.Helpers.Tag.Col(12)" style="height:10px;"></div>
+
+        <div class="col-xs-12 margintop-30">
+            <div class="panel panel-default" data-ng-show="vm.requests.length>0">
+                <div class="panel-body overflow-table">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Primer apellido</th>
+                                <th>Segundo apellido</th>
+                                <th>Trámite</th>
+                                <th>Folio</th>
+                                <th>Estatus</th>
+                                <th>Fecha y hora de la cita</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody style="overflow-y: auto; width: 100%">
+                            <tr data-ng-repeat="actualRequest in vm.requests">
+                                <td>{{actualRequest.Promovente.Nombre}}</td>
+                                <td>{{actualRequest.Promovente.Paterno}}</td>
+                                <td>{{actualRequest.Promovente.Materno}}</td>
+                                <td><div class="contenidoTramiteTruncado" ng-mouseover="vm.MuestraToolTip(actualRequest.CatTipoTramiteConcepto)" ng-mouseleave="vm.OcultaToolTip()">{{actualRequest.CatTipoTramiteConcepto}}</div></td>
+                                <td>{{actualRequest.Folio}}</td>
+                                <td>{{actualRequest.Cita.ConceptoEdoCita}}</td>
+                                <td>{{actualRequest.Cita.FechaCita}} {{actualRequest.Cita.HoraCita}}</td>
+                                <td>
+                                    <div class="pull-right">
+                                        <a ng-href="#{{nc.getRequestDetailUrl(actualRequest.SolicitudId)}}">
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                Ver detalle
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.panel-default -->
+            </div>
+            <!-- /.panel -->
+            <div class="alert alert-info" data-ng-show="vm.requests.length == 0">
+                No se encontraron solicitudes.
+            </div>
+
+            <!--Control de Paginacion-->
+            <div class="row">
+                <div class="col-xs-2 pull-left paddingleft-0">
+                    Mostrar:
+                    <select class="form-control"
+                            data-ng-options="actualPageSize + ' resultados' for actualPageSize in vm.pagination.pageSizes"
+                            data-ng-model="vm.pagination.selectedPageSize" data-ng-change="vm.searchRequests()"></select>
+                </div>
+                <div class="col-xs-2 pull-left paddingleft-0">
+                    Total de registros:
+                    <input style="background-color: lightblue" class="form-control text-center" data-ng-model="vm.pagination.resultCount" disabled />
+                </div>
+
+                <div class="col-xs-8 pull-right paddingright-0" data-ng-show="vm.requests.length > 0">
+                    <nav class="text-right">
+                        <ul class="pagination">
+                            <li data-ng-class="{ disabled: vm.pagination.isFirstPage() }">
+                                <a data-ng-click="vm.pagination.changeToPreviousPage()">&laquo;</a>
+                            </li>
+                            <li data-ng-repeat="actualPage in vm.pagination.pages"
+                                data-ng-class="{ active: vm.pagination.isPageSelected(actualPage) }">
+                                <a data-ng-click="vm.pagination.changeSelectedPage(actualPage)">{{actualPage}}</a>
+                            </li>
+                            <li data-ng-class="{ disabled: vm.pagination.isLastPage() }">
+                                <a data-ng-disabled="vm.pagination.isLastPage()"
+                                   data-ng-click="vm.pagination.changeToNextPage()">&raquo;</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--Control de Paginacion-->
+
+        </div>
+        <!-- /.col -->
+        <!-- END CONTENT -->
+
+    </div>
+</div>
+<script>
+
+
+
+    $(document).ready(function () {
+        //ConfiguracionDatePicker('date_range');
+        BreadGral("Consulta de solicitudes");
+
+        $("#fechaInicio").datepicker({
+            dateFormat: "dd/mm/yy",
+            onClose: function (selectedDate) {
+                $("#fechaFin").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $("#fechaFin").datepicker({
+            dateFormat: "dd/mm/yy",
+            onClose: function (selectedDate) {
+                $("#fechaInicio").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+
+    });
+
+    UI.initStatusDropdown();
+
+</script>

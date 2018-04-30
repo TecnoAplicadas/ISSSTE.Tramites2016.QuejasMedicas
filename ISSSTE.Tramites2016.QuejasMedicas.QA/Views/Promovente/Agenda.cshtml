@@ -1,0 +1,155 @@
+﻿
+<div class="@Tag.Col(12)" style="height: 40px;">&nbsp;</div>
+<div class="col-md-12" id="IndexRegionMensaje"></div>
+
+<div class="col-md-12">
+    <div id="SeccionAgendar">
+
+        <h2>Información general del promovente y/o paciente</h2>
+        <hr class="red">
+
+        <div class="alert alert-info bottom-buffer" id="I_Agenda">&nbsp;</div>
+
+        @{ Html.RenderPartial("InfoGeneral"); }
+        
+        <div class="row">
+            <form class="ns_" method="get" action="../Promovente/AgendarCita" id="MedicionFormulario">
+                <div id="RegistroGeneral">
+                    <div class="@Tag.Height(30)">&nbsp;</div>
+
+                    <div class="@Tag.Col(7)" style="top: -15px;">
+                        <h4 style="font-weight:normal">¿El promovente es distinto al paciente?</h4>
+                    </div>
+                    <p class="@Tag.Col(1)">
+                        Si&nbsp;<span id="PacienteCheckSi" onclick="jsCheckUpPaciente();" ondblclick="jsCheckUpPaciente();" class="glyphicon glyphicon-check"></span>
+                    </p>
+                    <p class="@Tag.Col(1)">
+                        No&nbsp;<span id="PacienteCheckNo" onclick="jsCheckUpPaciente();" ondblclick="jsCheckUpPaciente();" class="glyphicon glyphicon-unchecked"></span>
+                    </p>
+                    <div class="@Tag.Height(30)">&nbsp;</div>
+                    <div class="@Tag.Col(12)">
+                        <ul class="nav nav-tabs">
+                            <li class="active" id="TabPromovente">
+                                <a data-toggle="tab" href="#TabPromoventeDiv" aria-expanded="false" id="LinkPromovente">
+                                    <h5>Promovente</h5>
+                                </a>
+                            </li>
+                            <li class="" id="TabPaciente">
+                                <a data-toggle="tab" href="#TabPacienteDiv" aria-expanded="false" id="LinkPaciente">
+                                    <h5>Paciente</h5>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="SeccionPrevioRegistro">
+                            <div class="tab-pane active" id="TabPromoventeDiv">
+                                <div class="row" id="SeccionPromovente">
+                                    <div class="row">
+                                        @Tag.InputTexto(8, "Clave Única de Registro de Población (CURP)", "Ingresa tu CURP", "CURPPromovente", "", 18, "El CURP no es valido", true, "LetraNumero")
+                                        <div class="col-md-4 setMiddle setMiddleText">
+                                            <a style="font-weight: bold;" onclick="uid_call('ISSSTE.PeticionesWeb.ConsultaCURPAfectado', 'clickout')"
+                                               href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">
+                                                Da clic para conocer tu CURP
+                                            </a><span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        @Tag.InputTexto(4, "Nombre(s)", "Ingresa tu nombre", "NombrePromovente", "", 30, "", true, "LetraMayus")
+                                        @Tag.InputTexto(4, "Primer apellido","Ingresa tu primer apellido", "Apellido1Promovente", "", 30, "", true, "LetraMayus")
+                                        @Tag.InputTexto(4, "Segundo apellido", "Ingresa tu segundo apellido", "Apellido2Promovente", "", 30, "", false, "LetraMayus")
+                                    </div>
+
+                                    <div class="row">
+                                        @Tag.InputDiv(2, "Sexo", "SexoPromovente", "Sexo", 30, "", false, "", "", " disabled='disabled' ")
+                                        @Tag.InputDiv(2, "Edad", "EdadPromovente", "Edad", 3, "", false, "Numero", "", " disabled='disabled' ")                                   
+                                        
+                                        @Tag.InputTexto(1, "Lada","Lada", "LadaPromovente", "", 3, "", true, "Numero SINMENSAJE")
+                                        @Tag.InputTexto(3, "Teléfono fijo", "Teléfono fijo", "TelefonoPromovente", "", 8, "", true, "Numero")
+                                        @Tag.InputTexto(4, "Teléfono móvil", "Teléfono móvi", "CelularPromovente", "", 10, "", false, "Numero")
+                                    </div>
+                                    <div class="row">
+                                        @Tag.InputTexto(4, "Correo electrónico", "ejemplo@dominio.com", "CorreoPromovente", "", 85,"El correo no es valido")
+                                        <div class="col-md-8">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="TabPacienteDiv">
+                                <div class="row" id="SeccionPaciente">
+                                    <div class="row">
+                                        @Tag.InputTexto(8, "Clave Única de Registro de Población (CURP)", "Ingresa tu CURP", "CURPPaciente", "", 18, "El CURP no es valido", true, "LetraNumero")
+                                        <div class="col-md-4 setMiddle setMiddleText">
+                                            <a style="font-weight: bold;" onclick="uid_call('ISSSTE.PeticionesWeb.ConsultaCURPAfectado', 'clickout')"
+                                               href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">
+                                                Da clic para conocer tu CURP
+                                            </a><span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        @Tag.InputTexto(4, "Nombre(s)", "Ingresa tu nombre", "NombrePaciente", "", 30,"", false, "LetraMayus")
+                                        @Tag.InputTexto(4, "Primer apellido","Ingresa tu primer apellido","Apellido1Paciente", "", 30,"", false, "LetraMayus")
+                                        @Tag.InputTexto(4, "Segundo apellido", "Ingresa tu segundo apellido", "Apellido2Paciente", "", 30,"", false, "LetraMayus")
+                                    </div>
+                                    <div class="row">
+                                        @Tag.InputDiv(2, "Sexo", "SexoPaciente", "Sexo", 30,"", false, "", "", " disabled='disabled' ")
+                                        @Tag.InputDiv(2, "Edad", "EdadPaciente", "Edad", 3, "", false, "Numero", "", " disabled='disabled' ")
+                                        @Tag.InputTexto(1, "Lada", "Lada", "LadaPaciente", "", 3, "", false, "Numero SINMENSAJE")
+                                        @Tag.InputTexto(3, "Teléfono fijo", "Teléfono fijo", "TelefonoPaciente", "", 8, "", false, "Numero")
+                                        @Tag.InputTexto(4, "Teléfono móvil", "Teléfono móvil", "CelularPaciente", "", 10, "", false, "Numero")
+                                    </div>
+                                    <div class="row">
+                                        @Tag.InputTexto(4, "Correo electrónico", "ejemplo@dominio.com", "CorreoPaciente", "", 85,"")
+                                        <div class="col-md-8 col-md-offset-0">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row" style="margin-top: 30px;margin-bottom:30px;">
+            <div class="col-md-12">
+                <div class="clearfix">
+                    <div class="pull-left text-muted text-vertical-align-button">
+                        * Campos obligatorios
+                    </div>
+
+                    <div class="pull-right">
+                        @Tag.InputBoton("LimpiarCampos", "Limpiar", 3, 3, "","","", "'AgendarCita.Limpiar','view'")
+                        @Tag.InputBoton("PasoSiguiente", "Siguiente", 1, 3, "","","", "'AgendarCita.Siguiente','view'")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#I_Agenda").html(G_MENSAJES.MENSAJE_AGENDA);
+        jsEvaluarElementos();
+
+        $("#PacienteCheck").prop("checked", "checked");
+
+        $("#CURPPromovente").blur(function () {
+            jsChange("Promovente");
+        });
+
+        $("#CURPPaciente").blur(function () {
+            jsChange("Paciente");
+        });
+
+        $("#Paso1").addClass("completed");
+        LimpiarCampos();
+    });
+
+
+</script>

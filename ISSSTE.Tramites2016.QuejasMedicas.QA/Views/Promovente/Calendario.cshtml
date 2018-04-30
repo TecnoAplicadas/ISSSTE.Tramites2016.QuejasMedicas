@@ -1,0 +1,406 @@
+﻿@model List<ISSSTE.Tramites2016.QuejasMedicas.Model.InformacionDTO.HorarioDTO>
+
+<link href="~/Content/BaseCSS/Calendario.css" rel="stylesheet" />
+
+<style>
+    .InHabil_TD {
+        border: 2px solid #D0021B;
+        background: rgb(255,250,252);
+        background: rgba(255,250,252,0.6);
+        margin-top: 4px;
+        font-weight: bold;
+    }
+
+    .Disponible_TD {
+        border: 2px solid #4D92DF;
+        background: rgb(173,216,230);
+        background: rgba(173,216,230, 0.2);
+        margin-top: 4px;
+        font-weight: bold;
+    }
+
+    .DiaActual_TD {
+        border: 2px solid #545454;
+        background: rgb(192,192,192);
+        background: rgba(192,192,192,0.3);
+        margin-top: 4px;
+        font-weight: bold;
+    }
+
+    .Acontecido_TD {
+        background-color: white;
+        margin-top: 4px;
+        font-weight: normal;
+    }
+
+    .DiaOver {
+        background-color: #545454;
+        color: white;
+    }
+
+    .DiaClick {
+        background-color: #4D92DF;
+        color: white;
+    }
+</style>
+<div class="@Tag.Col(12)" id="SeccionFinal" style="display: none;">
+    <div class="alert alert-info">
+        Seleccionaste la fecha siguiente para tu cita: <label id="FechaFinal"></label>.<br />
+        En el horario: <label id="HorarioFinal"></label>.
+    </div>
+</div>
+
+<div style="height: 750px;padding-left:0px" class="@Tag.Col(8)">
+    <div id="BaseCalendario" class="@Tag.Col(12)" style="height: 700px;">
+        <div id="FechaCalendario" style="display: none">@TempData["Fecha"]</div>
+        <div class="row">
+            <div class="panel-heading">
+                <center>
+                    <label id="MesAnioString"></label>
+                </center>
+            </div>
+        </div>
+        <table class="TablaCalendario" style="width: 100%">
+            <thead>
+                <tr style="width: 100%">
+                    <th class="EncabezadoTh" style="font-weight:normal">dom</th>
+                    <th class="EncabezadoTh" style="font-weight:normal">lun</th>
+                    <th class="EncabezadoTh" style="font-weight:normal">mar</th>
+                    <th class="EncabezadoTh" style="font-weight:normal">mié</th>
+                    <th class="EncabezadoTh" style="font-weight:normal">jue</th>
+                    <th class="EncabezadoTh" style="font-weight:normal">vie</th>
+                    <th class="EncabezadoTh" style="font-weight:normal">sáb</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="CampoTd D0 F0" id="td_1"></td>
+                    <td class="CampoTd D1 F1" id="td_2"></td>
+                    <td class="CampoTd D2 F2" id="td_3"></td>
+                    <td class="CampoTd D3 F3" id="td_4"></td>
+                    <td class="CampoTd D4 F4" id="td_5"></td>
+                    <td class="CampoTd D5 F5" id="td_6"></td>
+                    <td class="CampoTd D6 F6" id="td_7"></td>
+                </tr>
+                <tr>
+                    <td class="CampoTd D0" id="td_8"></td>
+                    <td class="CampoTd D1" id="td_9"></td>
+                    <td class="CampoTd D2" id="td_10"></td>
+                    <td class="CampoTd D3" id="td_11"></td>
+                    <td class="CampoTd D4" id="td_12"></td>
+                    <td class="CampoTd D5" id="td_13"></td>
+                    <td class="CampoTd D6" id="td_14"></td>
+                </tr>
+                <tr>
+                    <td class="CampoTd D0" id="td_15"></td>
+                    <td class="CampoTd D1" id="td_16"></td>
+                    <td class="CampoTd D2" id="td_17"></td>
+                    <td class="CampoTd D3" id="td_18"></td>
+                    <td class="CampoTd D4" id="td_19"></td>
+                    <td class="CampoTd D5" id="td_20"></td>
+                    <td class="CampoTd D6" id="td_21"></td>
+                </tr>
+                <tr>
+                    <td class="CampoTd D0" id="td_22"></td>
+                    <td class="CampoTd D1" id="td_23"></td>
+                    <td class="CampoTd D2" id="td_24"></td>
+                    <td class="CampoTd D3" id="td_25"></td>
+                    <td class="CampoTd D4" id="td_26"></td>
+                    <td class="CampoTd D5" id="td_27"></td>
+                    <td class="CampoTd D6" id="td_28"></td>
+                </tr>
+                <tr>
+                    <td class="CampoTd D0" id="td_29"></td>
+                    <td class="CampoTd D1" id="td_30"></td>
+                    <td class="CampoTd D2" id="td_31"></td>
+                    <td class="CampoTd D3" id="td_32"></td>
+                    <td class="CampoTd D4" id="td_33"></td>
+                    <td class="CampoTd D5" id="td_34"></td>
+                    <td class="CampoTd D6" id="td_35"></td>
+                </tr>
+                <tr id="fila6">
+                    <td class="CampoTd D0" id="td_36"></td>
+                    <td class="CampoTd D1" id="td_37"></td>
+                    <td class="CampoTd D2" id="td_38"></td>
+                    <td class="CampoTd D3" id="td_39"></td>
+                    <td class="CampoTd D4" id="td_40"></td>
+                    <td class="CampoTd D5" id="td_41"></td>
+                    <td class="CampoTd D6" id="td_42"></td>
+                </tr><!--Debe eliminarse si no tiene dias-->
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="@Tag.Col(4)">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="badge InHabil">&nbsp;</span>
+                        </div>
+                        <div class="col-md-10"><h6>Sin disponibilidad</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="badge Disponible">&nbsp;</span>
+                        </div>
+                        <div class="col-md-10">
+                            <h6>Disponible</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="badge DiaActual">&nbsp;</span>
+                        </div>
+                        <div class="col-md-10">
+                            <h6>Día actual</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="display: none" id="SeccionHorarios">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <center>
+                        <h5>Horarios disponibles:</h5>
+                    </center>
+                    <div class="col-xs-12">
+                        <div class="radio" id="HorariosLabel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var _Calendario = @Html.Raw(Json.Encode(Model));
+
+    function DayFirstMonth(fecha) {
+        var valores = fecha.split("/");
+        var seleccion = new Date(parseInt(valores[2]), (parseInt(valores[1]) - 1), parseInt(valores[0]));
+        return seleccion.getUTCDay();
+    }
+
+    function PintaCalendario(fechaCadena) {
+
+        //// Día Uno
+        var contador = 1;
+        var dia1 = DayFirstMonth(contador + "/" + fechaCadena);
+        $(".F" + dia1).html(contador);
+        var id = (new String($(".F" + dia1).attr("id"))).replace("td_", "");
+        $(".F" + dia1).addClass("d_01_" + fechaCadena.replace("/", "_"));
+        var valores = fechaCadena.split("/");
+        
+        //// Días Adicionales
+        var paro = DaysInMonth(parseInt(valores[0]), parseInt(valores[1]));
+        for (contador = 2; contador <= paro; contador++) {
+            id = parseInt(id);
+            id++;
+            $("#td_" + id).html(contador);
+            
+
+            var aux = new String(contador);
+            if (aux.length === 1) aux = "0" + aux;
+            aux = aux + "/" + fechaCadena;
+            aux = aux.replace(/\//g, "_");
+            $("#td_" + id).addClass("d_" + aux).addClass("diaMes");
+        }
+
+        var elementos = $("#fila6").children( ".diaMes");
+        
+        if(elementos.length==0) //Se remueven las filas sin no son ocupadas por dias del mes selccionado MFP 01-06-2017
+        {
+            $("#fila6").children().remove();
+        }
+
+    }
+
+    function CreaDivToolTip(contenido,mensaje)
+    {
+        return "<div style='height: 100%;' data-toggle='tooltip' title='"+mensaje+"' data-original-title='Tooltip superior'>"+contenido+"</div>"
+    }
+
+    function ConfiguracionInicial() {
+        var alto = $("#BaseCalendario").css("height");
+        alto = alto.replace("px", "");
+        alto = parseInt(alto) - 50;
+        alto = alto / 6;
+        $(".CampoTd").css("height", alto);
+        $(".CampoTd").removeClass("Disponible");
+        $(".CampoTd").removeClass("InHabil");
+    }
+
+    $(document).ready(function() {
+
+        ConfiguracionInicial();
+
+        var fechaCadena = $("#FechaCalendario").html();
+        HeaderFecha();
+        PintaCalendario(fechaCadena);
+        RecorreRespuesta();
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
+
+    function HeaderFecha() {
+        $("#MesAnioString").html($("#MesAnio").val());
+    }
+
+    function RecorreRespuesta() {
+        for (var k in _Calendario) {
+            if (_Calendario.hasOwnProperty(k)) {
+                var objeto = _Calendario[k];
+                if (objeto.EsFechaAcontecida) {
+                    jsDiasAcontecido(objeto.FechaForma);
+                } else {
+                    if (objeto.EsHoy) {
+                        jsDiasHoy(objeto.FechaForma);
+                    }
+
+                    if (objeto.EsDiaDisponible) {
+                        jsDiasDisponibles(objeto.FechaForma);
+                    } else {
+                        jsDiasInhabilitados(objeto.FechaForma);
+                    }
+                }
+            }
+        }
+    }
+
+    function PintaDia(dia, clase, conToolTip) {
+        dia = dia.replace(/\//g, "_");
+        $(".d_" + dia).addClass(clase);
+        if (conToolTip) {
+            
+            var valorDia=  $(".d_" + dia).html();
+            $(".d_" + dia).html(CreaDivToolTip(valorDia,G_MENSAJES.TOOLTIP_HORARIO));
+
+            $(".d_" + dia).mouseover(function() {
+                
+                //tooltip.show(G_MENSAJES.TOOLTIP_HORARIO);
+                //$(this).data("toggle","tooltip");
+                //$(this).data("placement","top");
+                //$(this).prop("title",G_MENSAJES.TOOLTIP_HORARIO);
+
+                $(this).addClass("DiaOver");
+            });
+            $(".d_" + dia).mouseout(function() {
+                $(this).removeClass("DiaOver");
+                //tooltip.hide();
+            });
+            $(".d_" + dia).click(function() {
+                //tooltip.hide();
+                $(".Disponible_TD").removeClass("DiaClick");
+                $(this).addClass("DiaClick");
+                dia = dia.replace(/_/g, "/");
+                jsHorariosDia(dia);
+            });
+        } else {
+            $(".d_" + dia).click(function() {
+                $("#SeccionHorarios").css("display", "none");
+                $("#SeccionFinal").css("display", "none");
+                $("#RegistrarCita").attr("disabled", "disabled");
+            });
+        }
+    }
+
+    function jsHorariosDia(fecha) {
+        var modelo = {};
+        modelo.Concepto = fecha;
+        modelo.TramiteUnidadAtencionId = $("#TramiteUnidadAtencionId").val();
+        jsAjaxGenerico("../Catalogo/GetBusquedaDia", modelo, null, jsRespuestaBusquedaDia);
+    }
+
+    function jsRespuestaBusquedaDia(html) {
+        var cadena = "";
+        var esPrimero = true;
+        var idSelect = 0;
+        for (var k in html) {
+            if (html.hasOwnProperty(k)) {
+                var objeto = html[k];
+                if (objeto.Capacidad > 0) {
+                    var aux = (esPrimero) ? " checked='checked' " : "";
+                    cadena += "<center>" +
+                        "<input name='HorarioSeleccionado' class='HorarioSeleccionado' value='" +
+                        objeto.HorarioId +
+                        "' onclick='jsChangeHorarioSeleccionado(" +
+                        objeto.HorarioId +
+                        ")' " +
+                        " ondblclick='jsChangeHorarioSeleccionado(" +
+                        objeto.HorarioId +
+                        ")' id='HS_" +
+                        objeto.HorarioId +
+                        "' " +
+                        aux +
+                        " type='radio'>" +
+                        "<label style='margin-left:10px;' id='HSL_" +
+                        objeto.HorarioId +
+                        "' > " +
+                        objeto.HoraInicioCad +
+                        "</label></br></center>";
+                    if (esPrimero) {
+                        idSelect = objeto.HorarioId;
+                    }
+                    esPrimero = false;
+                }
+            }
+        }
+        $("#HorariosLabel").html(cadena);
+        $("#SeccionHorarios").css("display", "");
+        jsMuestraHorarioFinal(idSelect);
+    }
+
+    function jsMuestraHorarioFinal(id) {
+        auxiliar=$("#HSL_" + id).html();
+        if (auxiliar != undefined && auxiliar != null && auxiliar != "") {
+            $("#SeccionFinal").css("display", "");
+           
+            var val =  $(".DiaClick").find("div").html() + "/" + $("#FechaCalendario").html();          
+
+            $("#FechaFinal").html(val);
+            $("#HorarioFinal").html($("#HSL_" + id).html());
+            $("#RegistrarCita").removeAttr("disabled");
+            $("#SeccionHorarios").css("display", "");
+        } else {
+            $("#SeccionHorarios").css("display", "none");
+        }
+    }
+
+
+    function jsChangeHorarioSeleccionado(id) {
+        $(".HorarioSeleccionado").removeAttr("checked");
+        $("#HS_" + id).prop("checked", true);
+        jsMuestraHorarioFinal(id);
+    }
+
+    function jsDiasAcontecido(fecha) {
+        PintaDia(fecha, "Acontecido_TD");
+    }
+
+    function jsDiasInhabilitados(fecha) {
+        PintaDia(fecha, "InHabil_TD");
+    }
+
+    function jsDiasHoy(fecha) {
+        PintaDia(fecha, "DiaActual_TD");
+    }
+
+    function jsDiasDisponibles(fecha) {
+        PintaDia(fecha, "Disponible_TD", true);
+    }
+
+    
+    //$gmx(document).ready(function () {
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //});
+
+
+</script>

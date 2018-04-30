@@ -1,0 +1,82 @@
+﻿.BusquedaPredictiva { width: 0px; }
+
+.Statics {
+    font-size: 10px;
+     width: 150px;
+}
+
+.TotRows {
+    margin-left: -10px;
+    margin-top: 10px;
+    width: 150px;
+}
+
+.SearchRows { margin-top: 10px; }
+
+.BusquedaPaginador {
+    position: relative;
+    top: 10px;
+}
+
+.highlight {
+    background-color: #fff2a8;
+    color: black;
+}
+
+.ZonaRows {
+    position: relative;
+    top: -25px;
+    font-size: 10px;
+}
+
+.BusquedaTextoPaginador {
+    position: relative;
+    top: -15px;
+}
+
+.SelectBusqueda {
+    position: relative;
+    top: -2px;
+}
+
+.SearchIcon, .SearchBusquedaIcon {
+    background-color: Highlight;
+    color: white;
+}
+
+.SearchIcon:hover, .SearchBusquedaIcon:hover {
+    background-color: blueviolet;
+    color: white;
+}
+
+.paginacion > ul {
+    list-style: none;
+    text-align: center;
+}
+
+.paginacion > ul > li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.paginacion > ul > li > a {
+    background: #024959;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.paginacion > ul > li > a > p { display: inline; }
+
+.paginacion > ul > li > a > input { display: inline; }
+
+.paginacion > ul > li > a:hover { background: blueviolet; }
+
+.paginacion > ul > li > .active {
+    background: #037E8C;
+    font-weight: bold;
+}
+
+.IzquierdoTab { color: blueviolet; }
